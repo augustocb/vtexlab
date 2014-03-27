@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{page.title}}{% if page.title %} - {%endif%}VTEX Lab</title>
+  <script type="text/javascript" src="//use.typekit.net/ygy2ukv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  
+  <link rel="stylesheet" href="/style/bootstrap-custom.css">
+  <link rel="stylesheet" href="http://io.vtex.com.br/front-libs/font-awesome/4.0.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/style/trac.css">
+  <link rel="stylesheet" href="/style/main.css">
+</head>
+<body>
+  {% include header.html %}
+
+  <section class="main-content">
+    {{ content }}
+  </section>
+
+  <footer class="footer default-footer">
+    <div class="container">
+      <a href="#" class="footer-logo">Blog Vtex</a>
+    </div>
+  </footer>
+
+  <script src="//code.jquery.com/jquery.min.js"></script>
+  
+  {% if page.type == "post-list" %}
+  <script src="/script/post-list.js"></script>  
+  {% endif %}
+  
+  <script src="/script/speakingurl.min.js"></script>
+  <script>
+    $('h1, h2, h3').each(function(i, el) {
+      el = $(el);
+      if(!el.attr('id')) {
+        el.attr('id', getSlug(el.text()));
+      }
+    });
+    $(document).ready(function() {
+      setTimeout(function() {
+        if(window.scrollY === 0 && location.hash) {
+          var heading = $(location.hash);
+          $('html, body').scrollTop(heading.position().top + 60);
+        }
+      }, 0);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1648 @@
+<h1>carrier</h1>
+
+<table><thead>
+<tr>
+<th>Descrição</th>
+<th align="left">Recurso</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Consulta todas as transportadoras</td>
+<td align="left"><a href="#consulta-todas-as-transportadoras">GET /api/logistics/pvt/configuration/carriers</a></td>
+</tr>
+<tr>
+<td>Consulta transportadora</td>
+<td align="left"><a href="#consulta-transportadora">GET /api/logistics/pvt/configuration/carriers/{carrierId}</a></td>
+</tr>
+<tr>
+<td>Salva uma transportadora</td>
+<td align="left"><a href="#salva-uma-transportadora">POST /api/logistics/pvt/configuration/carriers</a></td>
+</tr>
+<tr>
+<td>Exclui transportadora</td>
+<td align="left"><a href="#exclui-transportadora">POST /api/logistics/pvt/configuration/carriers/{carrierId}/remove</a></td>
+</tr>
+<tr>
+<td>Consulta tipos de entrega</td>
+<td align="left"><a href="#consulta-tipos-de-entrega">GET /api/logistics/pvt/configuration/slatypes</a></td>
+</tr>
+<tr>
+<td>Inclui bloqueio de agendadamento</td>
+<td align="left"><a href="#inclui-bloqueio-de-agendadamento">POST /api/logistics/pvt/configuration/carriers/{carrierId}/adddayofweekblocked</a></td>
+</tr>
+<tr>
+<td>Consulta bloqueios de agendamentos</td>
+<td align="left"><a href="#consulta-bloqueios-de-agendamentos">GET /api/logistics/pvt/configuration/carriers/{carrierId}/getdayofweekblocked</a></td>
+</tr>
+<tr>
+<td>Remove bloqueio de agendamento</td>
+<td align="left"><a href="#remove-bloqueio-de-agendamento">POST /api/logistics/pvt/configuration/carriers/{carrierId}/removedayofweekblocked</a></td>
+</tr>
+</tbody></table>
+
+<h3>Consulta todas as transportadoras</h3>
+
+<p>Obtém todas as transportadoras</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /api/logistics/pvt/configuration/carriers
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` `404 NotFound` `500 InternalServerError` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Id7ed46fc3-0189-46b1-a3f7-2122a353c4a2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;slaType&quot;</span><span class="p">:</span> <span class="s2">&quot;SlaTypea23f60a5-41a0-462b-a0d8-f15e240071b7&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name80382031-ade2-4508-9d46-50c06b4b7164&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;scheduledDelivery&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;maxRangeDelivery&quot;</span><span class="p">:</span> <span class="mi">239</span><span class="p">,</span>
+    <span class="nt">&quot;dayOfWeekForDelivery&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000160&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000057&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">111.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000016&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000022&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">112.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000215&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000201&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">113.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000200&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000117&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">114.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000042&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000171&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">115.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000128&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000192&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">116.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000154&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000176&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">117.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000236&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000072&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">118.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000188&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000114&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">119.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dayOfWeekBlockeds&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;2016-02-24T00:35:15.6989633&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2014-11-04T01:26:46.5321893&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2013-02-26T06:35:30.1238088&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;freightValue&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">122.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">123.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">124.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">125.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">126.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">127.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000144&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Country402a9e04-d815-4e69-858c-0540142286bb&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">248</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">62</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagece235518-3424-4ffc-9698-d8a59fb65dc7&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">246</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">138</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagec78ee207-7f09-49f2-b218-99ea08a4733e&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">51</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagefe6ae378-b672-4835-87f4-5d46d10ee775&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">129</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">130.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">131.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">132.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">133.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">134.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">135.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000194&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Country11f7913f-880c-45b2-8d84-a9601d251d33&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">88</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">175</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message021258cd-c50d-4b9d-a1f5-6879ef3bcaa7&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">74</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">227</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagec8e9bda7-94f8-4ef1-bd6e-041c54be2206&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagede6330aa-2dde-41b7-b108-f5141c112897&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">136</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">137</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">138.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">139.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">140.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">141.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">142.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">143.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000198&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Countrye34fbeb7-1948-4314-b0ff-af324ece3fc9&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message9aecdee9-0016-486e-9e31-30939351ac93&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">132</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">178</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message58ffb647-dce7-4123-be18-bf5d1555eb7c&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">186</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">205</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagefd8a7d09-a236-430c-ab90-28976d36a3b4&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;factorCubicWeight&quot;</span><span class="p">:</span> <span class="mf">190.0</span><span class="p">,</span>
+    <span class="nt">&quot;freightTableValueError&quot;</span><span class="p">:</span> <span class="s2">&quot;FreightTableValueError1d10a69a-c977-41db-a78e-6f6a79c31be7&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modals&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;f8f31f62-0f43-4bae-a686-6bb0101ff17c&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;ae0f3890-eeb2-469c-8ec0-c14f0be2aac4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;fd22e7c1-12b8-4f4a-9856-aaf2ff9a4226&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;deliveryOnWeekends&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;carrierSchedule&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000207&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000004&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000101&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;maxDimension&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">144.0</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mf">145.0</span><span class="p">,</span>
+      <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="mf">146.0</span><span class="p">,</span>
+      <span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="mf">147.0</span><span class="p">,</span>
+      <span class="nt">&quot;cubicweight&quot;</span><span class="p">:</span> <span class="mf">148.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxSumDimension&quot;</span><span class="p">:</span> <span class="mf">149.0</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Id19a617d2-e5f1-4d33-8ca1-1fcfb432747b&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;slaType&quot;</span><span class="p">:</span> <span class="s2">&quot;SlaTypeca0f1eba-e2f0-4b38-91f9-ba6a1e70dc94&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Namea5f5af1e-51d4-4c7e-bb98-ba7bea6e8c3f&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;maxRangeDelivery&quot;</span><span class="p">:</span> <span class="mi">232</span><span class="p">,</span>
+    <span class="nt">&quot;dayOfWeekForDelivery&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000231&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000167&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">150.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000085&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000063&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">151.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000197&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000222&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">152.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000070&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000035&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">153.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000103&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000148&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">154.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000061&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000097&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">155.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000007&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000252&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">156.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000019&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000247&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">157.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000204&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000002&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">158.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dayOfWeekBlockeds&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;2015-12-16T12:30:14.2971859&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2012-07-14T02:38:54.764273&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2012-05-20T23:38:03.3650402&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;freightValue&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">159</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">160</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">161.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">162.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">163.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">164.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">165.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">166.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000163&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Country4d12bdd8-ff60-4638-979b-13bd30d74fcb&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">125</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">140</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">133</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messageb5c27426-effc-4c82-8df7-0fe372c32d10&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">177</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messageeeeda0d1-403d-47c8-8bb6-f15dd54cf911&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">241</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">212</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">213</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message61dbf965-f2c5-4931-a02a-5cb8e7eb14e7&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">167</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">169.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">170.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">171.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">172.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">173.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">174.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000090&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Country810b3c8b-5739-40c2-9839-c7920a3608ea&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">216</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">196</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">108</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagec374b103-0903-4168-a350-7c73eda155d2&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">211</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">156</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message50a739b4-6e5e-46b1-ba56-a86fe1c9953d&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">153</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">193</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">191</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message8beb658e-7550-4511-8f5f-dc40d72e1cb3&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">175</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">176</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">177.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">178.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">179.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">180.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">181.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">182.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000218&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Country74b46219-622a-43a4-9997-4b770c140bbd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">253</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">179</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message24d53a62-7c0d-44da-99da-8939412552fa&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">185</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message6e7f349a-2103-4e11-9844-c4873fbf507f&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">210</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">107</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">170</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagecfca151d-9c7c-4060-a5d4-81bd5ff0803d&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;factorCubicWeight&quot;</span><span class="p">:</span> <span class="mf">229.0</span><span class="p">,</span>
+    <span class="nt">&quot;freightTableProcessStatus&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;freightTableValueError&quot;</span><span class="p">:</span> <span class="s2">&quot;FreightTableValueError72d0bc33-4a5d-4f1e-97c2-0fe7b71d6ba7&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modals&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;88167a1b-a8ec-4599-9162-f3590266df89&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;9ac1a670-f862-4120-9f1a-6fc94aeeef63&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;e72c5866-0ea8-4573-9fba-63996102c271&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;undefinedModals&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;carrierSchedule&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000066&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000135&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000230&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;maxDimension&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">183.0</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mf">184.0</span><span class="p">,</span>
+      <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="mf">185.0</span><span class="p">,</span>
+      <span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="mf">186.0</span><span class="p">,</span>
+      <span class="nt">&quot;cubicweight&quot;</span><span class="p">:</span> <span class="mf">187.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxSumDimension&quot;</span><span class="p">:</span> <span class="mf">188.0</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Ideb13229b-7d13-4d3f-b223-28f70128bca6&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;slaType&quot;</span><span class="p">:</span> <span class="s2">&quot;SlaType1ffded16-2c43-4450-aa3c-d27cd73552e1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name79dfb9b9-76bc-46de-8545-a72a40c7be41&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;scheduledDelivery&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;maxRangeDelivery&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+    <span class="nt">&quot;dayOfWeekForDelivery&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000237&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000025&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">189.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000234&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000081&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">190.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000235&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000091&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">191.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000249&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000076&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">192.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000250&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000106&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">193.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000041&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000055&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">194.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000199&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000149&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">195.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000147&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000071&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">196.0</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000033&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000221&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">197.0</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dayOfWeekBlockeds&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;2016-02-11T19:07:10.3653159&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2012-03-26T18:54:45.2097867&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2014-03-03T03:15:32.1453644&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;freightValue&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">198</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">199</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">200.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">201.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">202.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">203.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">204.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">205.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000129&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Countrydb493958-49e8-435e-adfe-df384a587438&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">251</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">172</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message6774ce03-8109-4a01-a35f-a9160d099b3b&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">141</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">115</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message0ce5ab65-ab86-4c55-88f6-fa07fa9009d5&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">136</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messaged3e1a3ae-6b22-49fc-9c96-88e42d430a09&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">206</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">207</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">208.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">209.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">210.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">211.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">212.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">213.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000067&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Countrye209c0e4-c3c0-4b56-ab98-3c4f7c10f0b6&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">94</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message57027d41-17db-4292-8876-e325614e32d6&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">49</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">131</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">86</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messageccfc103e-08e5-4037-872a-ee32cb66560e&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">254</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message93888abf-b139-4a31-8916-88b624ea7aff&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">214</span><span class="p">,</span>
+        <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">215</span><span class="p">,</span>
+        <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">216.0</span><span class="p">,</span>
+        <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">217.0</span><span class="p">,</span>
+        <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">218.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">219.0</span><span class="p">,</span>
+        <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">220.0</span><span class="p">,</span>
+        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">221.0</span><span class="p">,</span>
+        <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0011814&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Country9be8d878-4353-4150-8024-a6f587aab87e&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">28752</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">7670</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">4387</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message15749bb2-82b4-4594-8c94-3ca8f33ff3ba&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">26280</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">21055</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">6548</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message60a758ee-add4-452f-af1d-d3f28d8d0752&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">26971</span><span class="p">,</span>
+            <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">21485</span><span class="p">,</span>
+            <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">7192</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagec6d01695-49f8-41f6-a2c3-fb72cd3243bd&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;factorCubicWeight&quot;</span><span class="p">:</span> <span class="mf">23426.0</span><span class="p">,</span>
+    <span class="nt">&quot;freightTableProcessStatus&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;freightTableValueError&quot;</span><span class="p">:</span> <span class="s2">&quot;FreightTableValueErroraeab6306-b149-486c-8547-10b340105010&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modals&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;99a806df-0755-458f-873b-1425b1962c44&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;4a3396d7-dd16-4fa0-8ad5-e08d30630a4d&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;bcb1c4fb-73d4-4cab-941c-12c3329eb3ff&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;deliveryOnWeekends&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;carrierSchedule&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0020802&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0003535&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0028671&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;maxDimension&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">222.0</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mf">223.0</span><span class="p">,</span>
+      <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="mf">224.0</span><span class="p">,</span>
+      <span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="mf">225.0</span><span class="p">,</span>
+      <span class="nt">&quot;cubicweight&quot;</span><span class="p">:</span> <span class="mf">226.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxSumDimension&quot;</span><span class="p">:</span> <span class="mf">227.0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Consulta transportadora</h3>
+
+<p>Obtém uma transportadora com base no seu identificador único</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /api/logistics/pvt/configuration/carriers/{carrierId}
+</code></pre></div>
+<h4>Parâmetros de retorno</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id (*requerido*)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>slaType (*requerido*)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>name (*requerido*)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>scheduledDelivery</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>maxRangeDelivery</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>dayOfWeekForDelivery</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[dayOfWeekForDelivery].dayOfWeek</td>
+<td>DayOfWeek</td>
+<td></td>
+</tr>
+<tr>
+<td>[dayOfWeekForDelivery].deliveryRanges</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[[dayOfWeekForDelivery].deliveryRanges].startTime</td>
+<td>TimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>[[dayOfWeekForDelivery].deliveryRanges].endTime</td>
+<td>TimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>[[dayOfWeekForDelivery].deliveryRanges].listPrice</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>dayOfWeekBlockeds</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>freightValue</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].zipCodeStart</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].zipCodeEnd</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].weightStart</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].weightEnd</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].absoluteMoneyCost</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].pricePercent</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].pricePercentByWeight</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].maxVolume</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].timeCost</td>
+<td>TimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].operationType</td>
+<td>object</td>
+<td>Utilizado pelo ko para identificar a operação a ser realizada no registro</td>
+</tr>
+<tr>
+<td>[freightValue].restrictedFreights</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[[freightValue].restrictedFreights].zipCodeStart</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[[freightValue].restrictedFreights].zipCodeEnd</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[[freightValue].restrictedFreights].overTime</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[[freightValue].restrictedFreights].message</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>factorCubicWeight</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>freightTableProcessStatus</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>freightTableValueError</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>modals</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>undefinedModals</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>deliveryOnWeekends</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>carrierSchedule</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[carrierSchedule].dayOfWeek</td>
+<td>DayOfWeek</td>
+<td></td>
+</tr>
+<tr>
+<td>[carrierSchedule].timeLimit</td>
+<td>TimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>maxDimension</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>maxDimension.weight</td>
+<td>decimal</td>
+<td>Peso</td>
+</tr>
+<tr>
+<td>maxDimension.height</td>
+<td>decimal</td>
+<td>Altura</td>
+</tr>
+<tr>
+<td>maxDimension.width</td>
+<td>decimal</td>
+<td>Largura</td>
+</tr>
+<tr>
+<td>maxDimension.length</td>
+<td>decimal</td>
+<td>Comprimento</td>
+</tr>
+<tr>
+<td>maxDimension.cubicweight</td>
+<td>decimal</td>
+<td>Peso cúbico</td>
+</tr>
+<tr>
+<td>maxDimension.maxSumDimension</td>
+<td>decimal</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` `404 NotFound` `500 InternalServerError` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Idee5bc955-c161-4e7e-9f31-cc5be078a9a2&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;slaType&quot;</span><span class="p">:</span> <span class="s2">&quot;SlaType3d5bf637-1dbc-4776-a7a9-d16cab8f8d66&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name9c1e5f1e-1c15-43d4-b766-911e3d7e549a&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;maxRangeDelivery&quot;</span><span class="p">:</span> <span class="mi">8027</span><span class="p">,</span>
+  <span class="nt">&quot;dayOfWeekForDelivery&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0010146&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0007044&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">228.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0030968&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0012434&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">229.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0024707&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0002781&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">230.0</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0012416&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0015753&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">231.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0003971&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0030273&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">232.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0025530&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0014070&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">233.0</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+      <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0016548&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0020541&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">234.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0025199&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0019849&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">235.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0013573&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0029481&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">236.0</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;dayOfWeekBlockeds&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;2012-06-21T02:21:43.102976&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2013-09-12T14:53:57.6646613&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2014-07-08T17:47:18.3292003&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;freightValue&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">237</span><span class="p">,</span>
+      <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">238</span><span class="p">,</span>
+      <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">239.0</span><span class="p">,</span>
+      <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">240.0</span><span class="p">,</span>
+      <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">241.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">242.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">243.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">244.0</span><span class="p">,</span>
+      <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0021964&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Countrye289a396-ee45-4da6-a7fa-52daa6824589&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">27362</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">6186</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">14101</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message6927e848-1122-4df6-9a0a-6ae980f1f8df&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">8476</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">14608</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">24445</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message15e359a7-f4e6-4dfc-a3ee-ceaef1f30ab1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">12072</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">27544</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">7929</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message47773d1c-9e44-4383-8cea-b5cf2ee3cb7e&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">245</span><span class="p">,</span>
+      <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">246</span><span class="p">,</span>
+      <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">247.0</span><span class="p">,</span>
+      <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">248.0</span><span class="p">,</span>
+      <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">249.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">250.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">251.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">252.0</span><span class="p">,</span>
+      <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0005810&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Countryadd63b98-0704-48fd-b118-f74eed264f5d&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">24795</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">17714</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">19963</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message721b1e7b-d85c-4b5c-81c9-93562b1106a3&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">13978</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">17650</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">15720</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message85120579-2194-40e0-9352-2f31e6631dd5&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">26101</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">1254</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">12405</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messageb55663c3-1e68-4d95-ac3e-b62271c23d02&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">253</span><span class="p">,</span>
+      <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">254</span><span class="p">,</span>
+      <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">255.0</span><span class="p">,</span>
+      <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">256.0</span><span class="p">,</span>
+      <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">257.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">258.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">259.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">260.0</span><span class="p">,</span>
+      <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0008139&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Countrya3d8d183-11a0-4722-9ec8-81bdf8b9584e&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">10965</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">8328</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">6188</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message55b982a6-717d-4ac7-8b79-a87123854012&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">24322</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">13383</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">25073</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagea1e9070e-ad05-4762-854a-4946eca5debc&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">24192</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">17543</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">29917</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message4e878c7e-0027-45bd-b8f9-c45abdff9818&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;factorCubicWeight&quot;</span><span class="p">:</span> <span class="mf">21103.0</span><span class="p">,</span>
+  <span class="nt">&quot;freightTableProcessStatus&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="nt">&quot;freightTableValueError&quot;</span><span class="p">:</span> <span class="s2">&quot;FreightTableValueError692c1f23-81b5-4a20-9f33-f922657b8fe2&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;modals&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;57043dc5-91c9-456a-be50-cd8535bb0b3f&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;62c2553f-14ab-4f47-9e6e-5cb77a719a64&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;f57ee175-c886-4835-bbe2-39f761eef3d5&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;undefinedModals&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;carrierSchedule&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0021157&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0011986&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0029592&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;maxDimension&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">261.0</span><span class="p">,</span>
+    <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mf">262.0</span><span class="p">,</span>
+    <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="mf">263.0</span><span class="p">,</span>
+    <span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="mf">264.0</span><span class="p">,</span>
+    <span class="nt">&quot;cubicweight&quot;</span><span class="p">:</span> <span class="mf">265.0</span><span class="p">,</span>
+    <span class="nt">&quot;maxSumDimension&quot;</span><span class="p">:</span> <span class="mf">266.0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Salva uma transportadora</h3>
+
+<p>Cadastra/atualiza uma transportadora</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">POST /api/logistics/pvt/configuration/carriers
+</code></pre></div>
+<h3>Parâmetros</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td><strong>Requerido</strong>.</td>
+</tr>
+<tr>
+<td>slaType</td>
+<td>string</td>
+<td><strong>Requerido</strong>.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>Requerido</strong>.</td>
+</tr>
+<tr>
+<td>scheduledDelivery</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>maxRangeDelivery</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>dayOfWeekForDelivery</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[dayOfWeekForDelivery].dayOfWeek</td>
+<td>DayOfWeek</td>
+<td></td>
+</tr>
+<tr>
+<td>[dayOfWeekForDelivery].deliveryRanges</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[[dayOfWeekForDelivery].deliveryRanges].startTime</td>
+<td>TimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>[[dayOfWeekForDelivery].deliveryRanges].endTime</td>
+<td>TimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>[[dayOfWeekForDelivery].deliveryRanges].listPrice</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>dayOfWeekBlockeds</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>freightValue</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].zipCodeStart</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].zipCodeEnd</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].weightStart</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].weightEnd</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].absoluteMoneyCost</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].pricePercent</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].pricePercentByWeight</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].maxVolume</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].timeCost</td>
+<td>TimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>[freightValue].operationType</td>
+<td>object</td>
+<td>Utilizado pelo ko para identificar a operação a ser realizada no registro</td>
+</tr>
+<tr>
+<td>[freightValue].restrictedFreights</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[[freightValue].restrictedFreights].zipCodeStart</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[[freightValue].restrictedFreights].zipCodeEnd</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[[freightValue].restrictedFreights].overTime</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>[[freightValue].restrictedFreights].message</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>factorCubicWeight</td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td>freightTableProcessStatus</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>freightTableValueError</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>modals</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>undefinedModals</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>deliveryOnWeekends</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>carrierSchedule</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>[carrierSchedule].dayOfWeek</td>
+<td>DayOfWeek</td>
+<td></td>
+</tr>
+<tr>
+<td>[carrierSchedule].timeLimit</td>
+<td>TimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>maxDimension</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>maxDimension.weight</td>
+<td>decimal</td>
+<td>Peso</td>
+</tr>
+<tr>
+<td>maxDimension.height</td>
+<td>decimal</td>
+<td>Altura</td>
+</tr>
+<tr>
+<td>maxDimension.width</td>
+<td>decimal</td>
+<td>Largura</td>
+</tr>
+<tr>
+<td>maxDimension.length</td>
+<td>decimal</td>
+<td>Comprimento</td>
+</tr>
+<tr>
+<td>maxDimension.cubicweight</td>
+<td>decimal</td>
+<td>Peso cúbico</td>
+</tr>
+<tr>
+<td>maxDimension.maxSumDimension</td>
+<td>decimal</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Id09e09982-7437-4469-8961-a3d145076fbb&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;slaType&quot;</span><span class="p">:</span> <span class="s2">&quot;SlaType715b0383-bac1-4840-b2d4-81936702c346&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name508ab320-c55a-4a3e-bf3b-a9bc3f6ef172&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;scheduledDelivery&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;maxRangeDelivery&quot;</span><span class="p">:</span> <span class="mi">21304</span><span class="p">,</span>
+  <span class="nt">&quot;dayOfWeekForDelivery&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0031148&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0015142&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">267.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0012296&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0030832&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">268.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0018632&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0014399&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">269.0</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0002816&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0025413&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">270.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0028240&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0012702&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">271.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0032389&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000729&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">272.0</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="nt">&quot;deliveryRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0027658&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0022554&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">273.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0018571&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0005253&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">274.0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0000674&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0021701&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mf">275.0</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;dayOfWeekBlockeds&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;2012-11-14T12:58:55.1092396&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2013-10-30T02:20:46.8759173&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2015-02-15T23:36:44.7358359&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;freightValue&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">276</span><span class="p">,</span>
+      <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">277</span><span class="p">,</span>
+      <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">278.0</span><span class="p">,</span>
+      <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">279.0</span><span class="p">,</span>
+      <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">280.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">281.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">282.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">283.0</span><span class="p">,</span>
+      <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0025953&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Country1428f32f-6130-442c-8de1-a475f267ce0d&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">25346</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">12281</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">15318</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message31c47847-a4ed-4f3e-9d76-d5be2d2328b8&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">22475</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">5815</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">3400</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagebb79af7e-43f0-439c-a919-6a82a937efc2&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">31289</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">18542</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">28512</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message2944ca7b-2db0-447a-9076-94f7971a9711&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">284</span><span class="p">,</span>
+      <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">285</span><span class="p">,</span>
+      <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">286.0</span><span class="p">,</span>
+      <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">287.0</span><span class="p">,</span>
+      <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">288.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">289.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">290.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">291.0</span><span class="p">,</span>
+      <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0023853&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Countryd510f49c-666e-4b8a-bc62-fe0edd51c002&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">21197</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">12833</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">10144</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message0e48de4a-32f5-4f51-a6bd-75be14146074&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">11877</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">9386</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message2a19d4f0-0741-4180-910b-b6abd4216a99&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">7498</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">7059</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">4562</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message84238891-31c1-4c91-8ba3-30c68dfff6c9&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">292</span><span class="p">,</span>
+      <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">293</span><span class="p">,</span>
+      <span class="nt">&quot;weightStart&quot;</span><span class="p">:</span> <span class="mf">294.0</span><span class="p">,</span>
+      <span class="nt">&quot;weightEnd&quot;</span><span class="p">:</span> <span class="mf">295.0</span><span class="p">,</span>
+      <span class="nt">&quot;absoluteMoneyCost&quot;</span><span class="p">:</span> <span class="mf">296.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercent&quot;</span><span class="p">:</span> <span class="mf">297.0</span><span class="p">,</span>
+      <span class="nt">&quot;pricePercentByWeight&quot;</span><span class="p">:</span> <span class="mf">298.0</span><span class="p">,</span>
+      <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">299.0</span><span class="p">,</span>
+      <span class="nt">&quot;timeCost&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0021215&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Countrye9c7d885-9633-4dbe-a7b9-a5d99b55c9d6&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;operationType&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;restrictedFreights&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">22037</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">5438</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">16994</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Message57fcd9cf-b7a2-40e6-9c8d-2d04ea1e11c5&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">29730</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">20049</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">19479</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messaged7a83db3-e776-4a9e-a81d-ff5faabd0f1f&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;zipCodeStart&quot;</span><span class="p">:</span> <span class="mi">17120</span><span class="p">,</span>
+          <span class="nt">&quot;zipCodeEnd&quot;</span><span class="p">:</span> <span class="mi">1934</span><span class="p">,</span>
+          <span class="nt">&quot;overTime&quot;</span><span class="p">:</span> <span class="mi">24868</span><span class="p">,</span>
+          <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Messagee9c014a1-3bed-418d-9501-d4a0d20f5835&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;factorCubicWeight&quot;</span><span class="p">:</span> <span class="mf">11231.0</span><span class="p">,</span>
+  <span class="nt">&quot;freightTableProcessStatus&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="nt">&quot;freightTableValueError&quot;</span><span class="p">:</span> <span class="s2">&quot;FreightTableValueError112b20ef-e85e-450d-8864-a7c2281d53fb&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;modals&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;3dc550cd-0d6f-4cd2-979e-56e52004ccec&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;61ecce6a-9ff1-47cd-8f22-1da093483bee&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;51ea9489-1cf6-4eb6-8d37-3d2fe6a6cf1f&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;deliveryOnWeekends&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;carrierSchedule&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+      <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0009484&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0005152&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;dayOfWeek&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;timeLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;00:00:00.0012675&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;maxDimension&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">300.0</span><span class="p">,</span>
+    <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mf">301.0</span><span class="p">,</span>
+    <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="mf">302.0</span><span class="p">,</span>
+    <span class="nt">&quot;length&quot;</span><span class="p">:</span> <span class="mf">303.0</span><span class="p">,</span>
+    <span class="nt">&quot;cubicweight&quot;</span><span class="p">:</span> <span class="mf">304.0</span><span class="p">,</span>
+    <span class="nt">&quot;maxSumDimension&quot;</span><span class="p">:</span> <span class="mf">305.0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` `400 BadRequest` `500 InternalServerError` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="kc">false</span>
+</code></pre></div>
+<hr>
+
+<h3>Exclui transportadora</h3>
+
+<p>Exclui uma transportadora com base no seu identificador único</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">POST /api/logistics/pvt/configuration/carriers/{carrierId}/remove
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` `404 NotFound` `500 InternalServerError` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="kc">true</span>
+</code></pre></div>
+<hr>
+
+<h3>Consulta tipos de entrega</h3>
+
+<p>retorna todos os tipos de entrega já cadastrados</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /api/logistics/pvt/configuration/slatypes
+</code></pre></div>
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="s2">&quot;1922bbc0-1ede-4ed3-b755-55e940d83756&quot;</span>
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` `404 NotFound` `500 InternalServerError` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="s2">&quot;f278531d-f9af-411f-b381-dbceb29726a0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;0a35f03d-6b42-402c-982a-fb4bb8a569d0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;aefb74cc-75df-48ab-b6d3-1eedee8c9488&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Inclui bloqueio de agendadamento</h3>
+
+<p>Adiciona um período de indisponibilidade de agendamento para os casos de Entrega Agendada.
+Isso significa que não será permitido agendar entregas nos períodos de bloqueio cadastrados.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">POST /api/logistics/pvt/configuration/carriers/{carrierId}/adddayofweekblocked
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` `404 NotFound` `500 InternalServerError` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="kc">false</span>
+</code></pre></div>
+<hr>
+
+<h3>Consulta bloqueios de agendamentos</h3>
+
+<p>Consulta os períodos de de indisponibilidade já cadastrados</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /api/logistics/pvt/configuration/carriers/{carrierId}/getdayofweekblocked
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Remove bloqueio de agendamento</h3>
+
+<p>Remove um período de indisponibilidade de agendamento para os casos de Entrega Agendada</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">POST /api/logistics/pvt/configuration/carriers/{carrierId}/removedayofweekblocked
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` `404 NotFound` `500 InternalServerError` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="kc">true</span>
+</code></pre></div>
+<hr>

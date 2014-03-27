@@ -1,0 +1,1463 @@
+<h1>orders</h1>
+
+<h2>Recursos</h2>
+
+<table><thead>
+<tr>
+<th>Recurso</th>
+<th align="right">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#listar-pedidos">GET /api/oms/pvt/orders</a></td>
+<td align="right">Listar pedidos</td>
+</tr>
+<tr>
+<td><a href="#consultar-pedido">GET /api/oms/pvt/orders/{orderId}</a></td>
+<td align="right">Consultar pedido</td>
+</tr>
+<tr>
+<td><a href="#iniciar-manuseio">POST /api/oms/pvt/orders/{orderId}/start-handling</a></td>
+<td align="right">Iniciar manuseio</td>
+</tr>
+<tr>
+<td><a href="#notificar-faturamento">POST /api/oms/pvt/orders/{orderId}/invoice</a></td>
+<td align="right">Notificar Faturamento</td>
+</tr>
+<tr>
+<td><a href="#cancelar-pedido">POST /api/oms/pvt/orders/{orderId}/cancel</a></td>
+<td align="right">Cancelar pedido</td>
+</tr>
+<tr>
+<td><a href="#registrar-mudan%C3%A7as">POST /api/oms/pvt/orders/{orderId}/changes</a></td>
+<td align="right">Registrar mudanças</td>
+</tr>
+</tbody></table>
+
+<h2>Listar pedidos</h2>
+
+<p>Permite consultar uma lista de pedidos de acordo com os filtros informados.</p>
+
+<h3>Parâmetros de Solicitação:</h3>
+
+<p>Todo os parâmetros são opcionais, exceto o &quot;an&quot; que pode ser substituido pelo host. Conforme o padrão de
+URLs, todos os parâmetros são separados usando o caractere &quot;e&quot; comercial (&amp;). Veja abaixo a lista de parâmetros e seus
+valores possíveis.</p>
+
+<p>Parâmetros:</p>
+
+<blockquote>
+<ul>
+<li><b><code>f_status:</code></b> string que define um status de pedido. Caso seja passado, só serão retornados pedidos nesse status. Ver
+na documentação anexa a lista dos possíveis status de pedido no seu respectivo workflow. Ex.:
+f_status=ready-for-handling</li>
+<li><b><code>clientEmail:</code></b> string com o valor do e-mail do cliente que efetuou a compra. Só serão retornados pedidos que possuem
+esse e-mail (customer e-mail). Ex.: clientEmail=fred.santos@bol.com.br</li>
+<li><b><code>clientDoc:</code></b> string com o valor do documento do cliente que efetuou a compra. Só serão retornados pedidos que
+possuem esse número de documento (no Brasil é o número do CPF). Ex.: clientDoc=11111111111</li>
+<li><b><code>clientCorporateDoc:</code></b> string com o valor do documento do cliente corporativo que efetuou a compra. Só serão
+retornados pedidos que possuem esse número de documento (no Brasil é o número do CNPJ). Ex.:
+clientCorporateDoc=11111111111001</li>
+<li><b><code>per_page:</code></b> string com o valor número da quantidade de itens que se deseja obter (o default é 15). Ex.: per_page=30</li>
+<li><b><code>page:</code></b> string com o valor número da página que se deseja obter. Ex.: page=3</li>
+<li><b><code>orderBy:</code></b> string com o valor do campo e tipo de ordernação. Ex.: orderBy=creationDate,desc</li>
+</ul>
+</blockquote>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/oms/pvt/orders</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;list&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403972508868-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-17T12:41:48&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Patr oliveira&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Oi Chip SP DDD 014&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">500.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Hipercard&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058072&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-21T12:42:04&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403790220350-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T19:03:40&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Denilson Pinheiro&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Tim Chip Infinity Pré Pago PE - DDD 087&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">300.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Visa&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058069&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-20T19:24:21&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403771532392-02&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T17:25:35&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Marcelo Couto&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Computador PC All in One Positivo, Intel® Core™ 2 D T6600 3GB HD 750GB Union Touch 2005 Webcam Bluetooth Wireless HDMI - Windows® 7 Home Premium Computador PC All in One Positivo, Intel Core 2 Duo T6600, 3GB, HD 750GB, Union Touch 2005, Webcam, Bluetooth, Wireless, HDMI - Windows 7 Home Premium&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Telefone com Fio Pleno - Cinza Ártico - Intelbras&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">291900.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto Bancário&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;payment-pending&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Pendente&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058067&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403771532392-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T17:25:32&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Marcelo Couto&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;ellen&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;PINGENTE COCKER - SÃO PET PINGENTE COCKER - AZUL - SÃO PET&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">15640.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto Bancário&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;payment-pending&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Pendente&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058065&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403753031192-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T14:50:31&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ellen Silva&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;ellen&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;PINGENTE COCKER - SÃO PET PINGENTE COCKER - AZUL - SÃO PET&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">16342.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto Bancário&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;payment-pending&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Pendente&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058063&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403752812260-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T14:46:52&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ellen Silva&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;ellen&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;PINGENTE COCKER - SÃO PET PINGENTE COCKER - AZUL - SÃO PET&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">16342.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto Bancário&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;payment-pending&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Pendente&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058061&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastMessageUnread&quot;</span><span class="p">:</span> <span class="s2">&quot;\n\n\nMeu pedido ainda não chegou! \t\t \t   \t\t  \n&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403752368404-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T14:39:28&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ellen Silva&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;ellen&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;PINGENTE COCKER - SÃO PET PINGENTE COCKER - AZUL - SÃO PET&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">16342.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto Bancário&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;payment-approved&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Aprovado&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058059&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-20T14:45:54&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403752231980-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T14:37:11&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ellen Silva&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;ellen&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;PINGENTE COCKER - SÃO PET PINGENTE COCKER - AZUL - SÃO PET&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">16342.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Visa&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;payment-approved&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Aprovado&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058057&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-20T20:37:47&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403733592532-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T12:59:51&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Marcus moreno&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;iPad Smart Cover (Leather) - Sahara - Apple&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">15000.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;PayPal&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058054&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-20T13:10:12&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403733161737-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T12:52:41&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Saul Goodman&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Samsung Ch@t 335 Rosa Desbloqueado Tim, Teclado QWERTY, MP3 Player, Câmera 2.0MP, Bluetooth, Wi-Fi, Acesso as Redes Sociais + Chip Tim&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">25100.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;PayPal&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058051&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-20T13:03:01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403732998283-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T12:49:58&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Saul Goodman&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Samsung Ch@t 335 Rosa Desbloqueado Tim, Teclado QWERTY, MP3 Player, Câmera 2.0MP, Bluetooth, Wi-Fi, Acesso as Redes Sociais + Chip Tim&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">25100.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;PayPal&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058048&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-20T13:00:20&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403732719320-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-16T12:45:19&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;MArcus Moreno&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;iPad Smart Cover (Leather) - Sahara - Apple&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">15000.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;PayPal&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058045&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-20T12:55:55&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403490516091-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-15T13:08:36&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Fulano Cicrano&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Samsung Ch@t 335 Rosa Desbloqueado Tim, Teclado QWERTY, MP3 Player, Câmera 2.0MP, Bluetooth, Wi-Fi, Acesso as Redes Sociais + Chip Tim&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">25100.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;Vale, PayPal&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058042&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-19T13:19:00&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403490137788-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-15T13:02:17&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Fulano Cicrano&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Samsung Ch@t 335 Rosa Desbloqueado Tim, Teclado QWERTY, MP3 Player, Câmera 2.0MP, Bluetooth, Wi-Fi, Acesso as Redes Sociais + Chip Tim&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">25100.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;PayPal&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058024&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-19T13:12:39&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;403490088660-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-15T13:01:28&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clientName&quot;</span><span class="p">:</span> <span class="s2">&quot;Fulano Cicrano&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Samsung Ch@t 335 Rosa Desbloqueado Tim, Teclado QWERTY, MP3 Player, Câmera 2.0MP, Bluetooth, Wi-Fi, Acesso as Redes Sociais + Chip Tim&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="mf">25100.0</span><span class="p">,</span>
+      <span class="nt">&quot;paymentNames&quot;</span><span class="p">:</span> <span class="s2">&quot;PayPal&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ready-for-handling&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1058021&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;ShippingEstimatedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-01-19T13:11:52&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;orderIsComplete&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;facets&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SalesChannelName&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Loja Principal&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">84377</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Loja Principal&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;re&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;re&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_salesChannel&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;CallCenterOperatorName&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin Admin&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin Admin&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alan Diego Dantas Prot&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Alan Diego Dantas Prot&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Andr&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Andr&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Aplica&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Aplica&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Augusto Barbosa&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Augusto Barbosa&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Daniel Blando Deluiggi&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Daniel Blando Deluiggi&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Denilson dos Santos Pinheiro&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Denilson dos Santos Pinheiro&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ellen Machado Silva&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Ellen Machado Silva&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ellen Silva&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Ellen Silva&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frederico Oliveira Santos&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Frederico Oliveira Santos&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Geriel  Castro&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Geriel  Castro&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Guilherme Rodrigues&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Guilherme Rodrigues&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Guilherme Schirmer de Souza&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Guilherme Schirmer de Souza&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Gustavo Almeida&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Gustavo Almeida&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Leandro Adriano Oriente&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Leandro Adriano Oriente&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ludmila Neves&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Ludmila Neves&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ludmila Neves Cavalcanti&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Ludmila Neves Cavalcanti&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Marcelo Couto&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Marcelo Couto&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rafael Henrique Paiva Vieira&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Rafael Henrique Paiva Vieira&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Renato Vieira Fernandes&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Renato Vieira Fernandes&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rodrigo Almeida&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Rodrigo Almeida&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ronan Cruz&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Ronan Cruz&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tiago Marques&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Tiago Marques&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;William Fernandes&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;William Fernandes&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ygor Oliveira Pereira dos Santos&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Ygor Oliveira Pereira dos Santos&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ludmila Neves&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;ludmila Neves&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;marcus moreno&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;marcus moreno&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_callCenterOperatorName&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SellerNames&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;WalmartV5&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">84359</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;WalmartV5&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;meu amigo pet&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;meu amigo pet&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_sellerNames&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;UtmSource&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;teste&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;teste&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_UtmSource&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;RateAndBenefits&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Compre Junto Exemplo&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Compre Junto Exemplo&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Compre e Ganhe - Maquiagem&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Compre e Ganhe - Maquiagem&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Boleto&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Boleto&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Nominal 764 Carro Audi&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Nominal 764 Carro Audi&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Nominal Marcus&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Nominal Marcus&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Nominal Sku 270851&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Nominal Sku 270851&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Nominal para boleto Site todo&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Nominal para boleto Site todo&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Percentual 764&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Desconto Percentual 764&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete 100% sku 764&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete 100% sku 764&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete Nominal Sku 764&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">59</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete Nominal Sku 764&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete Percentual Sku 20191&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete Percentual Sku 20191&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete Percentual sku 2000012845 NÃO APAGAR&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete Percentual sku 2000012845 NÃO APAGAR&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete Percentual sku 264476 NÃO APAGAR Marketplace&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete Percentual sku 264476 NÃO APAGAR Marketplace&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;FreteGrátisSKU&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;FreteGrátisSKU&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Leve X e Pague Y&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Leve X e Pague Y&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal sku 264476 NÃO APAGAR Marketplace&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Nominal sku 264476 NÃO APAGAR Marketplace&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pague e leve&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Pague e leve&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Promoçao Primeira Compra&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">775</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Promoçao Primeira Compra&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Promoção Primeira Compra Marcus&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Promoção Primeira Compra Marcus&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Promoção de Brinde!&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">63</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Promoção de Brinde!&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Telefone sem Fio Gigaset A390&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Telefone sem Fio Gigaset A390&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Lista de Casamento (GiftListType)&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Lista de Casamento (GiftListType)&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Testar hora no novo admin&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Testar hora no novo admin&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Testar hora no novo admin #2&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">9553</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Testar hora no novo admin #2&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Frete Nominal Todo Site&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Frete Nominal Todo Site&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Frete Percentual Todo Site&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">774</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Frete Percentual Todo Site&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Frete Percentual Todo Site 2&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Frete Percentual Todo Site 2&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Leve X Marcus&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Leve X Marcus&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Nominal 30433&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">73</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Nominal 30433&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Nominal sku30433 - Daniel&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Nominal sku30433 - Daniel&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Promoção Kit&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Promoção Kit&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Promoção Para kit&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste Promoção Para kit&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste disable&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste disable&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste sem UTM&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste sem UTM&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste sku30433 - Daniel&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Teste sku30433 - Daniel&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;TesteBrinde Marcus&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;TesteBrinde Marcus&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM_Medium&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM_Medium&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;frete percentual&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;frete percentual&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;novo desconto com 4&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;novo desconto com 4&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;teste comprejunto&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;teste comprejunto&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;teste datas&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">479</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;teste datas&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;teste sem colecao 3&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;teste sem colecao 3&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utm_source teste&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;utm_source teste&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_RnB&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PaymentNames&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;American Express&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;American Express&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bcash&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Bcash&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto 30 dias&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto 30 dias&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto Bancário&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">83890</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto Bancário&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Diners&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Diners&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Débito Itau&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Débito Itau&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Efetivo&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Efetivo&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Elo&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Elo&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hipercard&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Hipercard&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mastercard&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Mastercard&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mercado Pago&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Mercado Pago&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PagSeguro&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;PagSeguro&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PayPal&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">102</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;PayPal&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Promissory&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Promissory&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Vale&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">187</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Vale&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Visa&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Visa&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Visa Electron&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Visa Electron&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_paymentNames&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;StatusDescription&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Aprovar Pagamento&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Aprovar Pagamento&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cancelado&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">59661</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Cancelado&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cancelamento Solicitado&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Cancelamento Solicitado&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cancelar&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1328</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Cancelar&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Faturado&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Faturado&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Aprovado&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Aprovado&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Pendente&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">23052</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagamento Pendente&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Preparando Entrega&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Preparando Entrega&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">291</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;Pronto para o manuseio&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_statusDescription&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ShippingEstimatedDate&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;single&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Atrasadas&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">5601</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;-1.days&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hoje&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;0.days&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Amanhã&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;1.days&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Próximos 7 dias&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;7.days&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_shippingEstimate&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;creationDate&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ontem&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;creationDate:[2014-01-16T12:00:00Z TO 2014-01-17T12:00:00Z]&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hoje&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;creationDate:[2014-01-17T12:00:00Z TO 2014-01-18T12:00:00Z]&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Últimos 7 dias&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">204</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;creationDate:[2014-01-11T12:00:00Z TO 2014-01-18T12:00:00Z]&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Últimos 15 dias&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">339</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;creationDate:[2014-01-03T12:00:00Z TO 2014-01-18T12:00:00Z]&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Últimos 30 dias&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">571</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;creationDate:[2013-12-19T12:00:00Z TO 2014-01-18T12:00:00Z]&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_creationDate&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;authorizedDate&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ontem&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;authorizedDate:[2014-01-16T12:00:00Z TO 2014-01-17T12:00:00Z]&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hoje&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;authorizedDate:[2014-01-17T12:00:00Z TO 2014-01-18T12:00:00Z]&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Últimos 7 dias&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;authorizedDate:[2014-01-11T12:00:00Z TO 2014-01-18T12:00:00Z]&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Últimos 15 dias&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;authorizedDate:[2014-01-03T12:00:00Z TO 2014-01-18T12:00:00Z]&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Últimos 30 dias&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span>
+          <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;authorizedDate:[2013-12-19T12:00:00Z TO 2014-01-18T12:00:00Z]&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;rangeUrlTemplate&quot;</span><span class="p">:</span> <span class="s2">&quot;f_authorizedDate&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;paging&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">84380</span><span class="p">,</span>
+    <span class="nt">&quot;pages&quot;</span><span class="p">:</span> <span class="mi">5626</span><span class="p">,</span>
+    <span class="nt">&quot;currentPage&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;perPage&quot;</span><span class="p">:</span> <span class="mi">15</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;stats&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;stats&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;totalItems&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Count&quot;</span><span class="p">:</span> <span class="mi">84380</span><span class="p">,</span>
+        <span class="nt">&quot;Max&quot;</span><span class="p">:</span> <span class="mf">11.0</span><span class="p">,</span>
+        <span class="nt">&quot;Mean&quot;</span><span class="p">:</span> <span class="mf">1.002571699454847</span><span class="p">,</span>
+        <span class="nt">&quot;Min&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="nt">&quot;StdDev&quot;</span><span class="p">:</span> <span class="mf">0.08820251596196596</span><span class="p">,</span>
+        <span class="nt">&quot;Sum&quot;</span><span class="p">:</span> <span class="mf">84597.0</span><span class="p">,</span>
+        <span class="nt">&quot;SumOfSquares&quot;</span><span class="p">:</span> <span class="mf">85471.0</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;totalValue&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Count&quot;</span><span class="p">:</span> <span class="mi">84380</span><span class="p">,</span>
+        <span class="nt">&quot;Max&quot;</span><span class="p">:</span> <span class="mf">2659036.0</span><span class="p">,</span>
+        <span class="nt">&quot;Mean&quot;</span><span class="p">:</span> <span class="mf">139280.1093268547</span><span class="p">,</span>
+        <span class="nt">&quot;Min&quot;</span><span class="p">:</span> <span class="mf">-119246.0</span><span class="p">,</span>
+        <span class="nt">&quot;StdDev&quot;</span><span class="p">:</span> <span class="mf">97490.3195093532</span><span class="p">,</span>
+        <span class="nt">&quot;Sum&quot;</span><span class="p">:</span> <span class="mf">11752455625.0</span><span class="p">,</span>
+        <span class="nt">&quot;SumOfSquares&quot;</span><span class="p">:</span> <span class="mf">2438851899092869.0</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code></h4>
+
+<hr>
+
+<h2>Consultar pedido</h2>
+
+<p>Permite consultar os dados detalhados de um pedido.</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/oms/pvt/orders/{orderId}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;384441896360-01&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;marketplaceOrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sellerOrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;wlm-384441896360-01&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">4689</span><span class="p">,</span>
+  <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-12-18T19:31:36&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastChange&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-12-18T22:07:50&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;totals&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Items&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Total dos Itens&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">3189</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Discounts&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Total dos Descontos&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Shipping&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Total do Frete&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1500</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Tax&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Total da Taxa&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2000013820&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;productId&quot;</span><span class="p">:</span> <span class="s2">&quot;500000678&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;walmartv5&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;NUTRÓPICA ARARAS COM FRUTAS - NUTRÓPICA NUTRÓPICA ARARAS COM FRUTAS - 600 GR - NUTRÓPICA&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">2390</span><span class="p">,</span>
+      <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">2390</span><span class="p">,</span>
+      <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;imageUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;/arquivos/ids/1218679-55-55/20120705_15584.jpg&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;components&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;bundleItems&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;offerings&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;sellerSku&quot;</span><span class="p">:</span> <span class="s2">&quot;7647&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+      <span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;brandName&quot;</span><span class="p">:</span> <span class="s2">&quot;Nutropica&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;brandId&quot;</span><span class="p">:</span> <span class="s2">&quot;5000069&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;categoriesIds&quot;</span><span class="p">:</span> <span class="s2">&quot;/5000000/5000003/5000050/&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;productClusterId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;commercialConditionId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;measurementUnit&quot;</span><span class="p">:</span> <span class="s2">&quot;un&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unitMultiplier&quot;</span><span class="p">:</span> <span class="mf">1.0000</span><span class="p">,</span>
+      <span class="nt">&quot;sellingPrice&quot;</span><span class="p">:</span> <span class="mi">2390</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2000013808&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;productId&quot;</span><span class="p">:</span> <span class="s2">&quot;500000667&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;seller&quot;</span><span class="p">:</span> <span class="s2">&quot;ellen&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;FARINHADA PASSÁROS FRUGIVOROS E INSETIVOROS - ALCON CLUB FARINHADA PASSÁROS FRUGIVOROS E INSETIVOROS - 200GR - ALCON CLUB&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">799</span><span class="p">,</span>
+      <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">799</span><span class="p">,</span>
+      <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;imageUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;/arquivos/ids/1218667-55-55/alconfarinhad.jpg&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;components&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;bundleItems&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;offerings&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;sellerSku&quot;</span><span class="p">:</span> <span class="s2">&quot;5007&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+      <span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;brandName&quot;</span><span class="p">:</span> <span class="s2">&quot;Alcon&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;brandId&quot;</span><span class="p">:</span> <span class="s2">&quot;5000001&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;categoriesIds&quot;</span><span class="p">:</span> <span class="s2">&quot;/5000000/5000003/5000050/&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;productClusterId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;commercialConditionId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;measurementUnit&quot;</span><span class="p">:</span> <span class="s2">&quot;un&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;unitMultiplier&quot;</span><span class="p">:</span> <span class="mf">1.0000</span><span class="p">,</span>
+      <span class="nt">&quot;sellingPrice&quot;</span><span class="p">:</span> <span class="mi">799</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;marketplaceItems&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="nt">&quot;clientProfileData&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;clientProfileData&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;fred.santos@bol.com.br-52.ct.vtex.com.br&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Frederico&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Santos&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="s2">&quot;94731349591&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;2171222928&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userProfileId&quot;</span><span class="p">:</span> <span class="s2">&quot;965AE4F7-8B8F-4D91-9DC9-9D8A82941EA8&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;callCenterOperatorData&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;CallCenterOperatorAttachment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;frederico.santos@vtex.com.br&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;Frederico Oliveira Santos&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;ratesAndBenefitsData&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ratesAndBenefitsData&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rateAndBenefitsIdentifiers&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;shippingData&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;shippingData&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;addressType&quot;</span><span class="p">:</span> <span class="s2">&quot;residential&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;receiverName&quot;</span><span class="p">:</span> <span class="s2">&quot;Porteiro&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;addressId&quot;</span><span class="p">:</span> <span class="s2">&quot;-1363816362015&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;postalCode&quot;</span><span class="p">:</span> <span class="s2">&quot;22271-020&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Rio De Janeiro&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;RJ&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;street&quot;</span><span class="p">:</span> <span class="s2">&quot;Rua De Conde Iraja&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;number&quot;</span><span class="p">:</span> <span class="s2">&quot;97&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;neighborhood&quot;</span><span class="p">:</span> <span class="s2">&quot;Botafogo&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;complement&quot;</span><span class="p">:</span> <span class="s2">&quot;Cobal&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;logisticsInfo&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;selectedSla&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1150</span><span class="p">,</span>
+        <span class="nt">&quot;shippingEstimate&quot;</span><span class="p">:</span> <span class="s2">&quot;4d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;shippingEstimateDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-12-22T22:07:50.8046601Z&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;slas&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;shippingEstimate&quot;</span><span class="p">:</span> <span class="s2">&quot;4d&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1150</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;shipsTo&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;BRA&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;deliveryIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;courierId&quot;</span><span class="p">:</span> <span class="s2">&quot;60&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;dockId&quot;</span><span class="p">:</span> <span class="s2">&quot;17E5C1F3-57CF-4E12-9509-4A04C09E26B8&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;warehouseId&quot;</span><span class="p">:</span> <span class="s2">&quot;1_1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;courierName&quot;</span><span class="p">:</span> <span class="s2">&quot;eSedex&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;itemIndex&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;selectedSla&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span>
+        <span class="nt">&quot;shippingEstimate&quot;</span><span class="p">:</span> <span class="s2">&quot;4d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;shippingEstimateDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-12-22T22:07:50.8046601Z&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;slas&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;shippingEstimate&quot;</span><span class="p">:</span> <span class="s2">&quot;4d&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">350</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;shipsTo&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;BRA&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;deliveryIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;courierId&quot;</span><span class="p">:</span> <span class="s2">&quot;60&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;dockId&quot;</span><span class="p">:</span> <span class="s2">&quot;17E5C1F3-57CF-4E12-9509-4A04C09E26B8&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;warehouseId&quot;</span><span class="p">:</span> <span class="s2">&quot;1_1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;courierName&quot;</span><span class="p">:</span> <span class="s2">&quot;eSedex&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;paymentData&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;transactions&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;isActive&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;transactionId&quot;</span><span class="p">:</span> <span class="s2">&quot;9FCA5F1025B348B2BC3CDD56CFBF7CE0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;payments&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;16498D4F958444C6A58F497B3408A487&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;paymentSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;paymentSystemName&quot;</span><span class="p">:</span> <span class="s2">&quot;Boleto Bancário&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">4689</span><span class="p">,</span>
+            <span class="nt">&quot;installments&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;referenceValue&quot;</span><span class="p">:</span> <span class="mi">4689</span><span class="p">,</span>
+            <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://walmartv5.vtexpayments.com.br/BankIssuedInvoice/Transaction/9FCA5F1025B348B2BC3CDD56CFBF7CE0/Payment/16498D4F958444C6A58F497B3408A487/Installment/{Installment}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;group&quot;</span><span class="p">:</span> <span class="s2">&quot;bankInvoice&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;connectorResponses&quot;</span><span class="p">:</span> <span class="p">{}</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;sellers&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;walmartv5&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;logo&quot;</span><span class="p">:</span> <span class="s2">&quot;http://portal.vtexcommerce.com.br/arquivos/logo.jpg&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;workflowData&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;instanceId&quot;</span><span class="p">:</span> <span class="s2">&quot;9E64415216F84B92A3C2E7EF53DF44D6&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;surrogateKey&quot;</span><span class="p">:</span> <span class="s2">&quot;384441896360-01&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;1055669&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;affiliateId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;invoiced&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;statusDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Faturado&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;packageAttachment&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;packages&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">2390</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;itemIndex&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">799</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;courier&quot;</span><span class="p">:</span> <span class="s2">&quot;Correios&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;invoiceNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;Nfe-01&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;invoiceValue&quot;</span><span class="p">:</span> <span class="mi">4689</span><span class="p">,</span>
+        <span class="nt">&quot;issuanceDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-12-18T00:00:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;trackingNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;trackingUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://trakink.com/123456&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Output&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;followUpEmail&quot;</span><span class="p">:</span> <span class="s2">&quot;636da863c19342ee9ad5fa53350bebe0@ct.vtex.com.br&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastMessage&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code></h4>
+
+<hr>
+
+<h2>Iniciar manuseio</h2>
+
+<p>Permite notificar que o pedido entrará em processo de manuseio.
+Muda o estado do pedido para start-handling. Ação que faz o acknowledge da reserva.</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/api/oms/pvt/orders/{orderId}/start-handling</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Status codes: <code>204 NoContent</code> <code>404 NotFound</code></h4>
+
+<hr>
+
+<h2>Notificar Faturamento</h2>
+
+<p>Permite o envio de uma notificação de faturamentode itens do pedido.
+Através desse serviço, é possível também informar uma NF de entrada, para isto deverá ser informado o campo <em>type</em> com o
+valor <em>Input</em>, neste caso o OMS solicitará o <em>estorno</em>  ao PCI Connector do valor informado no invoice.
+O valor default do campo <em>type</em> é <em>Output</em>.</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/api/oms/pvt/orders/{orderId}/invoice</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de requisição:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;trackingNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;SR000987654321&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;courier&quot;</span><span class="p">:</span> <span class="s2">&quot;Correios&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Output&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;invoiceNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;NFe-00001&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;trackingUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://traking.correios.com.br/sedex/SR000987654321&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;345117&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">9003</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;issuanceDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-11-21T00:00:00&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;invoiceValue&quot;</span><span class="p">:</span> <span class="mi">9508</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-02-06T22:46:48.9896369Z&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;359722648932-01&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;receipt&quot;</span><span class="p">:</span> <span class="s2">&quot;5d749bae-3c97-416f-8c58-a86323567438&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code></h4>
+
+<hr>
+
+<h2>Cancelar pedido</h2>
+
+<p>Permite solicitar o cancelamento de um pedido, desde que seu status não seja faturado (status = invoiced).</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/api/oms/pvt/orders/{orderId}/cancel</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;359722648932-01&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;receipt&quot;</span><span class="p">:</span> <span class="s2">&quot;bebe199b-e418-4157-995a-e38459da1467&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-02-06T22:46:48.9826365Z&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code></h4>
+
+<hr>
+
+<h2>Registrar mudanças</h2>
+
+<p>Método responsável por registrar mudanças no pedido.
+Mudanças podem ser discontos ou troca de items.</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/api/oms/pvt/orders/{orderId}/changes</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de requisição:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;Reason0b439201-9aff-4452-8ab7-d87e4cab6241&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;discountValue&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+  <span class="nt">&quot;itemsRemoved&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Id1e212912-7890-4f24-a457-9f084958a329&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">82</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Id886fec63-a9ed-4dbd-8c0e-726cb303fa24&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">52</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">70</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Idf2ca380c-c156-478d-a176-937acba75d23&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">139</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;itemsAdded&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Id822d194e-1564-4e05-bb00-1aac8926fae6&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">184</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Id147233f3-af6e-4d04-8826-585a5da01237&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">61</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">85</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Id5d127009-b464-4957-bb8c-22ca0240c60f&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">51</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">14</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-10-11T07:11:40.0136419&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;OrderIdba629ea2-ef6a-4cbc-9788-11dc48062b4a&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;receipt&quot;</span><span class="p">:</span> <span class="s2">&quot;Receipt7dacb1d6-84fc-478c-a704-4bfd662e6021&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code></h4>
+
+<hr>

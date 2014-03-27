@@ -1,0 +1,100 @@
+---
+layout: postContainer
+type: post
+---
+
+{% assign author = site.authors[page.author] %}
+
+<div id="post-wrapper">
+  <div data-jekyll-id="{{ page.id }}" data-url="{{ page.url }}" data-title="{{ page.title }}" class="post-apended post">
+    <div class="container">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <article>
+          <header class="post-header">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <p class="post-description">
+              {{ page.description }}
+            </p>
+          </header>
+          <section class="post-header-author">
+            
+            <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png" alt="" class="post-header-author-thumb">
+            <span>por: <a href="/">{{ author.displayname }}</a> </span>
+            <span class="post-header-date">{{ page.date | date:  "%d %B %Y" }}</span>
+          </section>
+          <section class="post-body">
+            {{ content }}
+          </section>
+          <div class="post-tags">
+            tags: 
+            {% for tag in page.tags %}
+              <a href="">{{ tag }}</a>
+            {% endfor %}
+          </div>
+          <section class="post-author">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="post-author-description">
+                  <div class="col-md-3">
+                    <img src="http://www.gravatar.com/avatar/6af7a326c14b57b9c486bc4e4dec63d1.png" alt="" class="post-author-thumb">
+                  </div>
+                  <div class="col-md-9">
+                    <h3>Escrito por:</h3>
+                    <p class="post-author-name"><a href="">{{ author.displayname }}</a></p>
+                    <p>{{ author.description }}</p>
+                    <p><a href="">twitter</a> <a href="">google+</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <ul class="post-share-options">
+                  <li><a class="post-share-option facebook-share" href=""></a></li>
+                  <li><a class="post-share-option google-share" href=""></a></li>
+                  <li><a class="post-share-option twitter-share" href=""></a></li>
+                  <li><a class="post-share-option email-share" href=""></a></li>
+                </ul>
+              </div>
+              
+            </div>
+          </section>
+          <section class="post-comments" id="post-comments">
+            
+          </section>
+        </article>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    
+    <section class="post-pagination">
+      <div class="text-right post-prev post-nav">
+        {% if page.previous.url %} 
+          <a href="{{page.previous.url}}" data-post-id="{{ page.previous.id }}" data-nav="prev">
+            <div class="post-nav-container">
+              <p>Anterior</p>
+              <h3>{{page.previous.title}}</h3>
+              <p>{{page.previous.description}}</p>
+            </div>
+          </a>
+        {% endif %} 
+
+      </div>
+      <div class="post-next post-nav">
+        {% if page.next.url %} 
+          <a href="{{page.next.url}}" data-post-id="{{ page.next.id }}" data-nav="next">
+            <div class="post-nav-container">
+              <p>Próximo</p>
+              <h3>{{page.next.title}}</h3>
+              <p>{{page.next.description}}</p>
+            </div>
+          </a>
+        {% endif %}
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <a href="/blog" class="footer-logo">Blog Vtex</a>
+      </div>
+    </footer>
+  </div>  
+</div>

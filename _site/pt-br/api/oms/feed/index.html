@@ -1,0 +1,109 @@
+<h1>feed</h1>
+
+<h2>Recursos</h2>
+
+<table><thead>
+<tr>
+<th>Recurso</th>
+<th align="right">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#obter-feed-de-status-de-pedido">GET /api/oms/pvt/feed/orders/status</a></td>
+<td align="right">Obter feed de status de pedido</td>
+</tr>
+<tr>
+<td><a href="#confirmar-recebimento-de-items-do-feed-de-status-do-pedido.">POST /api/oms/pvt/feed/orders/status/confirm</a></td>
+<td align="right">Confirmar recebimento de items do feed de status do pedido.</td>
+</tr>
+</tbody></table>
+
+<h2>Obter feed de status de pedido</h2>
+
+<p>Obtem uma lista (estilo feed) com a atualização de status de pedido.</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/oms/pvt/feed/orders/status</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Parâmetros de retorno:</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>string</td>
+<td>Identificador do pedido.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status do pedido.</td>
+</tr>
+<tr>
+<td>commitToken</td>
+<td>string</td>
+<td>Token para confirmação da mensagem do feed</td>
+</tr>
+</tbody></table>
+
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;405471212255-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;approve-payment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;commitToken&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace##{\&quot;Receipt\&quot;:\&quot;+eXJYhj5rDrYJVKzrKywtGizy7tIyLyKu7epkGL2PQG2PVTLXe4KqFMz7w2QErLd6h8QPQlucswf3UwuSlPJx91tF3S38RiOWDsPvUG5lY3KKEkIc3lueyjIJXJccIO5R4NljmtDKZDCq1+VVPQpBmuepOTAH0wnr2oHBtT1iLhR1EAWhTyoQWwQmkYQLTvfauv9lLvVnp65br3WQ3JSJAFJ6EM5bBXA/9jTZmWyDnUhMgQdU0VcXZN7MCePG6x+ay2hQarGFoLyUPOqsTHqne5Ivaim3LHzW3B7Pai+dqE=\&quot;,\&quot;PublisheId\&quot;:\&quot;C0111A50CEB244E59C95422870127A4F\&quot;,\&quot;PublisheId_Item\&quot;:\&quot;C0111A50CEB244E59C95422870127A4F\&quot;,\&quot;EventId\&quot;:\&quot;3b96ccf3-4211-4c39-8a0f-a22550fa2111\&quot;,\&quot;LastSendOverwrite\&quot;:null}&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;405471212255-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;payment-approved&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;commitToken&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace##{\&quot;Receipt\&quot;:\&quot;+eXJYhj5rDrYJVKzrKywtGizy7tIyLyKN9X02H8v6Je2PVTLXe4KqLOxPnb3MaAnE5rKYaGhO48f3UwuSlPJx91tF3S38RiOWDsPvUG5lY3KKEkIc3lueyjIJXJccIO5R4NljmtDKZDCq1+VVPQpBmuepOTAH0wnr2oHBtT1iLhR1EAWhTyoQWwQmkYQLTvfauv9lLvVnp5j83q30UOyOP7ecvmWd/F/DVbSLRHwQFe6HFsXrWzwoya9wGOwABeGay2hQarGFoKgW6S8dC2OK+5Ivaim3LHzW3B7Pai+dqE=\&quot;,\&quot;PublisheId\&quot;:\&quot;C0111A50CEB244E59C95422870127A4F\&quot;,\&quot;PublisheId_Item\&quot;:\&quot;C0111A50CEB244E59C95422870127A4F\&quot;,\&quot;EventId\&quot;:\&quot;436f136a-628e-4c51-a491-e1fdb95a7773\&quot;,\&quot;LastSendOverwrite\&quot;:null}&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;orderId&quot;</span><span class="p">:</span> <span class="s2">&quot;405471212255-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;authorize-fulfillment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;commitToken&quot;</span><span class="p">:</span> <span class="s2">&quot;Fulfillment##{\&quot;Receipt\&quot;:\&quot;+eXJYhj5rDr5UqFwq7jp2Gizy7tIyLyKZL8nsUys9SjFMpcjmMzKYb0iEG6qS595jqgV22jyQyRF/0nm+GKP+T+Ccau4q1NZSQK4V33yi8mT5/+4UpjB73tW2DXNUqlJOtMXARrHsdHeaU2CJCpPLL+yAM+k8jkFWCdtppQr1qMKjjAm4blB2oICoUvvRwS0xv7I35kS1/uV6ZNfG7XxzIL73xpGnvb44wYLIlHHcyzQdYGw8gayboITTTdWaz1p2YSyPEnWn78FbhWojnPD0d9nm3NEteb0CaZfd2weymg=\&quot;,\&quot;PublisheId\&quot;:\&quot;C0111A50CEB244E59C95422870127A4F\&quot;,\&quot;PublisheId_Item\&quot;:\&quot;C0111A50CEB244E59C95422870127A4F\&quot;,\&quot;EventId\&quot;:\&quot;eab38ee6-67ff-4053-ae11-697dc51e9e47\&quot;,\&quot;LastSendOverwrite\&quot;:null}&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code></h4>
+
+<hr>
+
+<h2>Confirmar recebimento de items do feed de status do pedido.</h2>
+
+<p>Confirma o recebimento de items do feed de status do pedido.</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/api/oms/pvt/feed/orders/status/confirm</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Parâmetros de requisição:</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>commitToken</td>
+<td>string</td>
+<td>Token de confirmação da mensagem</td>
+</tr>
+</tbody></table>
+
+<h4>Exemplo de requisição:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;commitToken&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace##{\&quot;Receipt\&quot;:\&quot;+eXJYhj5rDqHa28+XUcfebDO4pve3TvMpPlW0ivc5STyE/40J6wxooXgBF8LZ9CdhZkFJnMYBVDwPwQtNEoZQrVtErDB2Yq2zs16QqsJuYxSrQtBfl9rMfmkO5orB9oDHSpvwL6DjDzcuJeQBBNxono/m4F6BloJEsk9BmuTmPaRI+7xsrN5Oeg8NPUoNSnsT983JPr1B+Y+TbbFjC1R8ZkvFHGVfti1QbhOwmYWTHPG08YMqla+Qwh7kUONLBXPqporF/CcqJo5YVTSu2uBcCuXkUo+OH9uUTn6hHkUROo=\&quot;,\&quot;PublisheId\&quot;:\&quot;C0111A50CEB244E59C95422870127A4F\&quot;,\&quot;PublisheId_Item\&quot;:\&quot;C0111A50CEB244E59C95422870127A4F\&quot;,\&quot;EventId\&quot;:\&quot;0dc05b6b-48a5-4f03-975a-a69fb6550aaa\&quot;,\&quot;LastSendOverwrite\&quot;:null}&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h4>Status codes: <code>204 NoContent</code></h4>
+
+<hr>

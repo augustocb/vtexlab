@@ -1,0 +1,88 @@
+<h1>customfiles</h1>
+
+<h2>Recursos</h2>
+
+<table><thead>
+<tr>
+<th>Recurso</th>
+<th align="right">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#obter-nomes-dos-arquivos">GET /api/portal/pvt/sites/{siteId}/files</a></td>
+<td align="right">Obter nomes dos arquivos</td>
+</tr>
+<tr>
+<td><a href="#obter-um-arquivo">GET /api/portal/pvt/sites/{siteId}/files/{path}</a></td>
+<td align="right">Obter um arquivo</td>
+</tr>
+<tr>
+<td><a href="#salvar-um-arquivo">PUT /api/portal/pvt/sites/{siteId}/files/{path}</a></td>
+<td align="right">Salvar um arquivo</td>
+</tr>
+<tr>
+<td><a href="#excluir-um-arquivo">DELETE /api/portal/pvt/sites/{siteId}/files/{path}</a></td>
+<td align="right">Excluir um arquivo</td>
+</tr>
+</tbody></table>
+
+<h2>Obter nomes dos arquivos</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/portal/pvt/sites/{siteId}/files</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="s2">&quot;meu-estilo.css&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;alguma-coisa.js&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;outra-coisa.js&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code></h4>
+
+<hr>
+
+<h2>Obter um arquivo</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/portal/pvt/sites/{siteId}/files/{path}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;alguma-coisa.js&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;window.alert(&#39;Hello World!&#39;);&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code></h4>
+
+<hr>
+
+<h2>Salvar um arquivo</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">PUT</span> <span class="nn">/api/portal/pvt/sites/{siteId}/files/{path}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de requisição:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;alguma-coisa.js&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;console.log(&#39;Hello World!&#39;);&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;alguma-coisa.js&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;console.log(&#39;Hello World!&#39;);&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>201 Created</code> <code>400 BadRequest</code> <code>409 Conflict</code></h4>
+
+<hr>
+
+<h2>Excluir um arquivo</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">DELETE</span> <span class="nn">/api/portal/pvt/sites/{siteId}/files/{path}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Status codes: <code>204 NoContent</code></h4>
+
+<hr>

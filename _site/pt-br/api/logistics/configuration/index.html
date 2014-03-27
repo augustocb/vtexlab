@@ -1,0 +1,374 @@
+<h1>configuration</h1>
+
+<table><thead>
+<tr>
+<th>Recurso</th>
+<th align="left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#salva-uma-doca">POST /api/logistics/pvt/configuration/docks</a></td>
+<td align="left">Salva uma doca</td>
+</tr>
+<tr>
+<td><a href="#obt%C3%A9m-todas-as-docas">GET /api/logistics/pvt/configuration/docks</a></td>
+<td align="left">Obtém todas as docas</td>
+</tr>
+<tr>
+<td><a href="#obt%C3%A9m-doca-pelo-id">GET /api/logistics/pvt/configuration/docks/{dockId}</a></td>
+<td align="left">Obtém doca pelo Id</td>
+</tr>
+<tr>
+<td><a href="#exclui-doca-pelo-id">POST /api/logistics/pvt/configuration/docks/{dockId}/remove</a></td>
+<td align="left">Exclui doca pelo Id</td>
+</tr>
+</tbody></table>
+
+<h3>Salva uma doca</h3>
+
+<p>Cadastra/atualiza uma doca</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">POST /api/logistics/pvt/configuration/docks
+</code></pre></div>
+<h4>Parâmetros</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id (*requerido*)</td>
+<td>string</td>
+<td>Identificador único. Não pode ser alterado</td>
+</tr>
+<tr>
+<td>name (*requerido*)</td>
+<td>string</td>
+<td>Nome/descrição da doca.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>int</td>
+<td>Valor que define a ordem de priorização da doca no cálculo de SLA. Quanto menor o valor, mais prioritária é a doca</td>
+</tr>
+<tr>
+<td>dockTimeFake</td>
+<td>TimeSpan</td>
+<td>Tempo para manuseio na doca</td>
+</tr>
+<tr>
+<td>timeFakeOverhead</td>
+<td>TimeSpan</td>
+<td>Tempo utilizado no desempate no cálculo de SLA. Quanto maior o valor, menos prioritária é a doca</td>
+</tr>
+<tr>
+<td>salesChannels</td>
+<td>array</td>
+<td>Canais de venda associados à doca</td>
+</tr>
+<tr>
+<td>salesChannel</td>
+<td>string</td>
+<td>Obsoleto. Utilizar o campo SalesChannels</td>
+</tr>
+<tr>
+<td>freightTableIds</td>
+<td>array</td>
+<td>Ids das transportadoras associadas à doca</td>
+</tr>
+</tbody></table>
+
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;133c26c&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Doca SP (Barueri)&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;salesChannels&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;freightTableIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;185&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;16df4b9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;190&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;229&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;214&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;215&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;212&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;230&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;213&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1792d0e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;218&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;401&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;406&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;300&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;400&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;191c282&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10c74a4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;325&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;326&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;327&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;323&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;228&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;228_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;324&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Response</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="kc">false</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>400 BadRequest</code> <code>500 InternalServerError</code></h4>
+
+<hr>
+
+<h2>Obtém todas as docas</h2>
+
+<p>Obtém todas as docas cadastradas</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/logistics/pvt/configuration/docks</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Parâmetros de retorno:</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id (*requerido*)</td>
+<td>string</td>
+<td>Identificador único. Não pode ser alterado</td>
+</tr>
+<tr>
+<td>name (*requerido*)</td>
+<td>string</td>
+<td>Nome/descrição da doca.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>int</td>
+<td>Valor que define a ordem de priorização da doca no cálculo de SLA. Quanto menor o valor, mais prioritária é a doca</td>
+</tr>
+<tr>
+<td>dockTimeFake</td>
+<td>TimeSpan</td>
+<td>Tempo para manuseio na doca</td>
+</tr>
+<tr>
+<td>timeFakeOverhead</td>
+<td>TimeSpan</td>
+<td>Tempo utilizado no desempate no cálculo de SLA. Quanto maior o valor, menos prioritária é a doca</td>
+</tr>
+<tr>
+<td>salesChannels</td>
+<td>array</td>
+<td>Canais de venda associados à doca</td>
+</tr>
+<tr>
+<td>salesChannel</td>
+<td>string</td>
+<td>Obsoleto. Utilizar o campo SalesChannels</td>
+</tr>
+<tr>
+<td>freightTableIds</td>
+<td>array</td>
+<td>Ids das transportadoras associadas à doca</td>
+</tr>
+</tbody></table>
+
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;133c26c&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Doca SP (Barueri)&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;salesChannels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;3&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;freightTableIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;185&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;16df4b9&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;190&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;229&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;214&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;215&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;212&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;230&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;213&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;1792d0e&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;218&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;401&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;406&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;300&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;400&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;191c282&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;10c74a4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;325&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;326&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;327&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;323&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;228&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;228_1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;324&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Doca SP (Curtume)&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;salesChannels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;3&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;freightTableIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;214&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;185&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;190&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;218&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;229&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;230&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;215&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;212&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;213&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;16df4b9&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;1792d0e&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;401&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;406&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;300&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;400&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;191c282&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;10c74a4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;325&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;326&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;327&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;323&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;228&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;324&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;228_1&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code> <code>500 InternalServerError</code></h4>
+
+<hr>
+
+<h2>Obtém doca pelo Id</h2>
+
+<p>Obtém uma doca com base no seu identificador único</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/logistics/pvt/configuration/docks/{dockId}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Parâmetros de retorno:</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id (*requerido*)</td>
+<td>string</td>
+<td>Identificador único. Não pode ser alterado</td>
+</tr>
+<tr>
+<td>name (*requerido*)</td>
+<td>string</td>
+<td>Nome/descrição da doca.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>int</td>
+<td>Valor que define a ordem de priorização da doca no cálculo de SLA. Quanto menor o valor, mais prioritária é a doca</td>
+</tr>
+<tr>
+<td>dockTimeFake</td>
+<td>TimeSpan</td>
+<td>Tempo para manuseio na doca</td>
+</tr>
+<tr>
+<td>timeFakeOverhead</td>
+<td>TimeSpan</td>
+<td>Tempo utilizado no desempate no cálculo de SLA. Quanto maior o valor, menos prioritária é a doca</td>
+</tr>
+<tr>
+<td>salesChannels</td>
+<td>array</td>
+<td>Canais de venda associados à doca</td>
+</tr>
+<tr>
+<td>salesChannel</td>
+<td>string</td>
+<td>Obsoleto. Utilizar o campo SalesChannels</td>
+</tr>
+<tr>
+<td>freightTableIds</td>
+<td>array</td>
+<td>Ids das transportadoras associadas à doca</td>
+</tr>
+</tbody></table>
+
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;133c26c&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Doca SP (Barueri)&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;salesChannels&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;freightTableIds&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;185&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;16df4b9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;190&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;229&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;214&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;215&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;212&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;230&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;213&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1792d0e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;218&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;401&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;406&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;300&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;400&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;191c282&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10c74a4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;325&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;326&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;327&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;323&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;228&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;228_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;324&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code> <code>500 InternalServerError</code></h4>
+
+<hr>
+
+<h2>Exclui doca pelo Id</h2>
+
+<p>Exclui uma doca com base no seu identificador único</p>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/api/logistics/pvt/configuration/docks/{dockId}/remove</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="kc">true</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code> <code>500 InternalServerError</code></h4>
+
+<hr>

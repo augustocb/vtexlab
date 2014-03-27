@@ -1,0 +1,51 @@
+---
+layout: default
+type: post-list
+lang: pt-br
+title: Blog
+---
+
+<div class="post-list">
+  <div id="posts">
+    {% for post in paginator.posts %}
+      {% assign author = site.authors[post.author] %}
+      <div class="post-container {{ post.type }}">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <article class="post">
+                <div class="col-md-1">
+                  <div class="post-date">
+                    <span>{{ post.date  | date:  "%d" }}</span>
+                    <span>{{ post.date  | date:  "%b" }}</span>
+                  </div>
+                </div>
+                <div class="col-md-11">
+                  <div class="post-item">
+                    <header class="post-header">
+                      <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                      <p class="post-description">
+                        {{ post.description }}
+                      </p>
+                      <section class="post-header-author">
+                        <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png" alt="" class="post-header-author-thumb">
+                        <span>por: <a href="/">{{ author.displayname }}</a> </span>
+                      </section>
+                    </header>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div id="more-posts">
+    
+  </div>
+</div>
+
+<script>
+  var TOTAL_PAGES = {{ paginator.total_pages }}
+</script>

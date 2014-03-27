@@ -1,0 +1,376 @@
+<h1>paymentgateway</h1>
+
+<table><thead>
+<tr>
+<th>Descrição</th>
+<th align="left">Recurso</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Inserir novo Bin</td>
+<td align="left"><a href="#inserir-novo-bin">PUT /ccbin/newbin</a></td>
+</tr>
+<tr>
+<td>Recuperar Bin pelo seu número</td>
+<td align="left"><a href="#recuperar-bin-pelo-seu-n%C3%BAmero">GET /ccbin/bins/{number}</a></td>
+</tr>
+<tr>
+<td>Recuperar Bin pelo país</td>
+<td align="left"><a href="#recuperar-bin-pelo-pa%C3%ADs">GET /ccbin/country/{country}/bins</a></td>
+</tr>
+<tr>
+<td>Recuperar Bin pelo emissor</td>
+<td align="left"><a href="#recuperar-bin-pelo-emissor">GET /ccbin/issuer/{issuer}/bins</a></td>
+</tr>
+<tr>
+<td>Remover Bin</td>
+<td align="left"><a href="#remover-bin">DELETE /ccbin/bins/delete/{number}</a></td>
+</tr>
+<tr>
+<td>Recuperar lista de emissores disponíveis</td>
+<td align="left"><a href="#recuperar-lista-de-emissores-dispon%C3%ADveis">GET /ccbin/issuers</a></td>
+</tr>
+<tr>
+<td>Inserir novo emissor</td>
+<td align="left"><a href="#inserir-novo-emissor">PUT /ccbin/newissuer/{issuer}</a></td>
+</tr>
+<tr>
+<td>Remover emissor</td>
+<td align="left"><a href="#remover-emissor">DELETE /ccbin/issuers/delete/{issuer}</a></td>
+</tr>
+<tr>
+<td>Recuperar países disponíveis</td>
+<td align="left"><a href="#recuperar-pa%C3%ADses-dispon%C3%ADveis">GET /ccbin/countries</a></td>
+</tr>
+<tr>
+<td>Inserir novo país</td>
+<td align="left"><a href="#inserir-novo-pa%C3%ADs">PUT /ccbin/newcountry/{country}</a></td>
+</tr>
+<tr>
+<td>Remover país</td>
+<td align="left"><a href="#remover-pa%C3%ADs">DELETE /ccbin/countries/delete/{country}</a></td>
+</tr>
+<tr>
+<td>Inserir nova bandeira</td>
+<td align="left"><a href="#inserir-nova-bandeira">PUT /ccbin/newbrand/{brand}</a></td>
+</tr>
+<tr>
+<td>Remover um bandeira</td>
+<td align="left"><a href="#remover-um-bandeira">DELETE /ccbin/brands/delete/{brand}</a></td>
+</tr>
+<tr>
+<td>Recuperar bandeiras disponíveis</td>
+<td align="left"><a href="#recuperar-bandeiras-dispon%C3%ADveis">GET /ccbin/brands</a></td>
+</tr>
+<tr>
+<td>Recuperar tipos de cartão</td>
+<td align="left"><a href="#recuperar-tipos-de-cart%C3%A3o">GET /ccbin/cardtypes</a></td>
+</tr>
+<tr>
+<td>Inserir novo tipo de cartão</td>
+<td align="left"><a href="#inserir-novo-tipo-de-cart%C3%A3o">PUT /ccbin/newcardtype/{cardType}</a></td>
+</tr>
+<tr>
+<td>Remover um tipo de cartão</td>
+<td align="left"><a href="#remover-um-tipo-de-cart%C3%A3o">DELETE /ccbin/cardtypes/delete/{cardtype}</a></td>
+</tr>
+<tr>
+<td>Recuperar subtipos de cartão</td>
+<td align="left"><a href="#recuperar-subtipos-de-cart%C3%A3o">GET /ccbin/cardsubtypes</a></td>
+</tr>
+<tr>
+<td>Inserir novo subtipo de cartão</td>
+<td align="left"><a href="#inserir-novo-subtipo-de-cart%C3%A3o">PUT /ccbin/newcardsubtype/{cardSubType}</a></td>
+</tr>
+<tr>
+<td>Remover um subtipo de cartão</td>
+<td align="left"><a href="#remover-um-subtipo-de-cart%C3%A3o">DELETE /ccbin/cardsubtypes/delete/{cardsubtype}</a></td>
+</tr>
+<tr>
+<td>Recuperar produtos de um emissor</td>
+<td align="left"><a href="#recuperar-produtos-de-um-emissor">GET /ccbin/products/{issuer}</a></td>
+</tr>
+<tr>
+<td>Inserir produtos para um emissor</td>
+<td align="left"><a href="#inserir-produtos-para-um-emissor">PUT /ccbin/newproduct</a></td>
+</tr>
+<tr>
+<td>Remover um produto de um emissor</td>
+<td align="left"><a href="#remover-um-produto-de-um-emissor">DELETE /ccbin/products/delete/{issuer}/{product}</a></td>
+</tr>
+</tbody></table>
+
+<h3>Inserir novo Bin</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /ccbin/newbin
+</code></pre></div>
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;binNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;ITAU UNIBANCO S A&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;VISA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuerCountry&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;product&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSONALITE&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cardType&quot;</span><span class="p">:</span> <span class="s2">&quot;CREDIT&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cardSubType&quot;</span><span class="p">:</span> <span class="s2">&quot;PLATINUM&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Recuperar Bin pelo seu número</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/bins/{number}
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;binNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;ITAU UNIBANCO S A&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;VISA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuerCountry&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;product&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSONALITE&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cardType&quot;</span><span class="p">:</span> <span class="s2">&quot;CREDIT&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cardSubType&quot;</span><span class="p">:</span> <span class="s2">&quot;PLATINUM&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Recuperar Bin pelo país</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/country/{country}/bins
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;binNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;ITAU UNIBANCO S A&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;VISA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuerCountry&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;product&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSONALITE&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cardType&quot;</span><span class="p">:</span> <span class="s2">&quot;CREDIT&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cardSubType&quot;</span><span class="p">:</span> <span class="s2">&quot;PLATINUM&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Recuperar Bin pelo emissor</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/issuer/{issuer}/bins
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;binNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;ITAU UNIBANCO S A&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;VISA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuerCountry&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;product&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSONALITE&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cardType&quot;</span><span class="p">:</span> <span class="s2">&quot;CREDIT&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cardSubType&quot;</span><span class="p">:</span> <span class="s2">&quot;PLATINUM&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Remover Bin</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /ccbin/bins/delete/{number}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Recuperar lista de emissores disponíveis</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/issuers
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="s2">&quot;ITAU UNIBANCO S A&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;CAIXA ECONOMICA FEDERAL&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Inserir novo emissor</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /ccbin/newissuer/{issuer}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Remover emissor</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /ccbin/issuers/delete/{issuer}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Recuperar países disponíveis</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/countries
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="s2">&quot;BRA&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;USA&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Inserir novo país</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /ccbin/newcountry/{country}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Remover país</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /ccbin/countries/delete/{country}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Inserir nova bandeira</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /ccbin/newbrand/{brand}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Remover um bandeira</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /ccbin/brands/delete/{brand}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Recuperar bandeiras disponíveis</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/brands
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="s2">&quot;VISA&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;MASTERCARD&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Recuperar tipos de cartão</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/cardtypes
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="s2">&quot;CREDIT&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;DEBIT&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Inserir novo tipo de cartão</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /ccbin/newcardtype/{cardType}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Remover um tipo de cartão</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /ccbin/cardtypes/delete/{cardtype}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Recuperar subtipos de cartão</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/cardsubtypes
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="s2">&quot;PLATINUM&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;GOLD&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Inserir novo subtipo de cartão</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /ccbin/newcardsubtype/{cardSubType}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Remover um subtipo de cartão</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /ccbin/cardsubtypes/delete/{cardsubtype}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Recuperar produtos de um emissor</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /ccbin/products/{issuer}
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: `200 OK` 
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSONALITE&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;ITAU UNIBANCO S A&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;UNICLASS&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;ITAU UNIBANCO S A&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Inserir produtos para um emissor</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /ccbin/newproduct
+</code></pre></div>
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSONALITE&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;ITAU UNIBANCO S A&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>
+
+<h3>Remover um produto de um emissor</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /ccbin/products/delete/{issuer}/{product}
+</code></pre></div>
+<h4>Response</h4>
+
+<hr>

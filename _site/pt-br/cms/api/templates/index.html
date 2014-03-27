@@ -1,0 +1,117 @@
+<h1>templates</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Recurso</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#obter-lista-de-nomes-de-templates">GET /api/portal/pvt/sites/{siteId}/templates</a></td>
+      <td>Obter lista de nomes de templates</td>
+    </tr>
+    <tr>
+      <td><a href="#obter-detalhes-de-um-template">GET /api/portal/pvt/sites/{siteId}/templates/{name}</a></td>
+      <td>Obter detalhes de um template</td>
+    </tr>
+    <tr>
+      <td><a href="#criar-um-template">POST /api/portal/pvt/sites/{siteId}/templates</a></td>
+      <td>Criar um template</td>
+    </tr>
+    <tr>
+      <td><a href="#atualizar-um-template">PUT /api/portal/pvt/sites/{siteId}/templates/{name}</a></td>
+      <td>Atualizar um template</td>
+    </tr>
+    <tr>
+      <td><a href="#excluir-um-template">DELETE /api/portal/pvt/sites/{siteId}/templates/{name}</a></td>
+      <td>Excluir um template</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Obter lista de nomes de templates</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /api/portal/pvt/sites/{siteId}/templates
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 200 OK
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="s2">&quot;template-um&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;template-dois&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Obter detalhes de um template</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /api/portal/pvt/sites/{siteId}/templates/{name}
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 200 OK, 404 NotFound
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;template-um&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Conteúdo do template&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Criar um template</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">POST /api/portal/pvt/sites/{siteId}/templates
+</code></pre></div>
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;novo-template&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;h1&gt;Novo template&lt;/h1&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 200 OK, 400 BadRequest, 409 Conflict
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;novo-template&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;h1&gt;Novo template&lt;/h1&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Atualizar um template</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /api/portal/pvt/sites/{siteId}/templates/{name}
+</code></pre></div>
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;template-existente&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;h1&gt;Novo conteúdo&lt;/h1&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 200 OK, 201 Created, 400 BadRequest
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;template-existente&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;h1&gt;Novo conteúdo&lt;/h1&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Excluir um template</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /api/portal/pvt/sites/{siteId}/templates/{name} HTTP/1.1
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 204 NoContent, 404 NotFound
+</pre>
+
+<pre></pre>
+
+<hr>

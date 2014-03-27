@@ -1,0 +1,546 @@
+<h1>ratesandbenefitsapi</h1>
+
+<h2>Recursos</h2>
+
+<table><thead>
+<tr>
+<th>Recurso</th>
+<th align="right">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#calcula-promo%C3%A7%C3%B5es-considerando-uma-lista-de-purchase-context">POST /api/rnb/pub/bundles/batch</a></td>
+<td align="right">Calcula promoções considerando uma lista de purchase context</td>
+</tr>
+<tr>
+<td><a href="#calcula-prkmo%C3%A7%C3%B5es-para-um-purchase-context">POST /api/rnb/pub/bundles</a></td>
+<td align="right">Calcula prkmoções para um purchase context</td>
+</tr>
+<tr>
+<td><a href="#desabilita-promo%C3%A7%C3%B5es-com-datas-passadas">GET /api/rnb/pub/discounts/disable</a></td>
+<td align="right">Desabilita promoções com datas passadas</td>
+</tr>
+</tbody></table>
+
+<h2>Calcula promoções considerando uma lista de purchase context</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/api/rnb/pub/bundles/batch</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de requisição:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;C0111A50CEB244E59C95422870127A4F&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;profileId&quot;</span><span class="p">:</span> <span class="s2">&quot;0713D5F9-BE2F-4778-B323-F538067F029A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;utm_medium&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+        <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;shippingPriceTag&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercenturalDicountSkusList1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">500</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;product@CatalogSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;736&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Seller@CatalogSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;priceSheet&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+        <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;shippingPriceTag&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercenturalDicountSkusList1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">500</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;product@CatalogSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;736&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Seller@CatalogSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;priceSheet&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;C0111A50CEB244E59C95422870127A4F&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;profileId&quot;</span><span class="p">:</span> <span class="s2">&quot;0713D5F9-BE2F-4778-B323-F538067F029A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;utm_medium&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+        <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;shippingPriceTag&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercenturalDicountSkusList1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">500</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;product@CatalogSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;736&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Seller@CatalogSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;priceSheet&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+        <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;shippingPriceTag&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercenturalDicountSkusList1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">500</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;product@CatalogSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;736&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Seller@CatalogSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;priceSheet&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;bundles&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;145&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete 100% sku 764&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A melhor de todas&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;discount@shipping-145#DiscountResource&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="nt">&quot;isPercentual&quot;</span><span class="p">:</span> <span class="kc">true</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;endDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;matchedParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&quot;Seller@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;1|inclusive&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;product@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;736|inclusive&quot;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;taggedPrice&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+        <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;priceValidUntil&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;bundles&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;145&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete 100% sku 764&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A melhor de todas&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;discount@shipping-145#DiscountResource&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="nt">&quot;isPercentual&quot;</span><span class="p">:</span> <span class="kc">true</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;endDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;matchedParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&quot;Seller@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;1|inclusive&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;product@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;736|inclusive&quot;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;taggedPrice&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+        <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;priceValidUntil&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;giftsSelectables&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;QuantitySelectable&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;Gifts&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;235281&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;Teasers&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;175&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;desc&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;teaserType&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;minimumQuantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;effects&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercentualDiscount&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;11.0000&quot;</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;bundles&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;145&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete 100% sku 764&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A melhor de todas&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;discount@shipping-145#DiscountResource&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="nt">&quot;isPercentual&quot;</span><span class="p">:</span> <span class="kc">true</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;endDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;matchedParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&quot;Seller@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;1|inclusive&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;product@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;736|inclusive&quot;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;taggedPrice&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+        <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;priceValidUntil&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;bundles&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;145&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete 100% sku 764&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A melhor de todas&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;discount@shipping-145#DiscountResource&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="nt">&quot;isPercentual&quot;</span><span class="p">:</span> <span class="kc">true</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;endDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;matchedParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&quot;Seller@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;1|inclusive&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;product@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;736|inclusive&quot;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;taggedPrice&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+        <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;priceValidUntil&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;giftsSelectables&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;QuantitySelectable&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;Gifts&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;235281&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;Teasers&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;175&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;desc&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;teaserType&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;minimumQuantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;effects&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercentualDiscount&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;11.0000&quot;</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code></h4>
+
+<hr>
+
+<h2>Calcula prkmoções para um purchase context</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/api/rnb/pub/bundles</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de requisição:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;Marketplace&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;C0111A50CEB244E59C95422870127A4F&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;profileId&quot;</span><span class="p">:</span> <span class="s2">&quot;0713D5F9-BE2F-4778-B323-F538067F029A&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;salesChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;utm_medium&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+      <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+      <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;shippingPriceTag&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercenturalDicountSkusList1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">500</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;product@CatalogSystem&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;736&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Seller@CatalogSystem&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;priceSheet&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+      <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+      <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;shippingPriceTag&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercenturalDicountSkusList1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">500</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;product@CatalogSystem&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;736&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Seller@CatalogSystem&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;priceSheet&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;bundles&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;145&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete 100% sku 764&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A melhor de todas&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;discount@shipping-145#DiscountResource&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+              <span class="nt">&quot;isPercentual&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+          <span class="p">],</span>
+          <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="nt">&quot;endDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;matchedParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Seller@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;1|inclusive&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;product@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;736|inclusive&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;taggedPrice&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+      <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+      <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;priceValidUntil&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;bundles&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;145&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frete 100% sku 764&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A melhor de todas&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;priceTags&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;discount@shipping-145#DiscountResource&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+              <span class="nt">&quot;isPercentual&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+          <span class="p">],</span>
+          <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;endDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;matchedParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Seller@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;1|inclusive&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;product@CatalogSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;736|inclusive&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;taggedPrice&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+      <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+      <span class="nt">&quot;listPrice&quot;</span><span class="p">:</span> <span class="mi">820</span><span class="p">,</span>
+      <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;priceValidUntil&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-08-21T10:00:00&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;giftsSelectables&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;QuantitySelectable&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;Gifts&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;235281&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;sellerId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;Teasers&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;175&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;desc&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;teaserType&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;minimumQuantity&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[]</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;effects&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PercentualDiscount&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;11.0000&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code></h4>
+
+<hr>
+
+<h2>Desabilita promoções com datas passadas</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/rnb/pub/discounts/disable</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="nt">&quot;discountsDisabled&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;57&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;137&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;152&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;159&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;160&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;161&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;162&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;163&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;167&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;168&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;169&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code></h4>
+
+<hr>

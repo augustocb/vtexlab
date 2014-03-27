@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{page.title}}{% if page.title %} - {%endif%}VTEX Docs beta</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/style/default.css">
+	<link rel="stylesheet" href="/style/trac.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<nav class="navbar" role="navigation">
+				<a class="title" href="/"><img src="/images/vtex-logo.png" alt="VTEX Docs"></a>
+
+
+				<!--<div class="col-md-offset-7">
+					<ul class="list-inline">
+						{% for item in site.data.top_menu %}
+						<li><a href="{{ item.href }}">{{ item.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>-->
+			</nav>
+		</div>
+	</header>
+
+	<div class="alert alert-warning text-center">
+      		<strong>Atenção!</strong> Esta documentação pode sofrer alterações sem aviso prévio.
+    	</div>
+
+
+	<div class="container">
+		{{ content }}
+	</div>
+
+	<footer></footer>
+
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="/script/speakingurl.min.js"></script>
+	<script>
+		$('h1, h2, h3').each(function(i, el) {
+			el = $(el);
+			if(!el.attr('id')) {
+				el.attr('id', getSlug(el.text()));
+			}
+		});
+		$(document).ready(function() {
+			setTimeout(function() {
+				if(window.scrollY === 0 && location.hash) {
+					var heading = $(location.hash);
+					$('html, body').scrollTop(heading.position().top + 60);
+				}
+			}, 0);
+		});
+	</script>
+</body>
+</html>

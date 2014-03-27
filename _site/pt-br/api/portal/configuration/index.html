@@ -1,0 +1,87 @@
+<h1>configuration</h1>
+
+<h2>Recursos</h2>
+
+<table><thead>
+<tr>
+<th>Recurso</th>
+<th align="right">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#obter-configura%C3%A7%C3%B5es-do-site">GET /api/portal/pvt/sites/{siteId}/configuration</a></td>
+<td align="right">Obter configurações do site</td>
+</tr>
+<tr>
+<td><a href="#obter-valor-de-uma-configura%C3%A7%C3%A3o">GET /api/portal/pvt/sites/{siteId}/configuration/{configurationKey}</a></td>
+<td align="right">Obter valor de uma configuração</td>
+</tr>
+<tr>
+<td><a href="#atualizar-as-configura%C3%A7%C3%B5es-do-site">PUT /api/portal/pvt/sites/{siteId}/configuration</a></td>
+<td align="right">Atualizar as configurações do site</td>
+</tr>
+<tr>
+<td><a href="#atualizar-o-valor-de-uma-configura%C3%A7%C3%A3o">PUT /api/portal/pvt/sites/{siteId}/configuration/{configurationKey}</a></td>
+<td align="right">Atualizar o valor de uma configuração</td>
+</tr>
+</tbody></table>
+
+<h2>Obter configurações do site</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/portal/pvt/sites/{siteId}/configuration</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;tagManagerId&quot;</span><span class="p">:</span> <span class="s2">&quot;GTM-1234&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code></h4>
+
+<hr>
+
+<h2>Obter valor de uma configuração</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/api/portal/pvt/sites/{siteId}/configuration/{configurationKey}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="s2">&quot;GTM-1234&quot;</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code></h4>
+
+<hr>
+
+<h2>Atualizar as configurações do site</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">PUT</span> <span class="nn">/api/portal/pvt/sites/{siteId}/configuration</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de requisição:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;tagManagerId&quot;</span><span class="p">:</span> <span class="s2">&quot;GTM-5678&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;tagManagerId&quot;</span><span class="p">:</span> <span class="s2">&quot;TagManagerId569963d8-570a-45b4-884d-9a85a653dcc5&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Status codes: <code>200 OK</code> <code>404 NotFound</code></h4>
+
+<hr>
+
+<h2>Atualizar o valor de uma configuração</h2>
+
+<h4>URL do Recurso:</h4>
+<div class="highlight"><pre><code class="http language-http" data-lang="http"><span class="nf">PUT</span> <span class="nn">/api/portal/pvt/sites/{siteId}/configuration/{configurationKey}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h4>Exemplo de requisição:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="s2">&quot;GTM-5678&quot;</span>
+</code></pre></div>
+<h4>Exemplo de retorno:</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="s2">&quot;GTM-5678&quot;</span>
+</code></pre></div>
+<h4>Status codes: <code>204 NoContent</code> <code>404 NotFound</code></h4>
+
+<hr>

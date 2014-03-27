@@ -1,0 +1,129 @@
+<h1>sites</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Recurso</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#obter-lista-de-sites">GET /api/portal/pvt/sites</a></td>
+      <td>Obter lista de sites</td>
+    </tr>
+    <tr>
+      <td><a href="#obter-um-site">GET /api/portal/pvt/sites/{id}</a></td>
+      <td>Obter um site</td>
+    </tr>
+    <tr>
+      <td><a href="#criar-um-site">POST /api/portal/pvt/sites</a></td>
+      <td>Criar um site</td>
+    </tr>
+    <tr>
+      <td><a href="#atualizar-um-site">PUT /api/portal/pvt/sites/{id}</a></td>
+      <td>Atualizar um site</td>
+    </tr>
+    <tr>
+      <td><a href="#excluir-um-site">DELETE /api/portal/pvt/sites/{id}</a></td>
+      <td>Excluir um site</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Obter lista de sites</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /api/portal/pvt/sites
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 200 OK
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;some-site&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Some Site&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;siteName&quot;</span><span class="p">:</span> <span class="s2">&quot;store1&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;another-site&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Another Site&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;siteName&quot;</span><span class="p">:</span> <span class="s2">&quot;store2&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr>
+
+<h3>Obter um site</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /api/portal/pvt/sites/{id}
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 200 OK, 404 NotFound
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;some-site&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Some Site&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;siteName&quot;</span><span class="p">:</span> <span class="s2">&quot;store1&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h2>Criar um site</h2>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">POST /api/portal/pvt/sites
+</code></pre></div>
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;First Site&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;siteName&quot;</span><span class="p">:</span> <span class="s2">&quot;firstsite&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 200 OK, 400 BadRequest, 409 Conflict
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;first-site&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;First Site&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;siteName&quot;</span><span class="p">:</span> <span class="s2">&quot;firstsite&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Atualizar um site</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">PUT /api/portal/pvt/sites/{id}
+</code></pre></div>
+<h4>Exemplo</h4>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Changed Site&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;siteName&quot;</span><span class="p">:</span> <span class="s2">&quot;othersite&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 200 OK, 201 Created, 400 BadRequest
+</pre>
+<div class="highlight"><pre><code class="json language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;first-site&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Changed Site&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;siteName&quot;</span><span class="p">:</span> <span class="s2">&quot;othersite&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3>Excluir um site</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">DELETE /api/portal/pvt/sites/{id}
+</code></pre></div>
+<h4>Response</h4>
+
+<pre class="headers">
+Status: 204 NoContent, 404 NotFound
+</pre>
+
+<pre>
+</pre> 
+
+<hr>
