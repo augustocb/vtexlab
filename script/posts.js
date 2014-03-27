@@ -14,14 +14,15 @@
 
   function resizePostNavHeight () {
     var highHeight = 0,
-        $postNav = $('.post-nav');    
+        $postNav = $('.post-nav a');    
     
     $postNav.each(function(i) {
-      if ($(this).height() > highHeight) {
-        highHeight = $(this).height();
+      if ($(this).outerHeight() > highHeight) {
+        highHeight = $(this).outerHeight();
       }
     });
-    $postNav.height(highHeight);
+    $('.post-pagination').outerHeight(highHeight);
+    $postNav.outerHeight(highHeight);
   };
 
   function loadPosts (posts) {
@@ -42,7 +43,7 @@
 
   function getNavigationLinks (elem) {
     var urlList = [];
-    elem.find('.post-nav').each(function(){
+    elem.find('.post-nav a').each(function(){
       var $this = $(this);
 
       urlList.push($this.attr('href'));
@@ -88,12 +89,14 @@
     $currentPost.removeClass('post-active');
     $postToRender.addClass('post-active');
 
+    $postToRender.scrollTop(0);
+    scrollListener($postToRender);
     resizePostNavHeight();
 
     return $postToRender;
   };
 
-  $body.on('click', '.post-next, .post-prev', function(e) {
+  $body.on('click', '.post-next a, .post-prev a', function(e) {
     var urlPostId = $(this).data('post-id');
     var post = document.getElementById('post' + getIdbyJekyllId(urlPostId));
     renderPost($(post));
@@ -105,13 +108,6 @@
     $headerBtn.removeClass('header-button-active');
   });
 
-  // $body.on('click', '.post-prev', function(e) {
-  //   var urlPostId = $(this).data('post-id');
-  //   var post = document.getElementById('post' + getIdbyJekyllId(urlPostId));
-  //   renderPost($(post));
-  //   e.preventDefault();
-  // });
-
   $(document).ready(function(){
     $defaultPost = $('.post-apended');
     $defaultPost.addClass('post-active');
@@ -121,23 +117,30 @@
     loadPosts( getNavigationLinks($defaultPost) );
 
     resizePostNavHeight();
+    scrollListener($defaultPost);
   });
 
   $(window).resize(function(){
     resizePostNavHeight();
   });
 
-  $(window).on('scroll', function(e){
+  function scrollListener(post) {
+    console.log('SCROLL LISTENER');
+    var lastScrollPost = 0;
+    post.on('scroll', function(e){
+      var scrollPos = post.scrollTop();
+      if (scrollPos > 66) {
+        if (scrollPos < (lastScrollPost - 50)) {
+          $header.removeClass('hide-header');
+          $headerBtn.removeClass('header-button-active');
+        } else {
+          $header.addClass('hide-header');
+          $headerBtn.addClass('header-button-active');
+        }
+      }
 
-    var scrollPos = $(document).scrollTop();
-
-    if (scrollPos > 66) {
-      $header.addClass('hide-header');
-      $headerBtn.addClass('header-button-active');
-    } else {
-      $header.removeClass('hide-header');
-      $headerBtn.removeClass('header-button-active');
-    }
-  });
+      lastScrollPost = scrollPos;
+    });
+  };
 
 }(window, document));

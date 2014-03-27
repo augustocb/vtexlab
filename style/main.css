@@ -2,6 +2,9 @@ html {
   height: 100%;
   position: relative;
 }
+.container {
+  position: relative;
+}
 .post-page, .post-page .main-content, .post-page #post-wrapper {
   height: 100%;
   position: relative;
