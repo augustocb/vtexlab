@@ -35,13 +35,13 @@ body {
   cursor: pointer;
   height: 54px;
   border-radius: 50px;
-  border: 2px solid rgba(44, 182, 214, .2);
+  border: 3.5px solid #2CB6D6;
   position: fixed;
   top: 10px;
   left: 10px;
   z-index: 9;
   opacity: 0;
-  background: #fff url(/images/main-sprite.png) -164px 10px;
+  background: #fff url(/images/main-sprite.png) -165px 11px;
   transition: opacity 0.1s ease-out;
 }
 .header-button:hover {
@@ -214,7 +214,7 @@ body {
   font: bold 50px 'proxima-nova-condensed', Arial, Helvetica;
 }
 .post .post-description {
-  color: #878787;
+  color: #888;
   margin: 25px 0 30px;
   font: normal normal 25px 'proxima-nova', Arial, Helvetica;
 }
@@ -359,7 +359,7 @@ body {
 }
 .post-nav a {
   padding: 25px 45px;
-  color: #878787;
+  color: #888;
   background: #F5F5F5;
   display: block;
   overflow: hidden;
@@ -367,14 +367,14 @@ body {
 .post-nav a:hover {
   text-decoration: none;
   color: #525252;
-  background: rgba(44, 182, 214, .2);
+  background: #d5f0f7;
 }
 .post-nav h3 {
   font: bold 25px 'proxima-nova-condensed', Arial, Helvetica;
 }
 .post-nav p {
   font: normal normal 14px/1.4 'proxima-nova', Arial, Helvetica;
-  color: #878787;
+  color: #888;
   margin: 0;
 }
 .post-prev .post-nav-container { float: right; }
@@ -429,6 +429,10 @@ body {
 }
 .post-list .post-title a {
   color: #525252;
+}
+.post-list .post-title a:hover {
+  color: #f7645e;
+  text-decoration: none;
 }
 .post-list .post-header-author {
   margin: 0;
