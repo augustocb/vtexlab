@@ -192,6 +192,15 @@
     scrollListener($defaultPost);
   });
 
+  $(window).on('mousemove', function(e){
+    console.log(e.pageY)
+
+    if (e.pageY < 40) {
+      $header.removeClass('hide-header');
+      $headerBtn.removeClass('header-button-active');
+    };
+  });
+
   $(window).resize(function(){
     resizePostNavHeight($('.post-active'));
   });

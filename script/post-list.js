@@ -37,7 +37,8 @@
   var groupReleaseNotes = function(list) {
     var posts = $(list).find('.post-container');
     for (var i = 0, len = posts.lenght; i < len; i++) {
-      
+      var post = posts[i];
+      console.log(post);
     }
     return posts;
   };
@@ -49,7 +50,7 @@
   $('#footer-logo').on('click', function(e){
     $("html, body").animate({ 
       scrollTop: 0
-    }, 300);
+    }, 700, 'easeOutCirc');
 
     e.preventDefault();
   })
