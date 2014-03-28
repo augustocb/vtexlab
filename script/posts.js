@@ -1,5 +1,6 @@
 (function(window, document){
 
+  // DISQUS
   (function() {
     var disqus_shortname = 'vtexlab';
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -7,11 +8,28 @@
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 
+  // CACHE SELECTORS
   var $body = $('body'),
       $header = $('#header'),
       $headerBtn = $('#header-button'),
       activePost = $('.active-post');
 
+  // GLOBAL VARS
+  var isAnimating = false,
+      endCurrPage = false,
+      endNextPage = false,
+      animEndEventNames = {
+        'WebkitAnimation' : 'webkitAnimationEnd',
+        'OAnimation' : 'oAnimationEnd',
+        'msAnimation' : 'MSAnimationEnd',
+        'animation' : 'animationend'
+      },
+      animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ];
+
+  console.log(animEndEventName);
+  // PRIVATE FUNCTIONS
+
+  // Redimensiona o tamanho da navegação entre posts para mante-las com a mesma altura
   function resizePostNavHeight () {
     var highHeight = 0,
         $postNav = $('.post-nav a');    
@@ -25,12 +43,13 @@
     $postNav.outerHeight(highHeight);
   };
 
+  // Carrega novos posts e insere no body
   function loadPosts (posts) {
     posts.forEach(function(postUrl, i){
       if ( !$('[data-url="' + postUrl + '"]').length ) {
         $.get(postUrl + '/', function(response){
 
-          var $post = $(response).find('.post-apended');
+          var $post = $(response).find('.post');
           $post.data('title', $(response).filter('title').text());
 
           updatePostId($post);
@@ -41,6 +60,7 @@
     });
   };
 
+  // Retorna a lista de urls da navegação
   function getNavigationLinks (elem) {
     var urlList = [];
     elem.find('.post-nav a').each(function(){
@@ -52,6 +72,7 @@
     return urlList;
   };
 
+  // Atualiza ID único do post
   function updatePostId (post) {
     var jekyllId = post.data('jekyll-id'),
         id = 'post' + getIdbyJekyllId(jekyllId);
@@ -59,24 +80,74 @@
     return post.attr('id', id);
   };
 
+  // Retorna ID com base no ID do Jekyll
   function getIdbyJekyllId (jekyllId) {
     var id = jekyllId.replace(/[^a-z0-9]/gi,'-');
     return id;
   };
 
+  // Faz a transição entre Posts
   function renderPost (post) {
+    
+    if( isAnimating ) {
+      return false;
+    }
+
+    isAnimating = true;
+
     var $currentPost = $('.post-active'),
         $postToRender = post,
-        $postToRenderURL = $postToRender.data('url') + '/',
-        $postToRenderTitle = $postToRender.data('title');
+        postToRenderURL = $postToRender.data('url') + '/',
+        postToRenderTitle = $postToRender.data('title');
 
-    $currentPost.find('#disqus_thread').remove();
-    $postToRender.find('#post-comments').append('<div id="disqus_thread">');
-
+    // Inicia o carregamento dos próximos posts. Sim, somos apressadinhos
     loadPosts( getNavigationLinks($postToRender) );
 
-    window.history.pushState({}, $postToRenderTitle, $postToRenderURL);
-    document.title = $postToRenderTitle;
+    // Atualiza titulo do site e URL
+    window.history.pushState({}, postToRenderTitle, postToRenderURL);
+    document.title = postToRenderTitle;
+
+    $postToRender.scrollTop(0);
+    $('.post').off('scroll');
+
+    $currentPost.on( animEndEventName, function() {
+      console.log('END ANIMAÇÃO1');
+      $currentPost.off( animEndEventName );
+      endCurrPage = true;
+      if( endNextPage ) {
+        onEndAnimation( $currentPost, $postToRender );
+      }
+    }).addClass('post-scaleDown');
+
+    $postToRender.on( animEndEventName, function() {
+      console.log('END ANIMAÇÃO2');
+      $postToRender.off( animEndEventName );
+      endNextPage = true;
+      if( endCurrPage ) {
+        onEndAnimation( $currentPost, $postToRender );
+      }
+    }).addClass('post-moveFromBottom post-ontop');
+
+    scrollListener($postToRender);
+    resizePostNavHeight();
+
+    return $postToRender;
+  };
+
+  function onEndAnimation( $outpage, $inpage ) {
+    endCurrPage = false;
+    endNextPage = false;
+    resetPage( $outpage, $inpage );
+    isAnimating = false;
+  }
+
+  function resetPage( $outpage, $inpage ) {
+    $outpage.removeClass('post-scaleDown post-active');
+    $inpage.removeClass('post-moveFromBottom post-ontop').addClass('post-active');
+    
+    // Reseta o disqus para carregar novos comentários
+    $outpage.find('#disqus_thread').remove();
+    $inpage.find('#post-comments').append('<div id="disqus_thread">');
 
     DISQUS.reset({
       reload: true,
@@ -86,30 +157,26 @@
       }
     });
 
-    $currentPost.removeClass('post-active');
-    $postToRender.addClass('post-active');
+  }
 
-    $postToRender.scrollTop(0);
-    scrollListener($postToRender);
-    resizePostNavHeight();
-
-    return $postToRender;
-  };
-
+  // Evento de click da navegação. Preveni comportamento padrão e faz transição entre posts
+  // TODO - Carregar normalmente caso página não esteja no BODY ainda
   $body.on('click', '.post-next a, .post-prev a', function(e) {
     var urlPostId = $(this).data('post-id');
     var post = document.getElementById('post' + getIdbyJekyllId(urlPostId));
     renderPost($(post));
+
     e.preventDefault();
   });
 
+  // HEADER
   $headerBtn.on('click', function(){
     $header.removeClass('hide-header');
     $headerBtn.removeClass('header-button-active');
   });
 
   $(document).ready(function(){
-    $defaultPost = $('.post-apended');
+    $defaultPost = $('.post');
     $defaultPost.addClass('post-active');
     $defaultPost.find('#post-comments').append('<div id="disqus_thread">');
 
@@ -125,7 +192,6 @@
   });
 
   function scrollListener(post) {
-    console.log('SCROLL LISTENER');
     var lastScrollPost = 0;
     post.on('scroll', function(e){
       var scrollPos = post.scrollTop();
@@ -138,7 +204,6 @@
           $headerBtn.addClass('header-button-active');
         }
       }
-
       lastScrollPost = scrollPos;
     });
   };
