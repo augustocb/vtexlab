@@ -3,7 +3,7 @@ layout: postContainer
 type: post
 ---
 
-{% assign author = site.authors[page.author] %}
+{% assign author = site.data.authors[page.author] %}
 
 <div id="post-wrapper" class="post-perspective">
   <div data-jekyll-id="{{ page.id }}" data-url="{{ page.url }}" data-title="{{ page.title }}" class="post">
@@ -37,7 +37,7 @@ type: post
               <div class="col-md-7">
                 <div class="post-author-description">
                   <div class="col-md-3">
-                    <img src="http://www.gravatar.com/avatar/6af7a326c14b57b9c486bc4e4dec63d1.png" alt="" class="post-author-thumb">
+                    <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png" alt="" class="post-author-thumb">
                   </div>
                   <div class="col-md-9">
                     <h3>Escrito por:</h3>
@@ -78,7 +78,7 @@ type: post
         </a>
       </div>
       {% endif %}
- 
+
       {% if page.next.url %}
       <div class="post-next post-nav">
         <a href="{{page.next.url}}" data-post-id="{{ page.next.id }}" data-nav="next">
