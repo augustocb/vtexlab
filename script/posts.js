@@ -26,12 +26,10 @@
       },
       animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ];
 
-  console.log(animEndEventName);
   // PRIVATE FUNCTIONS
 
   // Redimensiona o tamanho da navegação entre posts para mante-las com a mesma altura
   function resizePostNavHeight (post) {
-    console.log('RESIZE');
     var highHeight = 0,
         $postNav = post.find('.post-nav a');    
     
@@ -41,7 +39,6 @@
       }
     });
     if ($postNav.length == 1) {
-      console.log('ONE ITEM');
       $postNav.parent('.post-nav').addClass('full-post-nav');
     };
     $('.post-pagination').outerHeight(highHeight);
@@ -167,7 +164,6 @@
   $body.on('click', '.post-next a, .post-prev a', function(e) {
     var urlPostId = $(this).data('post-id');
     var post = document.getElementById('post' + getIdbyJekyllId(urlPostId));
-    console.log(post);
     if (post) {
       renderPost($(post));
       e.preventDefault();
@@ -193,8 +189,6 @@
   });
 
   $(window).on('mousemove', function(e){
-    console.log(e.pageY)
-
     if (e.pageY < 40) {
       $header.removeClass('hide-header');
       $headerBtn.removeClass('header-button-active');

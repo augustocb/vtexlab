@@ -38,7 +38,7 @@
     var posts = $(list).find('.post-container');
     for (var i = 0, len = posts.lenght; i < len; i++) {
       var post = posts[i];
-      console.log(post);
+      // console.log(post);
     }
     return posts;
   };
