@@ -167,9 +167,11 @@
   $body.on('click', '.post-next a, .post-prev a', function(e) {
     var urlPostId = $(this).data('post-id');
     var post = document.getElementById('post' + getIdbyJekyllId(urlPostId));
-    renderPost($(post));
-
-    e.preventDefault();
+    console.log(post);
+    if (post) {
+      renderPost($(post));
+      e.preventDefault();
+    }
   });
 
   // HEADER
