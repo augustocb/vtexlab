@@ -107,6 +107,11 @@
 
     // Atualiza titulo do site e URL
     window.history.pushState({}, postToRenderTitle, postToRenderURL);
+    window.onpopstate = function(event) {    
+      if(event && event.state) {
+        location.reload(); 
+      }
+    }
     document.title = postToRenderTitle;
 
     $postToRender.scrollTop(0);

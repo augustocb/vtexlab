@@ -357,11 +357,6 @@ body {
   width: 100%;
   text-align: center;
 }
-.full-post-nav .post-nav-container {
-  max-width: 990px;
-  margin: 0 auto;
-  width: 100%;
-}
 .post-nav a {
   padding: 25px 45px;
   color: #878787;
@@ -386,6 +381,12 @@ body {
 .post-nav-container {
   max-width: 495px;
   width: 100%;
+}
+.full-post-nav .post-nav-container {
+  max-width: 990px;
+  margin: 0 auto;
+  width: 100%;
+  float: none;
 }
 .in-post-nav {
   background: #fff;
