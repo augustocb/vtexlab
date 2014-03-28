@@ -30,15 +30,20 @@
   // PRIVATE FUNCTIONS
 
   // Redimensiona o tamanho da navegação entre posts para mante-las com a mesma altura
-  function resizePostNavHeight () {
+  function resizePostNavHeight (post) {
+    console.log('RESIZE');
     var highHeight = 0,
-        $postNav = $('.post-nav a');    
+        $postNav = post.find('.post-nav a');    
     
     $postNav.each(function(i) {
       if ($(this).outerHeight() > highHeight) {
         highHeight = $(this).outerHeight();
       }
     });
+    if ($postNav.length == 1) {
+      console.log('ONE ITEM');
+      $postNav.parent('.post-nav').addClass('full-post-nav');
+    };
     $('.post-pagination').outerHeight(highHeight);
     $postNav.outerHeight(highHeight);
   };
@@ -111,7 +116,6 @@
     $('.post').off('scroll');
 
     $currentPost.on( animEndEventName, function() {
-      console.log('END ANIMAÇÃO1');
       $currentPost.off( animEndEventName );
       endCurrPage = true;
       if( endNextPage ) {
@@ -120,7 +124,6 @@
     }).addClass('post-scaleDown');
 
     $postToRender.on( animEndEventName, function() {
-      console.log('END ANIMAÇÃO2');
       $postToRender.off( animEndEventName );
       endNextPage = true;
       if( endCurrPage ) {
@@ -129,7 +132,7 @@
     }).addClass('post-moveFromBottom post-ontop');
 
     scrollListener($postToRender);
-    resizePostNavHeight();
+    resizePostNavHeight($postToRender);
 
     return $postToRender;
   };
@@ -183,12 +186,12 @@
     updatePostId($defaultPost);
     loadPosts( getNavigationLinks($defaultPost) );
 
-    resizePostNavHeight();
+    resizePostNavHeight($defaultPost);
     scrollListener($defaultPost);
   });
 
   $(window).resize(function(){
-    resizePostNavHeight();
+    resizePostNavHeight($('.post-active'));
   });
 
   function scrollListener(post) {
