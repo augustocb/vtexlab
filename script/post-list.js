@@ -46,5 +46,13 @@
     groupReleaseNotes($('#posts'));
   });
 
+  $('#footer-logo').on('click', function(e){
+    $("html, body").animate({ 
+      scrollTop: 0
+    }, 300);
+
+    e.preventDefault();
+  })
+
   window.onload = checkScrollPos();
 }(window, document));
