@@ -12,42 +12,33 @@
   <link rel="stylesheet" href="/style/trac.css">
   <link rel="stylesheet" href="/style/main.css">
 </head>
-<body>
+<body{% if page.type == "post" %} class="post-page"{% endif %}>
+  <div class="container">
+    <div class="header-button" id="header-button"></div>
+  </div>
+
   {% include header.html %}
 
   <section class="main-content">
     {{ content }}
   </section>
 
+  {% if page.type != "post" %}
   <footer class="footer default-footer">
     <div class="container">
       <a href="#" id="footer-logo" class="footer-logo">Blog Vtex</a>
     </div>
   </footer>
+  {% endif %}
 
   <script src="//code.jquery.com/jquery.min.js"></script>
-  
+
+  {% if page.type == "post" %}
+  <script src="/script/posts.js"></script>  
+  {% endif %}
   {% if page.type == "post-list" %}
   <script src="/script/easing.min.js"></script> 
   <script src="/script/post-list.js"></script>  
   {% endif %}
-  
-  <script src="/script/speakingurl.min.js"></script>
-  <script>
-    $('h1, h2, h3').each(function(i, el) {
-      el = $(el);
-      if(!el.attr('id')) {
-        el.attr('id', getSlug(el.text()));
-      }
-    });
-    $(document).ready(function() {
-      setTimeout(function() {
-        if(window.scrollY === 0 && location.hash) {
-          var heading = $(location.hash);
-          $('html, body').scrollTop(heading.position().top + 60);
-        }
-      }, 0);
-    });
-  </script>
 </body>
 </html>
