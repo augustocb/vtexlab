@@ -209,7 +209,7 @@
     post.on('scroll', function(e){
       var scrollPos = post.scrollTop();
       if (scrollPos > 66) {
-        if (scrollPos < (lastScrollPost - 50)) {
+        if (scrollPos < (lastScrollPost)) {
           $header.removeClass('hide-header');
           $headerBtn.removeClass('header-button-active');
         } else {

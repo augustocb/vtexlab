@@ -30,7 +30,11 @@ body {
   top: -66px;
   transition: top 0.1s ease-out;
 }
+.post-page .header-button {
+  display: block;
+}
 .header-button {
+  display: none;
   width: 54px;
   cursor: pointer;
   height: 54px;
@@ -81,7 +85,7 @@ body {
   text-transform: uppercase;
   color: #2CB6D6;
 }
-.nav a:hover {
+.nav a:hover, .nav .active-nav {
   background: #2CB6D6;
   color: #fff;
   text-decoration: none; 
@@ -470,4 +474,56 @@ body {
 
 .pre-load-container {
   display: none;
+}
+
+.product-detail h2 {
+  text-transform: uppercase;
+  font-size: 68px;
+  color: #525252;
+}
+.product-detail span {
+  color: #2CB6D6;
+  display: block;
+}
+.product-detail p {
+  font-size: 18px; 
+}
+.main-video {
+  background: #2CB6D6;
+}
+.main-video h2 {
+  color: #fff;
+  margin: 115px 0 40px;
+  padding: 0;
+}
+.main-video p {
+  color: #fff;
+}
+.main-video .product-header { clear: both; overflow: hidden; }
+.product-video {
+  margin: 100px auto 50px; 
+}
+.mac-book-player {
+  position: relative;
+  margin: 0 auto;
+  clear: both;
+  background: url(../images/SmartCheckout_Mac.png) center center no-repeat;
+  max-width: 782px;
+  width: 100%;
+  height: 441px;
+}
+.timer {
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  top: -35px;
+  right: 116px;
+}
+.timer img {
+  position: relative;
+  top: -3px;
+}
+
+.oms-detail .product-header {
+  margin: 90px 0 100px;
 }

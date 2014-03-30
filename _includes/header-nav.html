@@ -1,11 +1,7 @@
 <nav class="nav">
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/docs">Docs</a></li>
-    <li><a href="/">Status</a></li>
-    <li><a href="/">Carreiras</a></li>
-    <li><a href="/">Fórum</a></li>
-    <li><a href="/blog/">Blog</a></li>
-    <li><a href="/">Contato</a></li>
+    {% for nav in site.data.navigation %}
+    <li><a {% if page.nav == nav.id %} class="active-nav"{% endif %} href="{{ nav.path }}">{{ nav.friendlyName }}</a></li>
+    {% endfor %}
   </ul>
 </nav>
