@@ -1,0 +1,46 @@
+@import 'mixins'
+@import 'variables'
+
+.post-list
+  margin: 115px 0
+  .post
+    overflow: hidden
+    margin: 50px 0
+  .post-item
+    padding-left: 10px
+  .post-title
+    margin-top: 0
+    padding-top: 0
+    font-size: 40px
+    text-transform: none
+    a
+      color: $black
+      &:hover
+        color: $red
+        text-decoration: none
+  .post-header-author
+    margin: 0
+  .post-header-author-thumb
+    width: 27px
+    height: 27px
+  .post-description
+    font-size: 18px
+    margin: 10px 0
+  .post-date
+    width: 50px
+    height: 50px
+    background-color: $blue
+    border-radius: 50px
+    text-align: center
+    color: #fff
+    font-size: 13px
+    text-transform: lowercase
+    span:first-child
+      font-size: 20px
+      font-weight: bold
+      line-height: .7
+      padding-top: 10px
+      display: block
+
+.release-note
+  background-color: $light-grey

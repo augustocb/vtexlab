@@ -1,4 +1,3 @@
-lsi: false
 pygments: true
 
 markdown: redcarpet
@@ -17,3 +16,7 @@ redcarpet:
     - no_intra_emphasis
     - highlight
     - footnotes
+
+assets:
+  js_compressor:  uglifier
+  css_compressor: sass
