@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: guide
 title: customfiles
 category: cms-api
 ---

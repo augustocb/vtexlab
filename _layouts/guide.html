@@ -1,0 +1,238 @@
+---
+layout: docs
+---
+  
+  <h1 class="doc-title">{{ page.title }}</h1>
+  
+  <div class="docs-block" id="configuracoes-doc">
+    {{ content }}
+  </div>
+
+  <!-- <h1 class="doc-title">Configurações</h1>
+  
+  <div class="docs-block" id="configuracoes-doc">
+
+    <h2>Transportadoras</h2>
+
+    <p>Transportadora é o operador logístico que de fato realiza a entrega. É ela a responsável por retirar o produto em um centro de distribuição e levá-lo a um determinado endereço.</p>
+    <p>No VTEX Logistics, uma transportadora pode estar associada a uma ou mais docas, ou seja, uma mesma transportadora pode retirar produtos de uma ou mais docas.</p>
+    <p>Associado às transportadoras deve haver uma coleção de valores de frete, que indicam, dentre outras coisas, o preço e o prazo cobrado pela transportadora para realizar a entrega em um determinado código postal.</p>
+    <p>O cadastro da entidade transportadora exige os seguintes dados:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Propriedades</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Id</strong></td>
+          <td>Identificador único da transportadora. Valor alfanumérico, mas não é permitido caracteres especiais. Ex: 12345, transp01, correios_sedex, 10cabd5, etc.</td>
+        </tr>
+        <tr>
+          <td><strong>Nome</strong></td>
+          <td>Nome da transportadora. Ex: Transportadora XYZ, etc.</td>
+        </tr>
+        <tr>
+          <td><strong>Tipo da entrega</strong></td>
+          <td>Campo livre que melhor descreve a forma de entrega da transportadora. Ex: Normal, Expressa, PAC, SEDEX, Entrega Agendada, etc. Para entregas do tipo Agendada, é necessário configurar os dias, horários e taxas de agendamento.</td>
+        </tr>
+        <tr>
+          <td><strong>Fator cúbico de peso</strong></td>
+          <td>Valor utilizado pela transportadora para equilibrar a relação peso x espaço ocupado pela carga transportada. É um decimal positivo com até 6 casas decimais. Ex: 0.000167, 1.0 e 1.001.</td>
+        </tr>
+        <tr>
+          <td><strong>Peso cúbico mínimo [beta]</strong> </td>
+          <td>Valor utilizado pela transportadora para equilibrar a relação peso x espaço ocupado pela carga transportada. É um decimal positivo com até 6 casas decimais. Ex: 0.000167, 1.0 e 1.001.</td>
+        </tr>
+        <tr>
+          <td><strong>Entrega aos finais semana [beta]</strong> </td>
+          <td>Informa se a transportadora trabalha aos finais de semana e feriados ou apenas em dias úteis. Essa informação é utilizada na estimativa final do tempo de entrega. Imaginando uma compra realizada numa sexta-feira com estimativa de 3 dias para entrega, ocorre que:- Se a transportadora funciona aos finais de semana, a entrega será feita na segunda-feira, ou seja, o prazo para entrega permanece em 3 dias..- Se não funciona aos finais de semana, a entrega será concluída apenas na quarta-feira, ou seja, é acrescido 2 dias na estimativa final da entrega.</td>
+        </tr>
+        <tr>
+          <td><strong>Datas de corte [beta]</strong> </td>
+          <td>Dias e horários da semana em que a transportadora recolhe a carga nos centros de distribuição. Esse dado é utilizado na estimativa final do tempo de entrega. Imaginando que a transportadora recolhe a carga às segundas e quartas, às 18:00, e uma compra com estimativa inicial de entrega de 2 dias, ocorre que:- Se a compra for feita numa segunda-feira antes de 18:00, a entrega ocorrerá na quarta-feira, ou seja, o prazo para entrega permanece em 2 dias.- Se a compra for feita na segunda-feira depois das 18:00, a entrega ocorrerá apenas na sexta-feira, acrescentando 2 dias na estimativa final da entrega.</td>
+        </tr>
+        <tr>
+          <td><strong>Modais [beta]</strong></td>
+          <td>Indica que a transportadora realiza entrega de cargas diferenciadas. A coleção de modais disponíveis deve ser montada em Configurações Gerais. Os modais possíveis são Químico, Refrigerado e Líquido. Aos acostumados com os modais Leve e Pesado, essa é uma característica das tabelas de frete, que delimitam a entrega pelo peso da carga.</td>
+        </tr>
+        <tr>
+          <td><strong>Dimensões máximas [beta]</strong></td>
+          <td>São as medidas máximas admitidas pra entrega de um pacote. É necessário informar a dimensão da maior aresta e a soma máxima de todas as arestas do pacote. Como exemplo, os correios exigem que a encomenda tenha no máximo 105cm em um dos lados, mas a soma de todos os lados não deve ultrapassar 200cm.</td>
+        </tr>
+        <tr>
+          <td><strong>Valores de fretes </strong></td>
+          <td>Tabela com os valores cobrados para entrega.</td>
+        </tr>
+        <tr>
+          <td><strong>Fretes com restrição [beta]</strong> </td>
+          <td>Tabela de faixas de CEP com restrições de entrega. É usualmente utilizado nos casos em que o serviço de entrega é prejudicado, como inundações, greves ou problemas de segurança. Necessário cadastrar uma mensagem informativa e um valor de dias a ser acrescido no tempo final da entrega.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="docs-block" id="tabelas-de-frete-doc">
+    
+    <h2>Tabelas de frete</h2>
+
+    <p>Tabelas de frete são as coleções com os valores de preço e prazo de entrega de uma transportadora.</p>
+    <p>Cada valor de frete habilita uma entrega em uma faixa de códigos postais, de itens que estejam em uma determinada faixa de peso e limitados em um volume.</p>
+    <p>No VTEX Logistics, o cadastro de um valor de frete exige as seguintes informações:</p>
+
+    <ul>
+      <li><strong>Faixa de CEP’s:</strong> é necessário informar um CEP inicial e um CEP final que compõem uma faixa de CEP’s atendidos pela transportadora. O valor de frete será utilizado somente se o CEP da entrega estiver contido na faixa de CEP’s;</li>
+      <li><strong>País:</strong> país onde será entregue o item;</li>
+      <li><strong>Faixa de peso:</strong> é necessário informar um peso inicial e um peso final que compõem uma faixa de pesos atendidos pela transportadora. O valor de frete será utilizado somente se o peso do item calculado estiver contido na faixa de peso;</li>
+      <li><strong>Preço do frete:</strong> valor base a ser cobrado;</li>
+      <li><strong>Adicional por percentual do preço:</strong> ao preço do frete, será acrescido x% do preço do item calculado;</li>
+      <li><strong>Adicional por peso extra:</strong> ao preço do frete, será acrescido x a cada unidade de peso do item calculado;</li>
+      <li><strong>Volume máximo:</strong> o valor de frete será utilizado somente se o volume do item calculado não ultrapassar este valor;</li>
+      <li><strong>Tempo de entrega:</strong> prazo dado pela transportadora pra entregar o produto, contato a partir da retirada do item no centro de distribuição.</li>
+    </ul>
+
+    <p>A tabela abaixo é um exemplo simplificado de uma tabela de valores de frete:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>CEP inicial</th>
+          <th>CEP final</th>
+          <th>Peso inicial</th>
+          <th>Peso final</th>
+          <th>Preço</th>
+          <th>Adicional por preço</th>
+          <th>Adicional por peso</th>
+          <th>Volume máximo</th>
+          <th>Tempo</th>
+          <th>País</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>100000000</td>
+          <td>100000999</td>
+          <td>3001</td>
+          <td>10000</td>
+          <td>15,00</td>
+          <td>15,00</td>
+          <td>0,00</td>
+          <td>100000</td>
+          <td>3</td>
+          <td>BRA</td>
+        </tr>
+        <tr>
+          <td>100000000</td>
+          <td>100000999</td>
+          <td>3001</td>
+          <td>10000</td>
+          <td>15,00</td>
+          <td>15,00</td>
+          <td>0,00</td>
+          <td>100000</td>
+          <td>3</td>
+          <td>BRA</td>
+        </tr>
+        <tr>
+          <td>100000000</td>
+          <td>100000999</td>
+          <td>3001</td>
+          <td>10000</td>
+          <td>15,00</td>
+          <td>15,00</td>
+          <td>0,00</td>
+          <td>100000</td>
+          <td>3</td>
+          <td>BRA</td>
+        </tr>
+        <tr>
+          <td>100000000</td>
+          <td>100000999</td>
+          <td>3001</td>
+          <td>10000</td>
+          <td>15,00</td>
+          <td>15,00</td>
+          <td>0,00</td>
+          <td>100000</td>
+          <td>3</td>
+          <td>BRA</td>
+        </tr>
+        <tr>
+          <td>100000000</td>
+          <td>100000999</td>
+          <td>3001</td>
+          <td>10000</td>
+          <td>15,00</td>
+          <td>15,00</td>
+          <td>0,00</td>
+          <td>100000</td>
+          <td>3</td>
+          <td>BRA</td>
+        </tr>
+        <tr>
+          <td>100000000</td>
+          <td>100000999</td>
+          <td>3001</td>
+          <td>10000</td>
+          <td>15,00</td>
+          <td>15,00</td>
+          <td>0,00</td>
+          <td>100000</td>
+          <td>3</td>
+          <td>BRA</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="docs-block" id="docas-doc">    
+
+    <h2>Docas</h2>
+    <p>As docas são os operadores logisticos responsáveis por centralizar o armazenamento de produtos.</p>
+    <p>No VTEX Logistics, as docas estão no centro do processo de confecção das rotas de entrega, ou seja, os produtos saem de um estoque, seguem para uma doca e em seguida para uma transportadora.</p>
+    <p>Além das informações de roteamento com as transportadoras, as docas possuem informações sobre os canais de venda atendidos, tempo de manuseio do produto e prioridade de escolha desta doca em relação a outras docas.</p>
+    <p>A entidade Doca possui as seguintes propriedades:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Propriedades</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Id</strong></td>
+          <td>dentificador único da doca. Valor alfanumérico, mas não é permitido caracteres especiais. Ex: 12345, doca01, centro_de_distribuicao_01, 10cabd5, etc.</td>
+        </tr>
+        <tr>
+          <td><strong>Nome</strong></td>
+          <td>Nome da doca. Ex: Doca XYZ, Doca Principal, etc.</td>
+        </tr>
+        <tr>
+          <td><strong>Canais de venda</strong></td>
+          <td>Coleção de canais de venda atendidos pela doca. No mínimo 1 canal de venda deve ser associado.</td>
+        </tr>
+        <tr>
+          <td><strong>Transportadoras</strong></td>
+          <td>Lista de transportadoras que recolhem produtos na doca cadastrada. As transportadoras selecionadas compõem as rotas de entrega.</td>
+        </tr>
+        <tr>
+          <td><strong>Tempo</strong></td>
+          <td>Tempo de manuseio do produto na doca. Esse valor compoe o tempo final da estrega.</td>
+        </tr>
+        <tr>
+          <td><strong>Overhead de tempo</strong></td>
+          <td>Valor utilizado para atrasar a entrega e consequentemente desempatar rotas com mesmo tempo. Quanto maior o overhead de tempo,mais demorada é a entrega, permitindo a escolha de rotas mais rápidas. Esse valor não é acrescido no prazo final da entrega, ele serve apenas para desempate entre docas com mesmo tempo.</td>
+        </tr>
+        <tr>
+          <td><strong>Prioridade</strong></td>
+          <td>Lista de transportadoras que recolhem produtos na doca cadastrada. As transportadoras selecionadas compõem as rotas de entrega.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->

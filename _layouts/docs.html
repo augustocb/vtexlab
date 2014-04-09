@@ -2,8 +2,19 @@
 layout: default
 type: docs
 nav: docs
+styles:
+- docs
+scripts:
+- docs
+- easing.min
+- aux-navigation
 ---
-
-{% include sidebar-docs.html %}
-
-<h1>SOU UM DOC</h1>
+<div class="sidebar-docs-container" id="sidebar-docs-container">
+  {% include sidebar-docs.html %}
+</div>
+<section class="article-docs-container" id="article-docs-container">
+  <div class="docs-banner"></div>
+  <div class="article">
+    {{ content }}
+  </div>
+</section>

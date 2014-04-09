@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: guide
 title: Google Tag Manager
 category: cms-guide
 ---

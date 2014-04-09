@@ -1,6 +1,19 @@
 @import 'mixins'
 @import 'variables'
 
+.sidebar-docs-container
+  width: 25%
+  float: left
+  background: $light-grey
+.article-docs-container
+  width: 75%
+  float: left
+
+.docs-banner
+  background: #fff
+  border-bottom: 1px solid $blue
+  height: 36px
+
 .docs-header
   text-align: center
   margin: 115px 0 65px
@@ -75,4 +88,59 @@
     display: block
     padding: 5px 0
 
+.nav-doc-header
+  background: $blue
+  color: #fff
 
+.nav-doc-dropdown
+  float: left
+  width: 50%
+  ul
+    display: none
+
+.nav-doc-body
+  & > ul
+    margin: 35px 0
+    padding: 0
+    list-style: none
+  & > a, span
+    font-weight: bold
+    font-size: 16px
+  a 
+    color: $black
+
+.article-docs-container
+  padding: 0 0 60px
+
+  .doc-title
+    padding: 0 10%
+  .docs-block
+    padding: 0 10% 65px
+    margin-bottom: 65px
+    border-bottom: 1px solid $grey
+    &:last-child
+      border: 0
+      margin: 0
+      padding: 0 10%
+
+  h1 
+    margin: 80px 0
+  p
+    margin: 0 0 20px
+  table
+    margin: 65px 0
+  th
+    font: normal bold 16px $family-primary
+    padding: 0 20px 10px 0
+    text-align: left
+    border-bottom: 1px solid $grey
+  td
+    font-size: 16px
+    padding: 35px 20px 0 0
+    vertical-align: top
+
+  ul
+    padding-left: 90px
+  li
+    list-style-position: inside
+    margin: 0 0 20px
