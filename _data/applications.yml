@@ -1,25 +1,29 @@
-cms:
+-
+  name: cms
   friendyName: CMS
   description: Sou o CMS
-  versions:
-    - latest
-    - v3
-    - v2
   api:
-    - configuration
-    - customfiles
-    - pages
-    - sites
-    - templates
+    versions:
+      - latest
+      - v3
+      - v2
+    resources:
+      - configuration
+      - customfiles
+      - pages
+      - sites
+      - templates
   guide:
     - 01-google-tag-manager
-oms:
+-
+  name: oms
   friendyName: Order Management System
   description: Sou o oms
-  versions:
-    - latest
   api:
-    - feed
+    versions:
+      - latest
+    resources:
+      - feed
   guide:
     - 01-marketplace-e-seller
     - 02-fluxo-do-pedido
