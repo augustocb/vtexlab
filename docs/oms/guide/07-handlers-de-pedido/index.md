@@ -2,6 +2,8 @@
 layout: guide
 title: Handlers de pedido
 category: oms-guide
+application: OMS
+docType: guide
 ---
 
 <div id='o-que-e-google-tag-manager' class='docs-block'>

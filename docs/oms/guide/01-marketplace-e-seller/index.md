@@ -2,6 +2,8 @@
 layout: guide
 title: Marketplace e Seller
 category: oms-guide
+application: OMS
+docType: guide
 ---
 
 #Marketplace e Seller

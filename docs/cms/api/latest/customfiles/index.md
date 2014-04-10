@@ -2,6 +2,8 @@
 layout: docs
 title: customfiles
 category: cms-api
+application: CMS
+docType: api
 ---
 
 #customfiles

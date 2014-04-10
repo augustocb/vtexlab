@@ -1,13 +1,9 @@
 ---
 layout: docs
 title: configuration
-category: cms-api
+application: CMS
+docType: api
 ---
-
-
-
-
-
 
 #configuration
 

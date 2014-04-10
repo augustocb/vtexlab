@@ -2,6 +2,8 @@
 layout: docs
 title: templates
 category: cms-api
+application: CMS
+docType: api
 ---
 
 #templates

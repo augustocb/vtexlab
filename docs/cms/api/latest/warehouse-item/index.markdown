@@ -2,6 +2,8 @@
 layout: docs
 title: Warehouse item
 category: cms-guide
+application: CMS
+docType: api
 ---
 
 <div class="api-container">
@@ -11,12 +13,7 @@ category: cms-guide
 
 <div class="api-description">
 
-<h1 class="doc-title">{{ page.title }}</h1>
-
-| Descrição     | Recurso     |
-| ------------- |:------------|
-| Consulta quantidade em estoque| [POST /api/logistics/pvt/inventory/warehouseitems/getbalance](#consulta-quantidade-em-estoque) |
-| Atualiza quantidade em estoque| [POST /api/logistics/pvt/inventory/warehouseitems/setbalance](#atualiza-quantidade-em-estoque) |        
+<h1 class="doc-title">{{ page.title }}</h1>     
 
 </div>
 

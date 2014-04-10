@@ -2,6 +2,8 @@
 layout: guide
 title: Status do pedido
 category: oms-guide
+application: OMS
+docType: guide
 ---
 
 # Status do pedido

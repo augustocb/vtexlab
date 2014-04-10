@@ -2,6 +2,8 @@
 layout: docs
 title: Feed
 category: oms-api
+application: OMS
+docType: api
 ---
 
 #feed

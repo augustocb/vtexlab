@@ -2,6 +2,8 @@
 layout: guide
 title: Fluxo do pedido
 category: oms-guide
+application: OMS
+docType: guide
 ---
 
 #Fluxo do pedido

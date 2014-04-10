@@ -2,6 +2,8 @@
 layout: docs
 title: Google Tag Manager
 category: cms-guide
+application: CMS
+docType: guide
 ---
 
 <h1 class="doc-title">{{ page.title }}</h1>

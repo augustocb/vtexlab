@@ -2,6 +2,8 @@
 layout: docs
 title: sites
 category: cms-api
+application: CMS
+docType: api
 ---
 
 #sites

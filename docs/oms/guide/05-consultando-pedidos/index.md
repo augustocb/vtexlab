@@ -2,6 +2,8 @@
 layout: guide
 title: Consultando pedidos
 category: oms-guide
+application: OMS
+docType: guide
 ---
 
 #Consultando pedidos

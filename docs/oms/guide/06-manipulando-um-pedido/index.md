@@ -2,6 +2,8 @@
 layout: guide
 title: Manipulando um pedido
 category: oms-guide
+application: OMS
+docType: guide
 ---
 
 #Manipulando um pedido
