@@ -1,8 +1,10 @@
 ---
-layout: guide
+layout: docs
 title: Google Tag Manager
 category: cms-guide
 ---
+
+<h1 class="doc-title">{{ page.title }}</h1>
 
 <div id='o-que-e-google-tag-manager' class='docs-block'>
 

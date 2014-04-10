@@ -4,6 +4,11 @@ title: configuration
 category: cms-api
 ---
 
+
+
+
+
+
 #configuration
 
 <table class="table">
@@ -44,11 +49,12 @@ GET /api/portal/pvt/sites/{siteId}/configuration
 <pre class="headers">
 Status: 200 OK
 </pre>
-```json
+
+{% highlight json %}
 {
   "tagManagerId": "GTM-1234"
 }
-```
+{% endhighlight %}
 
 ---
 
@@ -62,9 +68,10 @@ GET /api/portal/pvt/sites/{siteId}/configuration/{configurationKey}
 <pre class="headers">
 Status: 200 OK, 404 NotFound 
 </pre>
-```json
+
+{% highlight json %}
 "GTM-1234"
-```
+{% endhighlight %}
 
 ---
 
@@ -75,21 +82,21 @@ PUT /api/portal/pvt/sites/{siteId}/configuration
 ```
 
 ####Exemplo
-```json
+{% highlight json %}
 {
   "tagManagerId": "GTM-5678"
 }
-```
+{% endhighlight %}
 
 ####Response
 <pre class="headers">
 Status: 200 OK, 404 NotFound
 </pre>
-```json
+{% highlight json %}
 {
   "tagManagerId": "TagManagerId569963d8-570a-45b4-884d-9a85a653dcc5"
 }
-```
+{% endhighlight %}
 ---
 
 ###Atualizar o valor de uma configuração
@@ -99,16 +106,16 @@ PUT /api/portal/pvt/sites/{siteId}/configuration/{configurationKey}
 ```
 
 ####Exemplo
-```json
+{% highlight json %}
 "GTM-5678"
-```
+{% endhighlight %}
 ####Response
 <pre class="headers">
 Status: 204 NoContent, 404 NotFound
 </pre>
 
-```json
+{% highlight json %}
 "GTM-5678"
-```
+{% endhighlight %}
 ---
 

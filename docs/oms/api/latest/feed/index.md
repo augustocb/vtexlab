@@ -1,43 +1,31 @@
 ---
-layout: oms
+layout: docs
 title: Feed
 category: oms-api
 ---
 
 #feed
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Recurso</th>
-      <th>Descrição</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <tr>
-      <td><a href="#obter-feed-de-status-de-pedido">GET /api/oms/pvt/feed/orders/status</a></td>
-      <td>Obter feed de status de pedido</td>
-    </tr>
-    <tr>
-      <td><a href="#confirmar-recebimento-de-items-do-feed-de-status-do-pedido.">POST /api/oms/pvt/feed/orders/status/confirm</a></td>
-      <td>Confirmar recebimento de items do feed de status do pedido</td>
-    </tr>
-  </tbody>
-</table>
+| Recurso | Descrição |
+|:--------|:-------|
+| [GET /api/oms/pvt/feed/orders/status](#obter-feed-de-status-de-pedido)   | Obter feed de status de pedido |
+| [POST /api/oms/pvt/feed/orders/status/confirm](#confirmar-recebimento-de-items-do-feed-de-status-do-pedido)   | Confirmar recebimento de items do feed de status do pedido |
 
-###Obter feed de status de pedido
+
+## Obter feed de status de pedido
 Obtem uma lista (estilo feed) com a atualização de status de pedido.
 
 ```
 GET /api/oms/pvt/feed/orders/status
 ```
 
-####Response
-<pre class="headers">
-Status: 200 Ok
-</pre>
-```json
+### Response
+
+    Status: 200 Ok
+
+
+{% highlight json %}
 [
   {
     "orderId": "405471212255-01",
@@ -55,27 +43,25 @@ Status: 200 Ok
     "commitToken": "Fulfillment##{\"Receipt\":\"+eXJYhj5rDr5UqFwq7jp2Gizy7tIyLyKZL8nsUys9SjFMpcjmMzKYb0iEG6qS595jqgV22jyQyRF/0nm+GKP+T+Ccau4q1NZSQK4V33yi8mT5/+4UpjB73tW2DXNUqlJOtMXARrHsdHeaU2CJCpPLL+yAM+k8jkFWCdtppQr1qMKjjAm4blB2oICoUvvRwS0xv7I35kS1/uV6ZNfG7XxzIL73xpGnvb44wYLIlHHcyzQdYGw8gayboITTTdWaz1p2YSyPEnWn78FbhWojnPD0d9nm3NEteb0CaZfd2weymg=\",\"PublisheId\":\"C0111A50CEB244E59C95422870127A4F\",\"PublisheId_Item\":\"C0111A50CEB244E59C95422870127A4F\",\"EventId\":\"eab38ee6-67ff-4053-ae11-697dc51e9e47\",\"LastSendOverwrite\":null}"
   }
 ]
-```
----
+{% endhighlight %}
 
-###Confirmar recebimento de items do feed de status do pedido
+
+## Confirmar recebimento de items do feed de status do pedido
 Confirma o recebimento de items do feed de status do pedido.
 
 ```
 POST /api/oms/pvt/feed/orders/status/confirm
 ```
 
-####Response
-<pre class="headers">
-Status: 200 Ok
-</pre>
-```json
+### Response
+
+    Status: 200 Ok
+
+{% highlight json %}
 [
   {
     "commitToken": "Marketplace##{\"Receipt\":\"+eXJYhj5rDqHa28+XUcfebDO4pve3TvMpPlW0ivc5STyE/40J6wxooXgBF8LZ9CdhZkFJnMYBVDwPwQtNEoZQrVtErDB2Yq2zs16QqsJuYxSrQtBfl9rMfmkO5orB9oDHSpvwL6DjDzcuJeQBBNxono/m4F6BloJEsk9BmuTmPaRI+7xsrN5Oeg8NPUoNSnsT983JPr1B+Y+TbbFjC1R8ZkvFHGVfti1QbhOwmYWTHPG08YMqla+Qwh7kUONLBXPqporF/CcqJo5YVTSu2uBcCuXkUo+OH9uUTn6hHkUROo=\",\"PublisheId\":\"C0111A50CEB244E59C95422870127A4F\",\"PublisheId_Item\":\"C0111A50CEB244E59C95422870127A4F\",\"EventId\":\"0dc05b6b-48a5-4f03-975a-a69fb6550aaa\",\"LastSendOverwrite\":null}"
   }
 ]
-```
-
----
+{% endhighlight %}
 
