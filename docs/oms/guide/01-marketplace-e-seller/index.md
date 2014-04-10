@@ -1,5 +1,5 @@
 ---
-layout: oms
+layout: guide
 title: Marketplace e Seller
 category: oms-guide
 ---

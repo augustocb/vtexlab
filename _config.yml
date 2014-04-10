@@ -1,6 +1,10 @@
 pygments: true
 
-markdown: redcarpet
+markdown: kramdown
+kramdown:
+  use_coderay: true
+  parse_block_html: true
+
 encoding: utf-8
 port: 9000
 

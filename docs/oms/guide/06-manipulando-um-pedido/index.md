@@ -1,5 +1,5 @@
 ---
-layout: oms
+layout: guide
 title: Manipulando um pedido
 category: oms-guide
 ---

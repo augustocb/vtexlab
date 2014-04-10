@@ -4,9 +4,11 @@ title: Google Tag Manager
 category: cms-guide
 ---
 
+<div id='o-que-e-google-tag-manager' class='docs-block'>
+
 ## O que é Google Tag Manager?
 
-O Tag manager é uma ferramenta do Google que faz gerenciamento de tags no site. Mais informações: http://www.youtube.com/watch?v=KRvbFpeZ11Y
+O Tag manager é uma ferramenta do Google que faz gerenciamento de tags no site. [Mais informações](http://www.youtube.com/watch?v=KRvbFpeZ11Y)
 
 Na versão SmartCheckout, a integração com Tag Manager é nativa e vai simplificar bastante a integração da loja com os parceiros.
 
@@ -22,7 +24,7 @@ Acesse o link abaixo para configurar:
 
 ## Exemplo das informações enviadas
 
-```json
+~~~ json
 {
     "transactionId": "344611898869-01",
     "transactionDate": "2013-07-05T20:33:24",
@@ -49,4 +51,6 @@ Acesse o link abaixo para configurar:
     ]
     "event": "orderPlaced"
 }
-```
+~~~
+
+</div>

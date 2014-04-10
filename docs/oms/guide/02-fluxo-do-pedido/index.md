@@ -1,5 +1,5 @@
 ---
-layout: oms
+layout: guide
 title: Fluxo do pedido
 category: oms-guide
 ---

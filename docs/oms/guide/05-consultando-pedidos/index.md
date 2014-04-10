@@ -1,5 +1,5 @@
 ---
-layout: oms
+layout: guide
 title: Consultando pedidos
 category: oms-guide
 ---

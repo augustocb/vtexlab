@@ -1,5 +1,5 @@
 ---
-layout: oms
+layout: guide
 title: Handlers de pedido
 category: oms-guide
 ---

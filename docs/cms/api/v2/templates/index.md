@@ -1,5 +1,5 @@
 ---
-layout: guide
+layout: docs
 title: templates
 category: cms-api
 ---
