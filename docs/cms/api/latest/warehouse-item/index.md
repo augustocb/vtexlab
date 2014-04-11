@@ -24,12 +24,253 @@ docType: api
 <div class="api-description">
 
 ## Consulta quantidade em estoque
+{: #consulta-quantidade-em-estoque .slug-text }
 
 Obtém o balanço de estoque de uma coleção de itens
 
+POST /api/logistics/pvt/inventory/warehouseitems/getbalance
+{: .api-route }
+
 ### Parâmetros
 
-| Nome           | Tipo         |
+<table class="doc-api-table">
+  <thead>
+    <tr>
+      <th class="text-right">Nome</th>
+      <th class="text-left">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-right">
+        <strong class="api-table-title">id</strong>
+      </td>
+      <td>
+        <strong class="api-table-type">string</strong>
+        <span class="api-table-description">Requerido. Identificador único do item</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <strong class="api-table-title">groupItemId</strong>
+      </td>
+      <td>
+        <strong class="api-table-type">string</strong>
+        <span class="api-table-description">Identificador de agrupamento do item. Itens com o mesmo groupItemId devem ser entregues juntos</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <strong class="api-table-title">quantity</strong>
+      </td>
+      <td>
+        <strong class="api-table-type">int</strong>
+        <span class="api-table-description">Requerido. Quantidade total do item</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <strong class="api-table-title">price</strong>
+      </td>
+      <td>
+        <strong class="api-table-type">decimal</strong>
+        <span class="api-table-description">Requerido. Preço do item</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <strong class="api-table-title">modal</strong>
+      </td>
+      <td>
+        <strong class="api-table-type">DateTimeOffset</strong>
+        <span class="api-table-description">Categorização de entrega em que se enquadra o item. Pode ser Líquido, Químico ou Refrigerado.</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <strong class="api-table-title">additionalHandlingTime</strong>
+      </td>
+      <td>
+        <strong class="api-table-type">TimeSpam</strong>
+        <span class="api-table-description">Tempo para manipulação do item. É acrescido ao tempo final da entrega</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right">
+        <strong class="api-table-title">kitItem</strong>
+      </td>
+      <td>
+        <strong class="api-table-type">array</strong>
+        <span class="api-table-description">Coleção de outros itens que compõem este item. Ocorre nos casos em que o item é um kit</span>
+      </td>
+    </tr>
+    <tr class="doc-api-table-child">
+      <td colspan="2">
+        
+        <div class="arrow-up"></div>
+        
+        <table class="doc-api-table">
+            <tr>
+              <td class="text-right">
+                <strong class="api-table-title">id</strong>
+              </td>
+              <td>
+                <strong class="api-table-type">string</strong>
+                <span class="api-table-description">Requerido. Identificador único do item</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right">
+                <strong class="api-table-title">groupItemId</strong>
+              </td>
+              <td>
+                <strong class="api-table-type">string</strong>
+                <span class="api-table-description">Identificador de agrupamento do item. Itens com o mesmo groupItemId devem ser entregues juntos</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right">
+                <strong class="api-table-title">quantity</strong>
+              </td>
+              <td>
+                <strong class="api-table-type">int</strong>
+                <span class="api-table-description">Requerido. Quantidade total do item</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right">
+                <strong class="api-table-title">price</strong>
+              </td>
+              <td>
+                <strong class="api-table-type">decimal</strong>
+                <span class="api-table-description">Requerido. Preço do item</span>
+              </td>
+            </tr>
+            <tr class="doc-api-table-child">
+              <td colspan="2">
+
+                <div class="arrow-up"></div>
+
+                <table class="doc-api-table">
+                    <tr>
+                      <td class="text-right">
+                        <strong class="api-table-title">id</strong>
+                      </td>
+                      <td>
+                        <strong class="api-table-type">string</strong>
+                        <span class="api-table-description">Requerido. Identificador único do item</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-right">
+                        <strong class="api-table-title">groupItemId</strong>
+                      </td>
+                      <td>
+                        <strong class="api-table-type">string</strong>
+                        <span class="api-table-description">Identificador de agrupamento do item. Itens com o mesmo groupItemId devem ser entregues juntos</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-right">
+                        <strong class="api-table-title">quantity</strong>
+                      </td>
+                      <td>
+                        <strong class="api-table-type">int</strong>
+                        <span class="api-table-description">Requerido. Quantidade total do item</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-right">
+                        <strong class="api-table-title">price</strong>
+                      </td>
+                      <td>
+                        <strong class="api-table-type">decimal</strong>
+                        <span class="api-table-description">Requerido. Preço do item</span>
+                      </td>
+                    </tr>
+                    <tr class="doc-api-table-child">
+                      <td colspan="2">
+
+                        <div class="arrow-up"></div>
+
+                        <table class="doc-api-table">
+                            <tr>
+                              <td class="text-right">
+                                <strong class="api-table-title">id</strong>
+                              </td>
+                              <td>
+                                <strong class="api-table-type">string</strong>
+                                <span class="api-table-description">Requerido. Identificador único do item</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-right">
+                                <strong class="api-table-title">groupItemId</strong>
+                              </td>
+                              <td>
+                                <strong class="api-table-type">string</strong>
+                                <span class="api-table-description">Identificador de agrupamento do item. Itens com o mesmo groupItemId devem ser entregues juntos</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-right">
+                                <strong class="api-table-title">quantity</strong>
+                              </td>
+                              <td>
+                                <strong class="api-table-type">int</strong>
+                                <span class="api-table-description">Requerido. Quantidade total do item</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-right">
+                                <strong class="api-table-title">price</strong>
+                              </td>
+                              <td>
+                                <strong class="api-table-type">decimal</strong>
+                                <span class="api-table-description">Requerido. Preço do item</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-right">
+                                <strong class="api-table-title">modal</strong>
+                              </td>
+                              <td>
+                                <strong class="api-table-type">DateTimeOffset</strong>
+                                <span class="api-table-description">Categorização de entrega em que se enquadra o item. Pode ser Líquido, Químico ou Refrigerado.</span>
+                              </td>
+                            </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-right">
+                        <strong class="api-table-title">modal</strong>
+                      </td>
+                      <td>
+                        <strong class="api-table-type">DateTimeOffset</strong>
+                        <span class="api-table-description">Categorização de entrega em que se enquadra o item. Pode ser Líquido, Químico ou Refrigerado.</span>
+                      </td>
+                    </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right">
+                <strong class="api-table-title">modal</strong>
+              </td>
+              <td>
+                <strong class="api-table-type">DateTimeOffset</strong>
+                <span class="api-table-description">Categorização de entrega em que se enquadra o item. Pode ser Líquido, Químico ou Refrigerado.</span>
+              </td>
+            </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- | Nome           | Tipo         |
 | -------------:  |-------------- |
 | id <br> *Identificador único do item*    | string     |
 | groupItemId <br> *Identificador de agrupamento do item. Itens com o mesmo groupItemId devem ser entregues juntos*   | string     |
@@ -56,14 +297,11 @@ Obtém o balanço de estoque de uma coleção de itens
 | **[kitItem]**.dimension.width   <br> *Largura* | decimal      |
 | **[kitItem]**.dimension.length <br> *Comprimento*   | decimal |
 | **[kitItem]**.dimension.maxSumDimension   | decimal  |
-| **[kitItem]**.kitItem  <br> *Coleção de outros itens que compõem este item. Ocorre nos casos em que o item é um kit* | array   |
+| **[kitItem]**.kitItem  <br> *Coleção de outros itens que compõem este item. Ocorre nos casos em que o item é um kit* | array   | -->
 
 </div>
 
 <div class="api-example">
-
-POST /api/logistics/pvt/inventory/warehouseitems/getbalance
-{: .resource-detail }
 
 Exemple request
 {: .resource-title }

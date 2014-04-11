@@ -197,11 +197,11 @@
   th
     font: normal bold 16px $family-primary
     padding: 0 20px 10px 0
-    text-align: left
+    // text-align: left
     border-bottom: 1px solid $grey
   td
     font-size: 16px
-    padding: 35px 20px 0 0
+    padding: 20px
     vertical-align: top
 
   ul
@@ -211,10 +211,10 @@
     margin: 0 0 20px
 
 .api-container
-  margin-left: 50%
+  margin-left: 60%
   background: $black
   .api-block
-    margin-left: -100%
+    margin-left: -150%%
     padding-bottom: 65px
     margin-bottom: 65px
     border-bottom: 1px solid $light-grey
@@ -227,13 +227,18 @@
       border: 0
 
   .api-description
-    .doc-title
-      padding: 0
     box-sizing: border-box
     padding: 0 5%
-    width: 50%
+    width: 60%
     background: #fff
     float: left
+    .api-route
+      padding: 15px 20px
+      margin-bottom: 40px
+      font: normal 13px "Lucida Console", Monaco, monospace
+      background: $light-grey
+    .doc-title
+      padding: 0
     table
       width: 100%
       max-width: 100%
@@ -249,11 +254,59 @@
     color: $grey
     word-wrap: break-word
     padding: 0 5%
-    width: 50%
-    margin-left: 50%
+    width: 40%
+    margin-left: 60%
     .resource-detail
       background: $dark-grey
       margin: 0 -12.5% 55px
       padding: 10px 12.5%
     .resource-title
       text-transform: uppercase
+
+.doc-api-table
+  width: 100%
+  th:first-child, td:first-child
+    width: 33%
+  .doc-api-table-child > td
+    width: 100%
+    padding: 35px 0 0
+  .api-table-title
+    display: block
+  .api-table-description
+    display: block
+
+  .doc-api-table-child
+    background: #fff
+    border-left: 0 !important
+    & > td
+      padding: 0
+    .arrow-up
+      position: relative
+      &:before
+        @include prefix(transform, rotate(45deg))
+        position: absolute
+        content: ""
+        display: block
+        z-index: 12
+        top: -10px
+        left: 24%
+        width: 20px
+        height: 20px
+        background: $light-grey
+        border: 1px solid $grey
+        border-right: 0
+        border-bottom: 0
+  
+  .doc-api-table
+    border-bottom: 1px solid $grey
+    border-top: 1px solid $grey
+    position: relative
+    background: $light-grey
+    width: -webkit-calc(100% - 19px) !important
+    width: -moz-calc(100% - 19px) !important
+    width: calc(100% - 19px) !important
+    margin: 0
+    margin-left: 20px
+    tr
+      border-left: 1px solid $grey
+      border-right: 1px solid $grey
