@@ -106,23 +106,74 @@
 .nav-doc-header
   background: $blue
   color: #fff
+  position: relative
 
 .nav-doc-dropdown
   float: left
   width: 50%
+  height: 36px
+  &:hover 
+    background: $dark-grey
+    ul
+      display: block
+  .fa
+    position: relative
+    top: -4px
+    left: 3px
+    color: $light-blue
   ul
+    position: absolute
+    outline: 1px solid $light-grey
+    border-bottom: 3px solid $grey
+    z-index: 11
+    left: 0
+    width: 100%
+    top: 36px
+    margin: 0
+    padding: 0
+    background: #fff
     display: none
+    a
+      display: block
+      padding: 5px
+      font-size: 12px
+      text-transform: uppercase
+      &:hover
+        background: $light-grey
+        text-decoration: none
+
+  .selected-nav
+    padding: 8px 5px
+    display: block
+    font: normal normal 16px $family-title
+    text-transform: uppercase
+    cursor: default
+
+    &:last-child
+      border-left: 1px solid #fff
 
 .nav-doc-body
   & > ul
     margin: 35px 0
     padding: 0
     list-style: none
+  li
+    font: normal normal 16px $family-primary
+
+    ul
+      margin: 0
+      padding-left: 20px
+    li
+      font-size: 14px
+      list-style: none
+
   & > a, span
     font-weight: bold
     font-size: 16px
   a 
     color: $black
+    padding: 4px 0
+    display: block
 
 .article-docs-container
   .doc-title
