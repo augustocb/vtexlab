@@ -63,9 +63,10 @@ Obtém o balanço de estoque de uma coleção de itens
 <div class="api-example">
 
 POST /api/logistics/pvt/inventory/warehouseitems/getbalance
+{: .resource-detail }
 
-
-#### Exemplo request
+Exemple request
+{: .resource-title }
 
 {% highlight json %}
 [
@@ -98,12 +99,11 @@ POST /api/logistics/pvt/inventory/warehouseitems/getbalance
 ]
 {% endhighlight %}
 
+Exemplo Response
+{: .resource-title }
 
-
-
-#### Exemplo Response
-
-    Status: `200 OK` `400 BadRequest` `500 InternalServerError` 
+Status: `200 OK` `400 BadRequest` `500 InternalServerError` 
+{: .resources-status }
 
 {% highlight json %}
 [
@@ -162,8 +162,11 @@ Atualiza a quantidade em estoque de uma coleção de itens
 <div class="api-example">
 
 POST /api/logistics/pvt/inventory/warehouseitems/setbalance
+{: .resource-detail }
 
-#### Exemplo
+Exemplo
+{: .resource-title }
+
 {% highlight json %}
 [
   {
@@ -183,9 +186,11 @@ POST /api/logistics/pvt/inventory/warehouseitems/setbalance
 ]
 {% endhighlight %}
 
-#### Response
+Response
+{: .resource-title }
 
-    Status: `200 OK` `400 BadRequest` `500 InternalServerError` 
+Status: `200 OK` `400 BadRequest` `500 InternalServerError` 
+{: .resources-status }
 
 {% highlight json %}
 true
