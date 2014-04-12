@@ -1,0 +1,26 @@
+highlighter: rouge
+
+markdown: kramdown
+kramdown:
+  use_coderay: true
+  parse_block_html: true
+
+encoding: utf-8
+port: 9000
+
+permalink: /blog/:title
+
+paginate_path: "blog/page:num"
+paginate: 10
+
+redcarpet:
+  extensions:
+    - tables
+    - strikethrough
+    - no_intra_emphasis
+    - highlight
+    - footnotes
+
+assets:
+  js_compressor:  uglifier
+  css_compressor: sass

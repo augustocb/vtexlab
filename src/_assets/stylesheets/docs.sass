@@ -1,0 +1,313 @@
+@import 'mixins'
+@import 'variables'
+
+.main-content
+  position: relative
+  height: 100%
+
+.sidebar-docs-container
+  width: 200px
+  position: absolute
+  left: 0
+  bottom: 0
+  z-index: 9
+  top: 0
+  background: $light-grey
+
+.fixed-sidebar
+  position: fixed
+
+.footer
+  z-index: 10
+  position: relative
+
+.article-docs-container
+  margin-left: 200px
+
+.docs-banner
+  background: #fff
+  border-bottom: 1px solid $blue
+  height: 36px
+
+.docs-header
+  text-align: center
+  margin: 115px 0 65px
+  .docs-title 
+    display: inline-block
+    margin: 0 auto 10px
+    padding-bottom: 5px
+    border-bottom: 1px solid $grey
+  .docs-description
+    font-size: 18px
+    color: $dark-grey
+  // .docs-title 
+  //   font-size: 70px
+  //   font-family: $family-primary
+  //   font-weight: normal
+  //   text-transform: uppercase
+  //   display: inline-block
+  //   margin: 0 auto 10px
+  //   padding-bottom: 8px
+  //   border-bottom: 1px solid $grey
+  // .docs-description
+  //   font-size: 25px
+  //   color: $grey
+
+
+.docs-search
+  background: $blue
+  padding: 45px 0
+
+  input 
+    width: 100%
+    padding: 15px
+    background: $blue
+    border: 1px solid #fff 
+    border-radius: 8px
+    font-size: 18px
+    color: #fff
+    &:focus
+      border: 1px solid #fff
+      outline: none
+    &::-webkit-input-placeholder
+      color: #fff
+    &:-moz-placeholder
+      color: #fff
+    &::-moz-placeholder
+      color: #fff
+    &:-ms-input-placeholder
+      color: #fff
+
+  .btn 
+    background: #fff
+    color: $blue
+    width: 100%
+    padding: 15px
+
+.docs-list
+  margin: 60px 0
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+
+.doc-card
+  border: 1px solid $grey
+  border-radius: 8px
+  text-align: center
+  padding: 45px 30px
+  margin-bottom: 20px
+  h3
+    margin: 0 0 25px
+  a 
+    display: block
+    padding: 5px 0
+
+.nav-doc-header
+  background: $blue
+  color: #fff
+  position: relative
+
+.nav-doc-dropdown
+  float: left
+  width: 50%
+  height: 36px
+  &:hover 
+    background: $dark-grey
+    ul
+      display: block
+  .fa
+    position: relative
+    top: -4px
+    left: 3px
+    color: $light-blue
+  ul
+    position: absolute
+    outline: 1px solid $light-grey
+    border-bottom: 3px solid $grey
+    z-index: 11
+    left: 0
+    width: 100%
+    top: 36px
+    margin: 0
+    padding: 0
+    background: #fff
+    display: none
+    a
+      display: block
+      padding: 5px
+      font-size: 12px
+      text-transform: uppercase
+      &:hover
+        background: $light-grey
+        text-decoration: none
+
+  .selected-nav
+    padding: 8px 5px
+    display: block
+    font: normal normal 16px $family-title
+    text-transform: uppercase
+    cursor: default
+
+    &:last-child
+      border-left: 1px solid #fff
+
+.nav-doc-body
+  & > ul
+    margin: 35px 0
+    padding: 0
+    list-style: none
+  li
+    font: normal normal 16px $family-primary
+
+    ul
+      margin: 0
+      padding-left: 20px
+    li
+      font-size: 14px
+      list-style: none
+
+  & > a, span
+    font-weight: bold
+    font-size: 16px
+  a 
+    color: $black
+    padding: 4px 0
+    display: block
+
+.article-docs-container
+  .doc-title
+    padding: 0 10%
+
+  .docs-block
+    padding: 0 10% 65px
+    margin-bottom: 65px
+    border-bottom: 1px solid $grey
+    &:last-child
+      border: 0
+      margin: 0
+      padding: 0 10%
+
+  h1 
+    margin: 80px 0
+  p
+    margin: 0 0 20px
+  table
+    margin: 65px 0
+  th
+    font: normal bold 16px $family-primary
+    padding: 0 20px 10px 0
+    // text-align: left
+    border-bottom: 1px solid $grey
+  td
+    font-size: 16px
+    padding: 20px
+    vertical-align: top
+
+  ul
+    padding-left: 90px
+  li
+    list-style-position: inside
+    margin: 0 0 20px
+
+.api-container
+  margin-left: 60%
+  background: $black
+  .api-block
+    margin-left: -150%%
+    padding-bottom: 65px
+    margin-bottom: 65px
+    border-bottom: 1px solid $light-grey
+    clear: both
+    overflow: hidden
+    &:first-child
+      padding-bottom: 0
+    &:last-child
+      margin-bottom: 0
+      border: 0
+
+  .api-description
+    box-sizing: border-box
+    padding: 0 5%
+    width: 60%
+    background: #fff
+    float: left
+    .api-route
+      padding: 15px 20px
+      margin-bottom: 40px
+      font: normal 13px "Lucida Console", Monaco, monospace
+      background: $light-grey
+    .doc-title
+      padding: 0
+    table
+      width: 100%
+      max-width: 100%
+    td
+      font-size: 14px
+      em 
+        font-size: 14px
+        line-height: 14px
+        color: $dark-grey
+  .api-example
+    font-family: "Lucida Console", Monaco, monospace
+    font-size: 12px
+    color: $grey  
+    word-wrap: break-word
+    padding: 0 5%
+    width: 40%
+    margin-left: 60%
+    .resource-detail
+      background: $dark-grey
+      margin: 0 -12.5% 55px
+      padding: 10px 12.5%
+    .resource-title
+      text-transform: uppercase
+
+.doc-api-table
+  width: 100%
+  th:first-child, td:first-child
+    width: 33%
+  .doc-api-table-child > td
+    width: 100%
+    padding: 35px 0 0
+  .api-table-title
+    display: block
+  .api-table-description
+    display: block
+
+  .doc-api-table-child
+    background: #fff
+    border-left: 0 !important
+    display: none
+    & > td
+      padding: 0
+    .arrow-up
+      position: relative
+      &:before
+        @include prefix(transform, rotate(45deg))
+        position: absolute
+        content: ""
+        display: block
+        z-index: 12
+        top: -10px
+        left: 24%
+        width: 20px
+        height: 20px
+        background: $light-grey
+        border: 1px solid $grey
+        border-right: 0
+        border-bottom: 0
+  
+  .doc-api-table
+    border-bottom: 1px solid $grey
+    border-top: 1px solid $grey
+    position: relative
+    background: $light-grey
+    width: -webkit-calc(100% - 19px) !important
+    width: -moz-calc(100% - 19px) !important
+    width: calc(100% - 19px) !important
+    margin: 0
+    margin-left: 20px
+    tr
+      border-left: 1px solid $grey
+      border-right: 1px solid $grey
