@@ -1,6 +1,7 @@
 # products Generator is a Jekyll plugin that generates a data/products.yml file by
 # traversing all of the available pages.
 require 'yaml'
+require 'pathname'
 
 module Jekyll
 	class Product
@@ -24,7 +25,7 @@ module Jekyll
       include_version(@products, page)
     end
 
-		productFile = File.new('_data/products.yml', 'w')
+    productFile = File.new(File.join(Pathname(__FILE__).dirname.parent, "_data/products.yml"),"w")
 		productFile.puts YAML.dump(getListOfProducts(@products))
 		productFile.close
 	end
