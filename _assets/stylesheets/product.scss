@@ -1,0 +1,327 @@
+@import 'mixins';
+@import 'variables';
+
+.product-detail {
+  h2 {
+    text-transform: uppercase;
+    font-size: 68px;
+    color: #525252;
+  }
+  span {
+    color: #2cb6d6;
+    display: block;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
+.main-video {
+  background: #2cb6d6;
+  h2 {
+    color: white;
+    margin: 115px 0 40px;
+    padding: 0;
+  }
+  p {
+    color: white;
+  }
+  .product-header {
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+.product-video {
+  margin: 100px auto 50px;
+}
+
+.mac-book-player {
+  position: relative;
+  margin: 0 auto;
+  clear: both;
+  background: url(../images/SmartCheckout_Mac.png) center center no-repeat;
+  max-width: 782px;
+  width: 100%;
+  height: 441px;
+}
+
+.timer {
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: -35px;
+  right: 116px;
+  img {
+    position: relative;
+    top: -3px;
+  }
+}
+
+.oms-detail .product-header {
+  margin: 90px 0 100px;
+}
+
+// PCI
+.security-detail {
+  .product-header {
+    margin: 300px 0;
+  }
+}
+
+.lock-animation {
+  position: absolute;
+  width: 77px;
+  height: 181px;
+  top: 189px;
+  .key {
+    position: absolute;
+    background: url(../images/pci-sprite.png) no-repeat -381px -8px;
+    width: 77px;
+    height: 181px;
+    top: 350px;
+    left: 46px;
+    z-index: 7;
+    &.active {
+      top: 220px;
+    }
+  }
+  .lock-closed {
+    position: absolute;
+    background: url(../images/pci-sprite.png) no-repeat -10px -7px;
+    width: 172px;
+    height: 317px;
+    z-index: 8;
+  }
+  .lock-open {
+    position: absolute;
+    background: url(../images/pci-sprite.png) no-repeat -199px -7px;
+    width: 172px;
+    height: 317px;
+    z-index: 9;
+    opacity: 0;
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+.key-animation {
+  @include prefix(animation, keyTransition 0.8s ease both);
+}
+
+.lock-fadeIn {
+  @include prefix(animation, lockTransition 1.6s ease both);
+}
+
+@-webkit-keyframes keyTransition {
+  100% {
+    top: 220px;
+  }
+}
+
+
+@-moz-keyframes keyTransition {
+  100% {
+    top: 220px;
+  }
+}
+
+
+@keyframes keyTransition {
+  100% {
+    top: 220px;
+  }
+}
+
+
+@-webkit-keyframes lockTransition {
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@-moz-keyframes lockTransition {
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes lockTransition {
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+// VTEXID
+.vtexid-detail {
+  background: black;
+  height: 760px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  .galaxy-display {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    background: url(../images/id-bg-galaxy.jpg) top center;
+  }
+  .show-galaxy {
+    @include prefix(animation, galleryTransition 3.8s ease both);
+  }
+  .digital-container {
+    width: 343px;
+    height: 505px;
+    position: relative;
+    float: right;
+  }
+  .digital {
+    background: url(../images/digital.png) left center no-repeat;
+    opacity: 0;
+    width: 343px;
+    height: 505px;
+    &.active {
+      @include prefix(animation, digitalTransition 3.8s ease both);
+    }
+  }
+  .digital-stars {
+    background: url(../images/digital.png) -322px center no-repeat;
+    opacity: 0;
+    width: 343px;
+    height: 505px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    &.active {
+      @include prefix(animation, digitalStarsTransition 3.8s ease both);
+    }
+  }
+  h2 {
+    color: white;
+  }
+  .product-header {
+    margin-top: 80px;
+  }
+}
+
+@-webkit-keyframes galleryTransition {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@-moz-keyframes galleryTransition {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes galleryTransition {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@-webkit-keyframes digitalTransition {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+
+@-moz-keyframes digitalTransition {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes digitalTransition {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+
+@-webkit-keyframes digitalStarsTransition {
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}
+
+
+@-moz-keyframes digitalStarsTransition {
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}
+
+
+@keyframes digitalStarsTransition {
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}

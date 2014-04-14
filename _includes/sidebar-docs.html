@@ -1,0 +1,37 @@
+<aside class="sidebar-docs clearfix" id="sidebar-docs">
+  <div class="nav-doc-header clearfix">
+    <div class="nav-doc-app nav-doc-dropdown">
+      <span class="selected-nav">{{ page.application }} <i class="fa fa-sort-asc"></i></span>
+      <ul>
+        {% for nav in site.data.products %}
+        <li>
+          <a href="/">{{ nav.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="nav-doc-category nav-doc-dropdown">
+      <span class="selected-nav">{{ page.docType }} <i class="fa fa-sort-asc"></i></span>
+      <ul>
+        {% for nav in site.data.products %}
+          {% if nav.name == page.application %}        
+            {% for doc in nav.documentation  %}
+              <li>
+                <a href="/">{{ doc }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="nav-doc-body col-md-10 col-md-offset-1">
+    <ul>
+      {% for pageItem in site.pages %}
+        {% if pageItem.application == page.application and pageItem.docType == page.docType %}
+          <li><a href="{{ pageItem.url }}">{{ pageItem.title }}</a></li>      
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</aside>

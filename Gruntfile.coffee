@@ -4,20 +4,44 @@ module.exports = (grunt) ->
   grunt.initConfig
     clean:
       main: ['_site']
+      assets: ['assets']
 
     jekyll:
-      server:
+      build:
         options:
-          src: "src"
-          dest: "_site"
           trace: true
+
+    sass:
+      dist:
+        options:
+          style: 'expanded'
+          debugInfo: true
+        files: [
+          expand: true
+          cwd: '_assets/stylesheets'
+          src: ['main.scss', 'post-list.scss', 'product.scss', 'post.scss', 'docs.scss']
+          dest: 'assets/stylesheets'
+          ext: '.css'
+        ]
+
+    copy:
+      main:
+        expand: true
+        cwd: '_assets/javascripts/'
+        src: '**'
+        dest: 'assets/javascripts/'
 
     watch:
       options:
         livereload: true
-      dev:
-        files: ['src/', '!src/_data']
-        tasks: ['clean', 'jekyll']
+        debounceDelay: 25
+        spawn: false
+      main:
+        files: ['**/*.html', '!**/*.sass', '**/*.md', '!**/*.js', '!node_modules', '!node_modules/**/*.js', '!_data/products.yml', '!_site', '!_site/**/*.*']
+        tasks: ['clean:main', 'jekyll']
+      assets:
+        files: ['**/*.scss', '**/*.js', '!node_modules', '!node_modules/**/*.js', '!_data/products.yml', '!_site', '!_site/**/*.*']
+        tasks: ['clean:assets', 'copy', 'sass', 'jekyll']
 
     connect:
       main:
@@ -28,4 +52,4 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks name for name of pkg.dependencies when name[0..5] is 'grunt-'
 
-  grunt.registerTask 'default', ['clean', 'jekyll', 'connect', 'watch']
+  grunt.registerTask 'default', ['clean', 'copy', 'sass', 'jekyll', 'connect', 'watch']

@@ -1,0 +1,15 @@
+---
+- !ruby/object:Jekyll::Product
+  name: CMS
+  documentation:
+  - api
+  - guide
+  versions:
+  - latest
+- !ruby/object:Jekyll::Product
+  name: OMS
+  documentation:
+  - api
+  - guide
+  versions:
+  - latest

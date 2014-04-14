@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"> 
+<head>
+  <meta charset="utf-8">
+  <title>{{page.title}}{% if page.title %} - {%endif%}VTEX Lab</title>
+  <script type="text/javascript" src="/assets/javascripts/modernizr.js"></script>
+
+  <link rel="stylesheet" href="//io.vtex.com.br/front-libs/font-awesome/4.0.1/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/assets/stylesheets/main.css" />
+  {% for style in page.styles %}
+  <link rel="stylesheet" href="/assets/stylesheets/{{ style }}.css" />    
+  {% endfor %}
+</head>
+<body{% if page.type == "post" %} class="post-page"{% endif %}>
+  <div class="container">
+    <div class="header-button" id="header-button"></div>
+  </div>
+
+  {% include header.html %}
+
+  <section class="main-content clearfix">
+    {{ content }}
+  </section>
+
+  {% if page.type != "post" %}
+  <footer class="footer default-footer">
+    <div class="container">
+      <a href="#" id="footer-logo" class="footer-logo">Blog Vtex</a>
+    </div>
+  </footer>
+  {% endif %}
+  <script type="text/javascript" src="/assets/javascripts/jquery.min.js"></script>
+  {% for script in page.scripts %}
+    <script type="text/javascript" src="/assets/javascripts/{{ script }}.js"></script>
+  {% endfor %}
+</body>
+</html>
