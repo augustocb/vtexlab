@@ -33,10 +33,9 @@ module Jekyll
     def include_docType(products, page)
     	if products.has_key?(page.data['application']) == true
     		@product = products[page.data['application']]
-    		if @product.documentation.include?(page.data['docType']) == false
-    			@product.documentation.push page.data['docType']
-    		end
-    	end
+
+        @product.documentation[page.data['docType']] << page.url
+      end
     end
 
     def include_version(products, page)
@@ -76,7 +75,7 @@ module Jekyll
 	def create_product(name)
 		@product = Product.new
 		@product.name = name
-		@product.documentation = Array.new
+		@product.documentation = Hash.new {|h,k| h[k]=[]}
 		@product.versions = Array.new
 		return @product
     end
