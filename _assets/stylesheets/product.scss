@@ -40,7 +40,7 @@
   position: relative;
   margin: 0 auto;
   clear: both;
-  background: url(../images/SmartCheckout_Mac.png) center center no-repeat;
+  background: url(/images/SmartCheckout_Mac.png) center center no-repeat;
   max-width: 782px;
   width: 100%;
   height: 441px;
@@ -76,7 +76,7 @@
   top: 189px;
   .key {
     position: absolute;
-    background: url(../images/pci-sprite.png) no-repeat -381px -8px;
+    background: url(/images/pci-sprite.png) no-repeat -381px -8px;
     width: 77px;
     height: 181px;
     top: 350px;
@@ -88,14 +88,14 @@
   }
   .lock-closed {
     position: absolute;
-    background: url(../images/pci-sprite.png) no-repeat -10px -7px;
+    background: url(/images/pci-sprite.png) no-repeat -10px -7px;
     width: 172px;
     height: 317px;
     z-index: 8;
   }
   .lock-open {
     position: absolute;
-    background: url(../images/pci-sprite.png) no-repeat -199px -7px;
+    background: url(/images/pci-sprite.png) no-repeat -199px -7px;
     width: 172px;
     height: 317px;
     z-index: 9;
@@ -179,7 +179,7 @@
     opacity: 0;
     top: 0;
     bottom: 0;
-    background: url(../images/id-bg-galaxy.jpg) top center;
+    background: url(/images/id-bg-galaxy.jpg) top center;
   }
   .show-galaxy {
     @include prefix(animation, galleryTransition 3.8s ease both);
@@ -191,7 +191,7 @@
     float: right;
   }
   .digital {
-    background: url(../images/digital.png) left center no-repeat;
+    background: url(/images/digital.png) left center no-repeat;
     opacity: 0;
     width: 343px;
     height: 505px;
@@ -200,7 +200,7 @@
     }
   }
   .digital-stars {
-    background: url(../images/digital.png) -322px center no-repeat;
+    background: url(/images/digital.png) -322px center no-repeat;
     opacity: 0;
     width: 343px;
     height: 505px;
