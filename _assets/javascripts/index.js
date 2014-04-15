@@ -7,7 +7,7 @@
   $(document).on('scroll', function(e){
     console.log($security.position().top);
 
-    if ( ($security.position().top - 250) < $(window).scrollTop() ) {
+    if ( ($security.position().top) < $(window).scrollTop() ) {
       $('.key').addClass('key-animation');
       $('.lock-open').addClass('lock-fadeIn');
     };
