@@ -8,6 +8,7 @@ module Jekyll
 		attr_accessor :name
 		attr_accessor :documentation
 		attr_accessor :versions
+    attr_accessor :title
 	end
 
   puts Dir.pwd
@@ -68,14 +69,22 @@ module Jekyll
 
 			if page.data['application'].length > 0
 				products[page.data['application']] = create_product(page.data['application'])
+
+        if page.data['title'].nil? == false
+          @product = products[page.data['application']]
+          @product.title = page.data['title']
+          products[page.data['application']] = @product
+        end
+
 			end
+
 		end
     end
 
 	def create_product(name)
 		@product = Product.new
 		@product.name = name
-		@product.documentation = Hash.new {|h,k| h[k]=[]}
+    @product.documentation = Hash.new {|h,k| h[k]=[]}
 		@product.versions = Array.new
 		return @product
     end
