@@ -10,15 +10,14 @@ module Jekyll
 			docFiles = parse_filesToArray("vtexlab-docs/**/*")
 			docFiles.each do |json|
 				path = File.join(Pathname(__FILE__).dirname.parent, get_docPath(json))
-				create_FilePath(path)
+				create_filePath(path)
 
-				File.open("out.txt", "w") do |f|     
-					f.write(data_you_want_to_write)
+				File.open(path, "w") do |file|
+					include_frontMatter(file, json)
+					include_title(file, json)
+					include_content(file, json)
+					include_footer(file)
 				end
-				#include_frontMatter(file, json)
-				
-				
-				#print("---->>>>>", File.join(Pathname(__FILE__).dirname.parent, get_docPath(json)),"\n")
 			end
 		end
 
@@ -26,8 +25,8 @@ module Jekyll
 			return "docs/#{json['product']}/api/#{json['version']}/#{json['resource']}/index.md"
 		end
 
-		def create_FilePath(filePath)
-			path = Pathname.new(filePath)
+		def create_filePath(filePath)
+			path = Pathname.new(filePath).parent
 			if FileTest.exist?(path) == false
 				FileUtils.mkdir_p path
 			end
@@ -54,32 +53,79 @@ module Jekyll
 		end
 
 		def include_frontMatter(file, json)
+			file.write("---\n")
+			file.write("layout: docs\n")
+			file.write("title: #{json['resource']}\n")
+			file.write("category: #{json['product']}-api\n")
+			file.write("application: #{json['product']}\n")
+			file.write("docType: api\n")
+			file.write("---\n\n")
 		end
 
-		def include_description(file)
-			#for docFile in docFiles
-			#	file = createFile(docFile.path)
-			#	include_frontMatter(file)
-			#	include_description(file)
-
-
-						# <div class="api-container">
-			#	<div class="api-block">
-			#	<div class="api-description">
-			#	<h1 class="doc-title">{{ page.title }}</h1>     
-			#	</div>
-			#
-			#	</div>
-			#
-			#	<div class="api-block">
-			#	<div class="api-description">
-				## Consulta quantidade em estoque2
-			#	{: #consulta-quantidade-em-estoque .slug-text }
-			#	Obtém o balanço de estoque de uma coleção de itens
-			#	POST /api/logistics/pvt/inventory/warehouseitems/getbalance
-			#	{: .api-route 
+		def include_title(file, json)
+			file.write("<div class=\"api-container\">\n\n")
+			file.write("<div class=\"api-block\">\n\n")
+			file.write("<div class=\"api-description\">\n\n\n")
+			file.write("<h1 class=\"doc-title\">{{ page.title }}</h1>\n")
+			file.write("</div>\n\n")
+			file.write("</div>\n\n")
 		end
 
+		def include_content(file, json)
+			json['methods'].each do |method|
+				file.write("<div class=\"api-block\">\n")
+				include_description(file, method)
+				include_example(file, method)
+				file.write("</div>\n\n")
+			end
+		end
+
+		def include_description(file, method)
+			file.write("<div class=\"api-description\">\n")
+			file.write("## #{method['title']}\n")
+			title = format_title(method['title'])
+			file.write("{: ##{title} .slug-text }\n\n")
+			file.write("#{method['description']}\n\n")
+
+			file.write("#{method['verb'].upcase}  #{method['route']}\n")
+			file.write("{: .api-route }\n\n")
+
+			include_parameters(file, method)
+			file.write("</div>\n\n")
+		end
+
+		def include_parameters(file, method)
+			file.write("## Parametros\n\n")
+		end
+
+		def include_example(file, method)
+			file.write("<div class=\"api-example\">\n\n")
+			file.write("Example Request\n")
+			file.write("{: .resource-title }\n\n")
+
+			example = JSON.pretty_generate(method['example'])
+			file.write("{% highlight json %}\n")
+			file.write("#{example}\n\n")
+			file.write("{% endhighlight %}\n\n")
+
+  			file.write("Example Response\n")
+  			file.write("{: .resource-title }\n\n")
+
+			response = JSON.pretty_generate(method['response'])
+			file.write("{% highlight json %}\n")
+			file.write("#{response}\n\n")
+			file.write("{% endhighlight %}\n")
+
+			file.write("</div>\n\n")
+		end
+
+		def include_footer(file)
+			file.write("</div>\n")
+		end
+
+		def format_title(title)
+			return title.downcase.gsub! " ", "-"
+		end
 	end
 end
 
