@@ -22,7 +22,7 @@ module Jekyll
 		end
 
 		def get_docPath(json)
-			return "docs/#{json['product']}/api/#{json['version']}/#{json['resource']}/index.md"
+			return "docs/#{json['product']}/#{json['docType']}/#{json['version']}/#{json['resource']}/index.md"
 		end
 
 		def create_filePath(filePath)
@@ -56,9 +56,9 @@ module Jekyll
 			file.write("---\n")
 			file.write("layout: docs\n")
 			file.write("title: #{json['resource']}\n")
-			file.write("category: #{json['product']}-api\n")
 			file.write("application: #{json['product']}\n")
-			file.write("docType: api\n")
+			file.write("docType: #{json['docType']}\n")
+			file.write("version: #{json['version']}\n")
 			file.write("---\n\n")
 		end
 
@@ -95,7 +95,22 @@ module Jekyll
 		end
 
 		def include_parameters(file, method)
-			file.write("## Parametros\n\n")
+			file.write("### Parametros\n\n")
+			file.write("<table class=\"doc-api-table\">\n")
+			file.write("<thead>\n")
+			file.write("<tr>\n")
+			file.write("<th class=\"text-right\">Nome</th>\n")
+			file.write("<th class=\"text-left\">Tipo</th>\n")
+			file.write("</tr>\n")
+			file.write("</thead>\n")
+			file.write("<tbody>\n")
+
+			method['parameters'].each do |param|
+				parameter(file, param)
+			end
+
+			file.write("</tbody>\n")
+			file.write("</table>\n\n")
 		end
 
 		def include_example(file, method)
@@ -108,8 +123,8 @@ module Jekyll
 			file.write("#{example}\n\n")
 			file.write("{% endhighlight %}\n\n")
 
-  			file.write("Example Response\n")
-  			file.write("{: .resource-title }\n\n")
+			file.write("Example Response\n")
+			file.write("{: .resource-title }\n\n")
 
 			response = JSON.pretty_generate(method['response'])
 			file.write("{% highlight json %}\n")
@@ -123,9 +138,50 @@ module Jekyll
 			file.write("</div>\n")
 		end
 
+		def parameter(file, parameter)
+			if parameter['children'].nil? == true
+				inject_parameter(file, parameter)
+			else
+				inject_parameter(file, parameter)
+				injectChildParameter(file, parameter)
+			end
+		end
+
+		def inject_parameter(file, parameter)
+			file.write("<tr>\n")
+			file.write("<td class=\"text-right\">\n")
+			file.write("<strong class=\"api-table-title\">#{parameter['name']}</strong>\n")
+			file.write("</td>\n")
+
+			file.write("<td>\n")
+			file.write("<strong class=\"api-table-type\">#{parameter['type']}</strong>\n")
+
+			if parameter['required'] == true
+				file.write("<span class=\"api-table-description\">Requerido. #{parameter['description']}</span>\n")
+			else
+				file.write("<span class=\"api-table-description\">#{parameter['description']}</span>\n")
+			end
+			file.write("</td>\n")
+			file.write("</tr>\n")
+		end
+
+		def injectChildParameter(file, parameters)
+			file.write("<tr class=\"doc-api-table-child\">\n")
+			file.write("<td colspan=\"2\">\n\n")
+			file.write("<div class=\"arrow-up\"></div>\n\n")
+			file.write("<table class=\"doc-api-table\">\n")
+
+			parameters['children'].each do |child|
+				parameter(file, child)
+			end
+
+			file.write("</table>\n")
+			file.write("</td>\n")
+			file.write("</tr>\n")
+		end
+
 		def format_title(title)
 			return title.downcase.gsub! " ", "-"
 		end
 	end
 end
-
