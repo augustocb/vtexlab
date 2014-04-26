@@ -22,7 +22,7 @@ module Jekyll
 		end
 
 		def get_docPath(json)
-			return "docs/#{json['product']}/#{json['docType']}/#{json['version']}/#{json['resource']}/index.md"
+			return "docs/#{json['product']}/#{json['documentation']}/#{json['version']}/#{json['resource']}/index.md"
 		end
 
 		def create_filePath(filePath)
@@ -57,7 +57,7 @@ module Jekyll
 			file.write("layout: docs\n")
 			file.write("title: #{json['resource']}\n")
 			file.write("application: #{json['product']}\n")
-			file.write("docType: #{json['docType']}\n")
+			file.write("docType: #{json['documentation']}\n")
 			file.write("version: #{json['version']}\n")
 			file.write("---\n\n")
 		end
