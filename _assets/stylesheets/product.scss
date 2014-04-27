@@ -12,6 +12,7 @@
     display: block;
   }
   p {
+    color: #525252;
     font-size: 18px;
   }
 }
@@ -61,6 +62,66 @@
 .oms-detail .product-header {
   margin: 90px 0 100px;
 }
+
+.oms-detail-flow { margin-top: 80px; }
+
+.oms-detail-item {
+  float: left;
+  height: 396px;
+  padding: 0;
+  position: relative;
+  margin-right: 130px;
+  &:first-child { margin-left: 67px; }
+  &:last-child { margin-right: 0; }
+  .box {
+    background-color: #67d25f;
+    box-sizing: border-box;
+    color: #fff;
+    display: table-cell;
+    height: 68px;
+    vertical-align: middle;
+    width: 98px;
+    @include border-radius(7px);
+  }
+  .line {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAICAIAAABRUclSAAAARElEQVR4AWP4jwQYPv/+ePfLVSD6/PsDw8Ovt1Y+nrTi8cT7X28wPP/xYOvzRUD05Ntdhu9/vz7//giIvv/5imIAbg4A5XxZsxqQaoMAAAAASUVORK5CYII=);
+    background-repeat: repeat-y;
+    display: block;
+    height: 270px;
+    left: 50%;
+    margin-left: -2px;
+    position: absolute;
+    top: 68px;
+    width: 4px;
+  }
+  .circle {
+    background-color: #67d25f;
+    bottom: 58px;
+    height: 20px;
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    width: 20px;
+    @include border-radius(20px);
+  }
+  .image {
+    background-image: url(/images/product-oms.png);
+    background-position: center 0;
+    bottom: 0;
+    height: 150px;
+    margin-left: -86px;
+    width: 270px;
+    position: absolute;
+  }
+}
+
+.image {
+  .oms-ready-for-handling & { background-position: 0 -150px; }
+  .oms-start-handling &     { background-position: 0 -300px; }
+  .oms-invoiced &           { background-position: 0 -450px; }
+  .oms-delivered &          { background-position: 0 -600px; }
+}
+// .oms-payment-approved   { background-position }
 
 // PCI
 .security-detail {

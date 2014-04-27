@@ -6,6 +6,7 @@
   color: #2cb6d6;
   display: block; }
 .product-detail p {
+  color: #525252;
   font-size: 18px; }
 
 .main-video {
@@ -44,6 +45,71 @@
 
 .oms-detail .product-header {
   margin: 90px 0 100px; }
+
+.oms-detail-flow {
+  margin-top: 80px; }
+
+.oms-detail-item {
+  float: left;
+  height: 396px;
+  padding: 0;
+  position: relative;
+  margin-right: 130px; }
+  .oms-detail-item:first-child {
+    margin-left: 67px; }
+  .oms-detail-item:last-child {
+    margin-right: 0; }
+  .oms-detail-item .box {
+    background-color: #67d25f;
+    box-sizing: border-box;
+    color: #fff;
+    display: table-cell;
+    height: 68px;
+    vertical-align: middle;
+    width: 98px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    border-radius: 7px; }
+  .oms-detail-item .line {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAICAIAAABRUclSAAAARElEQVR4AWP4jwQYPv/+ePfLVSD6/PsDw8Ovt1Y+nrTi8cT7X28wPP/xYOvzRUD05Ntdhu9/vz7//giIvv/5imIAbg4A5XxZsxqQaoMAAAAASUVORK5CYII=);
+    background-repeat: repeat-y;
+    display: block;
+    height: 270px;
+    left: 50%;
+    margin-left: -2px;
+    position: absolute;
+    top: 68px;
+    width: 4px; }
+  .oms-detail-item .circle {
+    background-color: #67d25f;
+    bottom: 58px;
+    height: 20px;
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    width: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px; }
+  .oms-detail-item .image {
+    background-image: url(/images/product-oms.png);
+    background-position: center 0;
+    bottom: 0;
+    height: 150px;
+    margin-left: -86px;
+    width: 270px;
+    position: absolute; }
+
+.oms-ready-for-handling .image {
+  background-position: 0 -150px; }
+.oms-start-handling .image {
+  background-position: 0 -300px; }
+.oms-invoiced .image {
+  background-position: 0 -450px; }
+.oms-delivered .image {
+  background-position: 0 -600px; }
 
 .security-detail .product-header {
   margin: 300px 0; }
