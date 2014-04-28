@@ -111,6 +111,12 @@
 .oms-delivered .image {
   background-position: 0 -600px; }
 
+.channel-detail {
+  height: 985px;
+  overflow: hidden; }
+  .channel-detail h2 {
+    margin-top: 55px; }
+
 .security-detail .product-header {
   margin: 300px 0; }
 

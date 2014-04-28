@@ -121,7 +121,14 @@
   .oms-invoiced &           { background-position: 0 -450px; }
   .oms-delivered &          { background-position: 0 -600px; }
 }
-// .oms-payment-approved   { background-position }
+
+// Channel
+.channel-detail {
+  // background: #eee url(/images/product-channel.png) center 0 no-repeat;
+  height: 985px;
+  overflow: hidden;
+  h2 { margin-top: 55px; }
+}
 
 // PCI
 .security-detail {

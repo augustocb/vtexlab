@@ -1,8 +1,6 @@
 --- 
 - !ruby/object:Jekyll::Product 
   documentation: 
-    guide: 
-    - /docs/cms/guide/01-google-tag-manager/index.html
     api: 
     - /docs/cms/api/latest/configuration/index.html
     - /docs/cms/api/latest/customfiles/index.html
@@ -10,12 +8,16 @@
     - /docs/cms/api/latest/sites/index.html
     - /docs/cms/api/latest/templates/index.html
     - /docs/cms/api/latest/warehouse-item/index.html
+    guide: 
+    - /docs/cms/guide/01-google-tag-manager/index.html
   name: CMS
   title: configuration
   versions: {}
 
 - !ruby/object:Jekyll::Product 
   documentation: 
+    api: 
+    - /docs/oms/api/latest/feed/index.html
     guide: 
     - /docs/oms/guide/01-marketplace-e-seller/index.html
     - /docs/oms/guide/02-fluxo-do-pedido/index.html
@@ -23,8 +25,6 @@
     - /docs/oms/guide/05-consultando-pedidos/index.html
     - /docs/oms/guide/06-manipulando-um-pedido/index.html
     - /docs/oms/guide/07-handlers-de-pedido/index.html
-    api: 
-    - /docs/oms/api/latest/feed/index.html
   name: OMS
   title: Feed
   versions: {}
