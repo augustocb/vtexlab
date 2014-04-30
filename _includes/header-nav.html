@@ -1,7 +1,0 @@
-<nav class="nav">
-  <ul>
-    {% for nav in site.data.navigation %}
-    <li><a {% if page.nav == nav.id %} class="active-nav"{% endif %} href="{{ nav.path }}">{{ nav.friendlyName }}</a></li>
-    {% endfor %}
-  </ul>
-</nav>
