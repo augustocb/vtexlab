@@ -2,19 +2,27 @@
 @import 'variables';
 
 .post-list {
-  margin: 115px 0;
+  @media (min-width: 768px) { margin: 115px 0; }
   .post {
     overflow: hidden;
     margin: 50px 0;
+    @media (max-width: 767px) {
+      margin: 20px 0;
+    }
   }
   .post-item {
-    padding-left: 10px;
+    @media (min-width: 768px) { padding-left: 10px; }
   }
   .post-title {
     margin-top: 0;
     padding-top: 0;
     font-size: 40px;
     text-transform: none;
+    @media (max-width: 767px) {
+      font-size: 30px;
+      line-height: 30px;
+      margin-top: 10px;
+    }
     a {
       color: $black;
       &:hover {
@@ -35,21 +43,28 @@
     margin: 10px 0;
   }
   .post-date {
-    width: 50px;
-    height: 50px;
+    @media (max-width: 767px) {
+      border-radius: 5px;
+      display: inline-block;
+      padding: 5px 10px;
+    }
+    @media (min-width: 768px) {
+      border-radius: 50px;
+      height: 50px;
+      width: 50px;
+      span:first-child {
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 0.7;
+        padding-top: 10px;
+        display: block;
+      }
+    }
     background-color: $blue;
-    border-radius: 50px;
     text-align: center;
     color: white;
     font-size: 13px;
     text-transform: lowercase;
-    span:first-child {
-      font-size: 20px;
-      font-weight: bold;
-      line-height: 0.7;
-      padding-top: 10px;
-      display: block;
-    }
   }
 }
 

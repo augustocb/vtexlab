@@ -38,14 +38,22 @@
 }
 
 .navbar-brand {
-  width: 150px;
-  height: 35px;
-  margin: 15px 0;
-  overflow: hidden;
-  text-indent: -999px;
+  background: url(/images/main-sprite.png) 0 0 no-repeat;
   display: block;
   float: left;
-  background: url(/images/main-sprite.png) 0px 0px;
+  height: 35px;
+  overflow: hidden;
+  text-indent: -999px;
+  width: 150px;
+  @media (min-width: 768px) {
+    margin: 15px 0;
+    padding: 0;
+  }
+  @media (max-width: 767px) {
+    background-size: 200px 100px;
+    margin-top: 14px;
+    width: 100px;
+  }
 }
 
 .navbar-collapse {
@@ -64,6 +72,11 @@
       }
     }
   }
+}
+
+.icon-bar {
+  background: #36b7d7;
+  margin-right: 0;
 }
 
 @media (min-width: 768px) {

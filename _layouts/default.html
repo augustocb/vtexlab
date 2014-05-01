@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>{{page.title}}{% if page.title %} - {%endif%}VTEX Lab</title>
   <script type="text/javascript" src="/assets/javascripts/modernizr.js"></script>
-  <script type="text/javascript" src="/assets/javascripts/magnifier.js"></script>
 
   <link rel="stylesheet" href="//io.vtex.com.br/front-libs/font-awesome/4.0.1/css/font-awesome.min.css" />
   <link rel="stylesheet" href="/assets/stylesheets/main.css" />
@@ -26,11 +25,13 @@
   {% if page.type != "post" %}
   <footer class="footer default-footer">
     <div class="container">
-      <a href="#" id="footer-logo" class="footer-logo">Blog Vtex</a>
+      <a href="#" id="footer-logo" class="footer-logo">Blog VTEX</a>
     </div>
   </footer>
   {% endif %}
   <script type="text/javascript" src="/assets/javascripts/jquery.min.js"></script>
+  <script type="text/javascript" src="/assets/javascripts/bootstrap/collapse.js"></script>
+  <script type="text/javascript" src="/assets/javascripts/bootstrap/transition.js"></script>
   {% for script in page.scripts %}
     <script type="text/javascript" src="/assets/javascripts/{{ script }}.js"></script>
   {% endfor %}
