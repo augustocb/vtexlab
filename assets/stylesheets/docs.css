@@ -20,6 +20,8 @@
 
 .article-docs-container {
   margin-left: 200px; }
+  .article-docs-container .article {
+    padding-left: 7%; }
 
 .docs-banner {
   background: white;
@@ -210,7 +212,7 @@
       border: 0; }
   .api-container .api-description {
     box-sizing: border-box;
-    padding: 0 5%;
+    padding-right: 5%;
     width: 60%;
     background: white;
     float: left; }
