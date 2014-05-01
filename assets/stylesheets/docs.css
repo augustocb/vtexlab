@@ -98,7 +98,8 @@
 .nav-doc-header {
   background: #36b7d7;
   color: white;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .nav-doc-dropdown {
   float: left;
