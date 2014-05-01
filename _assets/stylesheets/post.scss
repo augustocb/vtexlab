@@ -27,6 +27,9 @@
     @include prefix(backface-visibility, hidden);
     @include prefix(transform, translate3d(0, 0, 0));
     @include prefix(transform-style, preserve-3d);
+    @media (max-width: 767px) {
+      padding: 60px 0 0;
+    }
   }
   .post-active {
     overflow: auto;
@@ -42,13 +45,22 @@
   .post-title {
     color: $black;
     font: bold 50px $family-title;
+    @media (max-width: 767px) {
+      font-size: 30px;
+      line-height: 1.2;
+    }
   }
   .post-description {
     color: #888888;
     margin: 25px 0 30px;
     font: normal normal 25px $family-primary;
+    @media (max-width: 767px) {
+      font-size: 18px;
+      line-height: 1.2;
+    }
   }
 }
+
 
 .post-tags {
   font-size: 15px;
@@ -154,17 +166,21 @@
 }
 
 .post-pagination {
-  margin-top: 100px;
+  @media (min-width: 768px) {
+    margin-top: 100px;
+  }
   position: relative;
   overflow: hidden;
 }
 
 .post-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  overflow: hidden;
+  @media (min-width: 768px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
   a {
     padding: 25px 45px;
     color: #888888;
@@ -184,6 +200,17 @@
     font: normal normal 14px / 1.4 $family-primary;
     color: $dark-grey;
     margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .post-wrapper .container { padding: 0; }
+  .post-pagination,
+  .post-nav a {
+    height: auto !important;
+  }
+  .post-nav a {
+    padding: 15px;
   }
 }
 

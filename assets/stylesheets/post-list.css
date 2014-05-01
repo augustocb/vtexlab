@@ -18,7 +18,7 @@
   @media (max-width: 767px) {
     .post-list .post-title {
       font-size: 30px;
-      line-height: 30px;
+      line-height: 1.2;
       margin-top: 10px; } }
   .post-list .post-title a {
     color: #525252; }

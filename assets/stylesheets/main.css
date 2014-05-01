@@ -1699,6 +1699,9 @@ a {
     margin-top: 0; }
   .article p {
     margin: 0 20px 18px; }
+    @media (max-width: 767px) {
+      .article p {
+        margin: 0 0 18px; } }
   .article ul {
     margin: 0 0 18px; }
   .article blockquote {
@@ -1756,6 +1759,12 @@ a {
     -o-transition: opacity 0.1s ease-out;
     -ms-transition: opacity 0.1s ease-out;
     transition: opacity 0.1s ease-out; }
+  @media (max-width: 767px) {
+    .header-button {
+      display: none !important; } }
+
+.navbar-toggle {
+  margin-right: 0; }
 
 .header-button-active {
   opacity: 0.7;

@@ -36,6 +36,9 @@
   -o-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d; }
+  @media (max-width: 767px) {
+    .post-page .post {
+      padding: 60px 0 0; } }
 .post-page .post-active {
   overflow: auto;
   visibility: visible;
@@ -48,10 +51,18 @@
   .post .post-title {
     color: #525252;
     font: bold 50px "proxima-nova-condensed", Helvetica, Arial; }
+    @media (max-width: 767px) {
+      .post .post-title {
+        font-size: 30px;
+        line-height: 1.2; } }
   .post .post-description {
     color: #888888;
     margin: 25px 0 30px;
     font: normal normal 25px "proxima-nova", Helvetica, Arial; }
+    @media (max-width: 767px) {
+      .post .post-description {
+        font-size: 18px;
+        line-height: 1.2; } }
 
 .post-tags {
   font-size: 15px;
@@ -135,32 +146,43 @@
   background-position: -91px -68px; }
 
 .post-pagination {
-  margin-top: 100px;
   position: relative;
   overflow: hidden; }
+  @media (min-width: 768px) {
+    .post-pagination {
+      margin-top: 100px; } }
 
-.post-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
+@media (min-width: 768px) {
+  .post-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden; } }
+.post-nav a {
+  padding: 25px 45px;
+  color: #888888;
+  background: whitesmoke;
+  display: block;
   overflow: hidden; }
+  .post-nav a:hover {
+    text-decoration: none;
+    color: #525252;
+    background: #d5f0f7; }
+.post-nav h3 {
+  font: bold 25px "proxima-nova-condensed", Helvetica, Arial; }
+.post-nav p {
+  font: normal normal 14px/1.4 "proxima-nova", Helvetica, Arial;
+  color: #888888;
+  margin: 0; }
+
+@media (max-width: 767px) {
+  .post-wrapper .container {
+    padding: 0; }
+  .post-pagination, .post-nav a {
+    height: auto !important; }
   .post-nav a {
-    padding: 25px 45px;
-    color: #888888;
-    background: whitesmoke;
-    display: block;
-    overflow: hidden; }
-    .post-nav a:hover {
-      text-decoration: none;
-      color: #525252;
-      background: #d5f0f7; }
-  .post-nav h3 {
-    font: bold 25px "proxima-nova-condensed", Helvetica, Arial; }
-  .post-nav p {
-    font: normal normal 14px/1.4 "proxima-nova", Helvetica, Arial;
-    color: #888888;
-    margin: 0; }
+    padding: 15px; } }
 
 .post-next {
   right: 0;
