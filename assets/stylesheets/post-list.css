@@ -1,3 +1,6 @@
+.tag-page-title {
+  text-align: center; }
+
 @media (min-width: 768px) {
   .post-list {
     margin: 115px 0; } }
