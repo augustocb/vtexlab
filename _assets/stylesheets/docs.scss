@@ -366,10 +366,7 @@
   .api-table-description {
     display: block;
   }
-  .doc-api-table-child {
-    background: white;
-    border-left: 0 !important;
-     
+  .doc-api-table-child {     
     & > td {
       padding: 0;
     }
@@ -403,6 +400,15 @@
     tr {
       border-left: 1px solid $grey;
       border-right: 1px solid $grey;
+    }
+    .arrow-up:before {
+      background: #fff;
+      border: 1px solid $grey;
+      border-right: 0;
+      border-bottom: 0;
+    }
+    .doc-api-table {
+      background: #fff;
     }
   }
 }
