@@ -26,7 +26,7 @@ scripts:
             <section class="post-header-author">
               
               <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png" alt="" class="post-header-author-thumb">
-              <span>por: <a href="/">{{ author.displayname }}</a> </span>
+              <span>por: <strong>{{ author.displayname }}</strong> </span>
               <span class="post-header-date">{{ page.date | date:  "%d %B %Y" }}</span>
             </section>
             <section class="post-body">
@@ -35,7 +35,7 @@ scripts:
             <div class="post-tags">
               tags: 
               {% for tag in page.tags %}
-                <a href="{{ site.base_url }}/tag/{{ tag }}.html">{{ tag }}</a>
+                <a href="{{ site.base_url }}/tag/{{ tag }}.html">{{ tag }}{% if forloop.last != true %}, {% endif %}</a>
               {% endfor %}
             </div>
             <section class="post-author">
@@ -47,7 +47,7 @@ scripts:
                     </div>
                     <div class="col-md-9">
                       <h3>Escrito por:</h3>
-                      <p class="post-author-name"><a href="">{{ author.displayname }}</a></p>
+                      <p class="post-author-name"><strong>{{ author.displayname }}</strong></p>
                       <p>{{ author.description }}</p>
                     </div>
                   </div>
