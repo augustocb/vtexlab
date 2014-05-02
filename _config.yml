@@ -1,5 +1,7 @@
 highlighter: rouge
 
+base_url: http://localhost:9000
+
 markdown: kramdown
 kramdown:
   use_coderay: true
@@ -27,3 +29,6 @@ redcarpet:
 assets:
   js_compressor:  uglifier
   css_compressor: sass
+
+tag_page_layout: tag_page
+tag_page_dir: tag

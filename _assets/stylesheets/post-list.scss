@@ -1,6 +1,9 @@
 @import 'mixins';
 @import 'variables';
 
+.tag-page-title {
+  text-align: center;
+}
 .post-list {
   @media (min-width: 768px) { margin: 115px 0; }
   .post {

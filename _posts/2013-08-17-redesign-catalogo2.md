@@ -5,10 +5,7 @@ title: 'O catalogo esta com cara nova. Take a look'
 author: 'leandrooriente'
 description: 'Lorem markdownum lapillo, accipitrem detulit omnia oravit effreno est utar
 comaeque pacis est insania!'
-tags: 
-- release-note
-- css
-- lipsum
+tags: css
 ---
 
 ## Checkout
