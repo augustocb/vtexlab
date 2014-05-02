@@ -23,6 +23,11 @@ body {
 h1 {
   color: $black;
   font: bold 50px $family-title;
+  @media (max-width: 767px) { font: bold 30px $family-title; }
+}
+
+h3, .h3 {
+  @media (max-width: 767px) { font-size: 20px; }
 }
 
 a {
@@ -51,11 +56,16 @@ a {
 
 .article {
   font: normal 18px / 1.8 $family-reading;
+  @media (max-width: 767px) { font: normal 15px / 1.8 $family-reading; }
   color: $black;
   h2 {
     color: $black;
-    margin: 55px 0 50px;
     font: bold 30px $family-title;
+    margin: 55px 0 50px;
+    @media (max-width: 767px) {
+      font: bold 22px $family-title;
+      margin: 25px 0 20px;
+    }
   }
   h2:first-child {
     margin-top: 0;

@@ -1,9 +1,7 @@
 .main-content {
-  position: relative;
-  height: 100%; }
-
-.sidebar {
-  overflow: hidden; }
+  height: 100%;
+  overflow: hidden;
+  position: relative; }
 
 .sidebar-docs-container {
   background: whitesmoke;
@@ -170,13 +168,17 @@
   padding: 4px 0;
   display: block; }
 
-.article {
-  padding: 0; }
+@media (min-width: 993px) {
+  .article {
+    padding: 0; } }
 
 .article-docs-container {
   float: right;
   padding: 0;
   width: 80%; }
+  @media (max-width: 992px) {
+    .article-docs-container {
+      width: 100% !important; } }
   .article-docs-container .docs-block {
     padding-bottom: 65px;
     margin-bottom: 65px;
@@ -186,6 +188,9 @@
       margin: 0; }
   .article-docs-container h1 {
     margin: 80px 0; }
+    @media (max-width: 992px) {
+      .article-docs-container h1 {
+        margin: 30px 0 20px; } }
   .article-docs-container p {
     margin: 0 0 20px; }
   .article-docs-container table {
@@ -204,57 +209,71 @@
     list-style-position: inside;
     margin: 0 0 20px; }
 
-.api-container {
-  margin-left: 60%;
-  background: #525252; }
-  .api-container .api-block {
-    margin-left: -150%;
-    padding-bottom: 65px;
-    margin-bottom: 65px;
-    border-bottom: 1px solid whitesmoke;
-    clear: both;
-    overflow: hidden; }
-    .api-container .api-block:first-child {
-      padding-bottom: 0; }
-    .api-container .api-block:last-child {
-      margin-bottom: 0;
-      border: 0; }
-  .api-container .api-description {
-    box-sizing: border-box;
-    padding-right: 5%;
-    width: 60%;
-    background: white;
-    float: left; }
-    .api-container .api-description .api-route {
-      padding: 15px 20px;
-      margin-bottom: 40px;
-      font: normal 13px "Lucida Console", Monaco, monospace;
-      background: whitesmoke; }
-    .api-container .api-description .doc-title {
-      padding: 0; }
-    .api-container .api-description table {
-      width: 100%;
-      max-width: 100%; }
-    .api-container .api-description td {
-      font-size: 14px; }
-      .api-container .api-description td em {
-        font-size: 14px;
-        line-height: 14px;
-        color: #888888; }
-  .api-container .api-example {
-    font-family: "Lucida Console", Monaco, monospace;
-    font-size: 12px;
-    color: #dddddd;
-    word-wrap: break-word;
-    padding: 0 5%;
-    width: 40%;
-    margin-left: 60%; }
-    .api-container .api-example .resource-detail {
-      background: #888888;
-      margin: 0 -12.5% 55px;
-      padding: 10px 12.5%; }
-    .api-container .api-example .resource-title {
-      text-transform: uppercase; }
+@media (min-width: 993px) {
+  .api-container {
+    background: #525252;
+    margin-left: 60%; } }
+.api-container .api-block {
+  padding-bottom: 65px;
+  margin-bottom: 65px;
+  border-bottom: 1px solid whitesmoke;
+  clear: both;
+  overflow: hidden; }
+  @media (min-width: 993px) {
+    .api-container .api-block {
+      margin-left: -150%; } }
+  @media (max-width: 992px) {
+    .api-container .api-block {
+      padding-bottom: 25px;
+      margin-bottom: 25px; } }
+  .api-container .api-block:first-child {
+    padding-bottom: 0; }
+  .api-container .api-block:last-child {
+    margin-bottom: 0;
+    border: 0; }
+.api-container .api-description {
+  box-sizing: border-box;
+  width: 60%;
+  background: white;
+  float: left; }
+  @media (min-width: 993px) {
+    .api-container .api-description {
+      padding-right: 5%; } }
+  @media (max-width: 992px) {
+    .api-container .api-description {
+      width: 100%; } }
+  .api-container .api-description .api-route {
+    padding: 15px 20px;
+    margin-bottom: 40px;
+    font: normal 13px "Lucida Console", Monaco, monospace;
+    background: whitesmoke; }
+  .api-container .api-description .doc-title {
+    padding: 0; }
+  .api-container .api-description table {
+    width: 100%;
+    max-width: 100%; }
+  .api-container .api-description td {
+    font-size: 14px; }
+    .api-container .api-description td em {
+      font-size: 14px;
+      line-height: 14px;
+      color: #888888; }
+.api-container .api-example {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 12px;
+  color: #dddddd;
+  word-wrap: break-word; }
+  @media (min-width: 993px) {
+    .api-container .api-example {
+      padding: 0 5%;
+      width: 40%;
+      margin-left: 60%; } }
+  .api-container .api-example .resource-detail {
+    background: #888888;
+    margin: 0 -12.5% 55px;
+    padding: 10px 12.5%; }
+  .api-container .api-example .resource-title {
+    text-transform: uppercase; }
 
 .doc-api-table {
   width: 100%; }

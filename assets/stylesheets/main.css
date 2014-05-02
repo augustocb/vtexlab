@@ -1666,6 +1666,13 @@ body {
 h1 {
   color: #525252;
   font: bold 50px "proxima-nova-condensed", Helvetica, Arial; }
+  @media (max-width: 767px) {
+    h1 {
+      font: bold 30px "proxima-nova-condensed", Helvetica, Arial; } }
+
+@media (max-width: 767px) {
+  h3, .h3 {
+    font-size: 20px; } }
 
 a {
   color: #36b7d7;
@@ -1691,10 +1698,17 @@ a {
 .article {
   font: normal 18px/1.8 "adelle", Helvetica, Arial;
   color: #525252; }
+  @media (max-width: 767px) {
+    .article {
+      font: normal 15px/1.8 "adelle", Helvetica, Arial; } }
   .article h2 {
     color: #525252;
-    margin: 55px 0 50px;
-    font: bold 30px "proxima-nova-condensed", Helvetica, Arial; }
+    font: bold 30px "proxima-nova-condensed", Helvetica, Arial;
+    margin: 55px 0 50px; }
+    @media (max-width: 767px) {
+      .article h2 {
+        font: bold 22px "proxima-nova-condensed", Helvetica, Arial;
+        margin: 25px 0 20px; } }
   .article h2:first-child {
     margin-top: 0; }
   .article p {
