@@ -188,60 +188,6 @@ POST /api/logistics/pvt/inventory/warehouseitems/getbalance
                         <span class="api-table-description">Requerido. Preço do item</span>
                       </td>
                     </tr>
-                    <tr class="doc-api-table-child">
-                      <td colspan="2">
-
-                        <div class="arrow-up"></div>
-
-                        <table class="doc-api-table">
-                            <tr>
-                              <td class="text-right">
-                                <strong class="api-table-title">id</strong>
-                              </td>
-                              <td>
-                                <strong class="api-table-type">string</strong>
-                                <span class="api-table-description">Requerido. Identificador único do item</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-right">
-                                <strong class="api-table-title">groupItemId</strong>
-                              </td>
-                              <td>
-                                <strong class="api-table-type">string</strong>
-                                <span class="api-table-description">Identificador de agrupamento do item. Itens com o mesmo groupItemId devem ser entregues juntos</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-right">
-                                <strong class="api-table-title">quantity</strong>
-                              </td>
-                              <td>
-                                <strong class="api-table-type">int</strong>
-                                <span class="api-table-description">Requerido. Quantidade total do item</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-right">
-                                <strong class="api-table-title">price</strong>
-                              </td>
-                              <td>
-                                <strong class="api-table-type">decimal</strong>
-                                <span class="api-table-description">Requerido. Preço do item</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-right">
-                                <strong class="api-table-title">modal</strong>
-                              </td>
-                              <td>
-                                <strong class="api-table-type">DateTimeOffset</strong>
-                                <span class="api-table-description">Categorização de entrega em que se enquadra o item. Pode ser Líquido, Químico ou Refrigerado.</span>
-                              </td>
-                            </tr>
-                        </table>
-                      </td>
-                    </tr>
                     <tr>
                       <td class="text-right">
                         <strong class="api-table-title">modal</strong>
