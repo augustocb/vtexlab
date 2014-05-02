@@ -1,19 +1,29 @@
 (function(window, document){
 
-  console.log('DOCS');
-
   var $sidebar = $('#sidebar-docs-container'),
       $doc = $('#article-docs-container');
 
   var headerHeight = $('#header').outerHeight();
 
+  var $resizeContent = function() {
+    var $sidebarw = ($(window).width() - $('#header-container').width()) / 2;
+    $sidebar.width($sidebarw);
+    $doc.width($(window).width() - $sidebar.width());
+  }
+
+  $resizeContent();
+  $(window).on('resize', function(){
+    $resizeContent();
+  });
+
   $(window).on('scroll', function(){
     if ($(window).scrollTop() > headerHeight) {
-      $('#sidebar-docs-container').addClass('fixed-sidebar');
+      $sidebar.addClass('fixed-sidebar');
     } else {
-      $('#sidebar-docs-container').removeClass('fixed-sidebar');
+      $sidebar.removeClass('fixed-sidebar');
     }
   });
+
   // $(window).load(function(){
   //   if ($sidebar.outerHeight() > $doc.outerHeight()) {
   //     $doc.height( $sidebar.outerHeight() );

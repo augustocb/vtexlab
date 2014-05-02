@@ -9,12 +9,21 @@ scripts:
 - easing.min
 - aux-navigation
 ---
-<div class="sidebar-docs-container" id="sidebar-docs-container">
-  {% include sidebar-docs.html %}
+<div class="sidebar clearfix">
+    <div class="sidebar-docs-container" id="sidebar-docs-container">
+        {% include sidebar-docs.html %}
+    </div>
+    <section class="article-docs-container" id="article-docs-container">
+      <div class="docs-banner"></div>
+      <div class="container-fluid">
+          <div class="row">
+            {% if page.docType == 'guide' %}
+                <div class="article article-{{ page.docType }} col-md-10 col-md-offset-1">{{ content }}</div>
+            {%endif%}
+            {% if page.docType == 'api' %}
+                <div class="article article-{{ page.docType }} col-md-11 col-md-offset-1">{{ content }}</div>
+            {%endif%}
+          </div>
+      </div>
+    </section>
 </div>
-<section class="article-docs-container" id="article-docs-container">
-  <div class="docs-banner"></div>
-  <div class="article">
-    {{ content }}
-  </div>
-</section>

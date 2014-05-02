@@ -6,14 +6,18 @@
   height: 100%;
 }
 
+.sidebar {
+  overflow: hidden;
+}
+
 .sidebar-docs-container {
-  width: 200px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 9;
-  top: 0;
   background: $light-grey;
+  bottom: 0;
+  padding: 0;
+  min-width: 280px;
+  position: absolute;
+  top: 0;
+  width: 20%;
 }
 
 .fixed-sidebar {
@@ -23,11 +27,6 @@
 .footer {
   z-index: 10;
   position: relative;
-}
-
-.article-docs-container {
-  margin-left: 200px;
-  .article { padding-left: 7%; }
 }
 
 .docs-banner {
@@ -136,6 +135,17 @@
   }
 }
 
+.nav-doc-header-content,
+.nav-doc-body-content {
+  overflow: hidden;
+}
+
+.nav-doc-header-content,
+.nav-doc-body-content {
+  float: right;
+  width: 250px;
+}
+
 .nav-doc-header {
   background: $blue;
   color: white;
@@ -195,7 +205,7 @@
 }
 
 .nav-doc-body {
-  & > ul {
+  .nav-doc-body-content > ul {
     margin: 35px 0;
     padding: 0;
     list-style: none;
@@ -211,7 +221,7 @@
       list-style: none;
     }
   }
-  & > a, span {
+  .nav-doc-body-content > a, span {
     font-weight: bold;
     font-size: 16px;
   }
@@ -222,18 +232,21 @@
   }
 }
 
+.article {
+  padding: 0;
+}
+
 .article-docs-container {
-  .doc-title {
-    padding: 0 10%;
-  }
+  float: right;
+  padding: 0;
+  width: 80%;
   .docs-block {
-    padding: 0 10% 65px;
+    padding-bottom: 65px;
     margin-bottom: 65px;
     border-bottom: 1px solid $grey;
     &:last-child {
       border: 0;
       margin: 0;
-      padding: 0 10%;
     }
   }
   h1 {
