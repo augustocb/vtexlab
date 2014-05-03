@@ -140,10 +140,10 @@ module Jekyll
 		def parameter(param, file)
 			parameter = has_child(param)
 			if parameter != nil
-				insert_parameter(file, param)
+				insert_parameter(file, param, true)
 				injectChildParameter(file, parameter)
 			else
-				insert_parameter(file, param)
+				insert_parameter(file, param, false)
 			end
 		end
 
@@ -160,10 +160,16 @@ module Jekyll
 			return nil
 		end
 
-		def insert_parameter(file, parameter)
+		def insert_parameter(file, parameter, hasParameters)
 			file.write("<tr>\n")
 			file.write("<td class=\"text-right\">\n")
-			file.write("<strong class=\"api-table-title\">#{parameter[0]}</strong>\n")
+
+			if hasParameters == true
+				file.write("<strong class=\"api-table-title\"><a class=\"show-obj\" href=\"#\">+ #{parameter[0]}</a></strong>\n") 			
+			else
+				file.write("<strong class=\"api-table-title\">#{parameter[0]}</strong>\n")
+			end
+
 			file.write("</td>\n")
 
 			file.write("<td>\n")
