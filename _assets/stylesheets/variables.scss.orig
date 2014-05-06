@@ -9,9 +9,15 @@ $red: #f7645e;
 $yellow: #E2A62A;
 
 $black: #525252;
+<<<<<<< HEAD
 $dark-grey: #888;
 $grey: #ddd;
+$light-grey: whitesmoke;
+=======
+$dark-grey: #888888;
+$grey: #dddddd;
 $light-grey: #f4f4f4;
+>>>>>>> Base home layout
 
 // FONTS
 $family-title: "proxima-nova-condensed", Helvetica, Arial;

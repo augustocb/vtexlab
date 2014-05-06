@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<html>
+<head>
+<meta http-equiv="refresh" content="0; url=http://lab.vtex.com/blog">
+</head>
+<body></body>
+</html>
+=======
 ---
 layout: default
 lang: pt-br
@@ -99,3 +107,4 @@ title: HOME
     </div>
   </div>
 </section>
+>>>>>>> Base home layout

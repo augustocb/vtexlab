@@ -2,5 +2,4 @@ _site
 node_modules
 _data/products.yml
 assets
-docs/**/*
-.DS_Store
+docs

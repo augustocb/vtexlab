@@ -20,7 +20,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: '_assets/stylesheets'
-          src: ['main.scss', 'post-list.scss', 'product.scss', 'post.scss', 'docs.scss']
+          src: ['main.scss', 'post-list.scss', 'product.scss', 'home.scss', 'post.scss', 'docs.scss']
           dest: 'assets/stylesheets'
           ext: '.css'
         ]

@@ -1,0 +1,185 @@
+@import "mixins";
+@import "variables";
+
+.top-banner {
+  background: $blue;
+  text-align: center;
+  position: relative;
+}
+
+.banner {
+  display: block;
+  margin: 200px auto 245px;
+}
+
+.know-portal {
+  position: absolute;
+  display: inline-block;
+  font-size: 24px;
+  bottom: 55px;
+  color: #fff;
+  width: 200px;
+  margin-left: -100px;
+  left: 50%;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.arrow-down {
+  display: block;
+  margin: 25px auto 0;
+  width: 0; 
+  height: 0; 
+  position: relative;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;  
+  border-top: 15px solid #fff;
+  -webkit-animation: arrowDown 2s infinite;
+  -moz-animation:    arrowDown 2s infinite;
+  animation:         arrowDown 2s infinite;
+}
+
+@keyframes arrowDown {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: 10px;
+  }
+  50% {
+    top: 0px;
+  }
+}
+@-webkit-keyframes arrowDown {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: 10px;
+  }
+  50% {
+    top: 0px;
+  }
+}
+@-moz-keyframes arrowDown {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: 10px;
+  }
+  50% {
+    top: 0px;
+  }
+}
+
+.box-info {
+  margin: 85px auto 195px;
+
+  h2 {
+    font-size: 50px;
+    margin: 0 0 55px;
+  }
+  p {
+    font-size: 22px;
+    line-height: 28px;
+    color: $dark-grey;
+  }
+}
+
+.terminal-code {
+
+}
+.terminal-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: $light-grey;
+  padding: 7px 11px;
+}
+.terminal-buttons span {
+  width: 10px;
+  display: inline-block;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 3px;
+}
+.terminal-close-btn {
+  background: $red;
+}
+.terminal-minimize-btn {
+  background: $yellow;
+}
+.terminal-maximize-btn {
+  background: $green;
+}
+.terminal-body {
+  background: $black;
+  padding: 35px 25px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.card-user {
+  position: relative;
+  top: -93px;
+  margin: 0 auto;
+  width: 257px;
+  height: 458px;
+  text-align: center;
+  background: url(/images/sprite-home.png) no-repeat left top;
+
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: $black;
+    margin: 10px 0 0;
+  }
+
+  p {
+    font-size: 15px;
+    color: $black;
+    margin: 0;
+  }
+
+  img {
+    margin: 130px auto 20px;
+    display: inline-block;
+    width: 115px;
+    height: 115px;
+    border: 3px solid $blue;
+    border-radius: 50%;
+  }
+}
+
+.bottom-box {
+  text-align: center;
+
+  h2 {
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+}
+
+.icon-home {
+  display: block;
+  background: url(/images/sprite-home.png) no-repeat;
+}
+.icon-guide {
+  background-position: -290px 0px;
+  width: 142px;
+  height: 118px;
+  margin: 13px auto 35px;
+}
+.icon-blog {
+  background-position: -491px 0px;
+  width: 114px;
+  height: 144px;
+  margin: 0 auto 22px;
+}
+.icon-status {
+  background-position: -648px 0px;
+  width: 150px;
+  height: 134px;
+  margin: 5px auto 27px;
+}
