@@ -6,7 +6,7 @@
         <ul>
           {% for nav in site.data.products %}
           <li>
-            <a href="/">{{ nav.name }}</a>
+            <a href="{{ nav.documentation.api[0] }}">{{ nav.name }}</a>
           </li>
           {% endfor %}
         </ul>

@@ -134,7 +134,7 @@
 
 .nav-doc-header-content,
 .nav-doc-body-content {
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .nav-doc-header-content,
@@ -147,7 +147,6 @@
   background: $blue;
   color: white;
   position: relative;
-  overflow: hidden;
 }
 
 .nav-doc-dropdown {

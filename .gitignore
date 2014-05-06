@@ -3,3 +3,4 @@ node_modules
 _data/products.yml
 assets
 docs/**/*.md
+.DS_Store
