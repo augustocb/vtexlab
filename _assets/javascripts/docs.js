@@ -46,16 +46,40 @@
 
   $(document).ready(function(){
     if (activeDoc) {
-      var navList = $('.nav-doc-item');
+      var navList = $('.nav-doc-item'),
+          topics = $('.slug-text'),
+          topicArr = [];
+
+      $('.api-block:not(:first)').css('minHeight', $(window).height());
+
+      $(topics).each(function(){
+        var _obj = {};
+
+        _obj.id = $(this).attr('id');
+        _obj.pos = $(this).offset().top;
+
+        topicArr.push(_obj);
+      });
+
+      $(window).on('scroll', function(){
+        for (var i = topicArr.length - 1; i >= 0; i--) {
+          if ( $(window).scrollTop() > topicArr[i].pos - 70 ) {
+            $('.topic-nav-link').removeClass('active-topic-nav');
+            $('#sidebar-nav-' + topicArr[i].id).addClass('active-topic-nav');
+            break;
+          }
+        }
+      });
+
       for (var i = 0, len = navList.length; i < len; i++) {
         var $nav = $(navList[i]);
         if (activeDoc == $nav.data('doc')) {
+          $nav.addClass('active-nav-doc');
           var $container = $nav.parents('li'),
-              topics = $('.slug-text'),
               topicsNav = '<ul class="topics-nav">';
           for (var j = 0, _len = topics.length; j < _len; j++) {
             var $topic = $(topics[j]);
-            topicsNav += '<li class="topic-nav"><a class="topic-nav-link" href="#' + $topic.attr("id") + '">' + $topic.text() + '</a></li>'
+            topicsNav += '<li class="topic-nav"><a id="sidebar-nav-' + $topic.attr("id") + '" class="topic-nav-link" href="#' + $topic.attr("id") + '">' + $topic.text() + '</a></li>'
           };
           topicsNav += '</ul>';
 

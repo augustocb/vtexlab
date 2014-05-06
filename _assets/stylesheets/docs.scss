@@ -137,6 +137,15 @@
   // overflow: hidden;
 }
 
+.active-nav-doc {
+  font-weight: bold;
+}
+
+.active-topic-nav {
+  color: $blue !important;
+  font-weight: bold;
+}
+
 .nav-doc-header-content,
 .nav-doc-body-content {
   float: right;
