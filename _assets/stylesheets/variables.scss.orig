@@ -12,12 +12,11 @@ $black: #525252;
 <<<<<<< HEAD
 $dark-grey: #888;
 $grey: #ddd;
-$light-grey: whitesmoke;
 =======
 $dark-grey: #888888;
 $grey: #dddddd;
-$light-grey: #f4f4f4;
 >>>>>>> Base home layout
+$light-grey: #f4f4f4;
 
 // FONTS
 $family-title: "proxima-nova-condensed", Helvetica, Arial;
