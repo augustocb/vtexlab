@@ -3,7 +3,7 @@
     <div class="nav-doc-header-content">
       <div class="nav-doc-app nav-doc-dropdown">
         <span class="selected-nav">{{ page.application }} <i class="fa fa-sort-asc"></i></span>
-        <ul>
+        <ul class="list-unstyled">
           {% for nav in site.data.products %}
           <li>
             <a href="{{ nav.documentation.api[0] }}">{{ nav.name }}</a>
@@ -13,7 +13,7 @@
       </div>
       <div class="nav-doc-category nav-doc-dropdown">
         <span class="selected-nav">{{ page.docType }} <i class="fa fa-sort-asc"></i></span>
-        <ul>
+        <ul class="list-unstyled">
           {% for nav in site.data.products %}
             {% if nav.name == page.application %}
               {% if nav.documentation.api  %}
