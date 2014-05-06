@@ -37,78 +37,18 @@ scripts:
   <div class="container">
     <div class="row">
       <ul>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>CHANNEL</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>CHECKOUT</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>CMS</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>FULLFILMENT</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>GIFT CARD</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>LOGISTICS</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>OMS</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>PCI GATEWAY</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
-        <li class="col-md-3">
-          <div class="doc-card">
-            <h3>PRICING</h3>
-            <a href="">Guide</a>
-            <a href="">Developer</a>
-            <a href="">Design</a>
-          </div>
-        </li>
+        {% for product in site.data.products %}
+          <li class="col-md-3">
+            <div class="doc-card">
+              <h3>{{ product.name }}</h3>
+              <!-- <a href="">Guide</a> -->
+              {% if product.documentation.api.size %}
+              <a href="/docs/{{ product.name }}/api/{{ product.documentation.api[0] }}">Developer</a>
+              {% endif %}
+              <!-- <a href="">Design</a> -->
+            </div>
+          </li>
+        {% endfor %}
       </ul>
     </div>
   </div>
