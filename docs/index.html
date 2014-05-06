@@ -43,7 +43,7 @@ scripts:
               <h3>{{ product.name }}</h3>
               <!-- <a href="">Guide</a> -->
               {% if product.documentation.api.size %}
-              <a href="/docs/{{ product.name }}/api/{{ product.documentation.api[0] }}">Developer</a>
+              <a href="{{ product.documentation.api[0] }}">Developer</a>
               {% endif %}
               <!-- <a href="">Design</a> -->
             </div>

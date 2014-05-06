@@ -24,6 +24,13 @@
     }
   });
 
+  $(document).on('click', '.show-obj', function(e) {
+    var parent = $(this).parents('tr');
+    parent.next('.doc-api-table-child').fadeToggle(200);
+
+    e.preventDefault();
+  });
+
   // $(window).load(function(){
   //   if ($sidebar.outerHeight() > $doc.outerHeight()) {
   //     $doc.height( $sidebar.outerHeight() );

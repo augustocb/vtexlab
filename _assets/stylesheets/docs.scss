@@ -366,7 +366,8 @@
   .api-table-description {
     display: block;
   }
-  .doc-api-table-child {     
+  .doc-api-table-child {
+    display: none; 
     & > td {
       padding: 0;
     }
