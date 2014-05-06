@@ -32,7 +32,7 @@
       <ul>
         {% for pageItem in site.pages %}
           {% if pageItem.application == page.application and pageItem.docType == page.docType %}
-            <li><a href="{{ pageItem.url }}">{{ pageItem.title }}</a></li>      
+            <li><a href="{{ pageItem.url }}" class="nav-doc-item" data-doc="{{ pageItem.title }}">{{ pageItem.title }}</a></li>      
           {% endif %}
         {% endfor %}
       </ul>

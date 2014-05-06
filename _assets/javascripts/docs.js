@@ -31,6 +31,38 @@
     e.preventDefault();
   });
 
+
+  $(document).on('click', '.topic-nav-link', function(e) {
+    $('html, body').animate({
+      scrollTop: $( $.attr(this, 'href') ).parents('.api-block').offset().top
+    }, 500);
+
+    e.preventDefault();
+  });
+
+
+  $(document).ready(function(){
+    if (activeDoc) {
+      var navList = $('.nav-doc-item');
+      for (var i = 0, len = navList.length; i < len; i++) {
+        var $nav = $(navList[i]);
+        if (activeDoc == $nav.data('doc')) {
+          var $container = $nav.parents('li'),
+              topics = $('.slug-text'),
+              topicsNav = '<ul class="topics-nav">';
+          for (var j = 0, _len = topics.length; j < _len; j++) {
+            var $topic = $(topics[j]);
+            topicsNav += '<li class="topic-nav"><a class="topic-nav-link" href="#' + $topic.attr("id") + '">' + $topic.text() + '</a></li>'
+          };
+          topicsNav += '</ul>';
+
+          $container.append($(topicsNav));
+          break;
+        }
+      }
+    }
+  });
+
   // $(window).load(function(){
   //   if ($sidebar.outerHeight() > $doc.outerHeight()) {
   //     $doc.height( $sidebar.outerHeight() );
