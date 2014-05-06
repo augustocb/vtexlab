@@ -150,9 +150,11 @@
 }
 
 .nav-doc-dropdown {
+  cursor: pointer;
   float: left;
-  width: 50%;
   height: 36px;
+  position: relative;
+  width: 50%;
   &:hover {
     background: $dark-grey;
     ul {
@@ -175,28 +177,26 @@
     top: 36px;
     margin: 0;
     padding: 0;
-    background: white;
     display: none;
     a {
+      background: $dark-grey;
+      color: #fff;
       display: block;
-      padding: 5px;
+      padding: 10px;
       font-size: 12px;
       text-transform: uppercase;
       &:hover {
-        background: $light-grey;
+        background: $black;
         text-decoration: none;
       }
     }
   }
   .selected-nav {
-    padding: 8px 5px;
+    padding: 10px;
     display: block;
     font: normal normal 16px $family-title;
     text-transform: uppercase;
     cursor: default;
-    &:last-child {
-      border-left: 1px solid white;
-    }
   }
 }
 
