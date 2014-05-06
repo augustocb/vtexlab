@@ -33,9 +33,12 @@
 
 
   $(document).on('click', '.topic-nav-link', function(e) {
+    var href = $.attr(this, 'href');
     $('html, body').animate({
-      scrollTop: $( $.attr(this, 'href') ).parents('.api-block').offset().top
-    }, 500);
+      scrollTop: $( href ).parents('.api-block').offset().top
+    }, 700, 'easeOutCirc', function(){
+      document.location.hash = href;
+    });
 
     e.preventDefault();
   });
