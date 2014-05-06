@@ -15,12 +15,22 @@
         <span class="selected-nav">{{ page.docType }} <i class="fa fa-sort-asc"></i></span>
         <ul>
           {% for nav in site.data.products %}
-            {% if nav.name == page.application %}        
-              {% for doc in nav.documentation  %}
+            {% if nav.name == page.application %}
+              {% if nav.documentation.api  %}
                 <li>
-                  <a href="/">{{ doc }}</a>
+                  <a href="{{ nav.documentation.api[0] }}">API</a>
                 </li>
-              {% endfor %}
+              {% endif %}
+              {% if nav.documentation.guide  %}
+                <li>
+                  <a href="{{ nav.documentation.guide[0] }}">GUIDE</a>
+                </li>
+              {% endif %}
+              {% if nav.documentation.design  %}
+                <li>
+                  <a href="{{ nav.documentation.design[0] }}">DESIGN</a>
+                </li>
+              {% endif %}
             {% endif %}
           {% endfor %}
         </ul>
