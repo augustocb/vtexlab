@@ -11,18 +11,10 @@
   friendlyName: Status 
   path: /status
 -
-  id: carrers
-  friendlyName: Carreiras
-  path: /carrers
--
-  id: forum
-  friendlyName: Fórum
-  path: /forum
+  id: community
+  friendlyName: Comunidade
+  path: /community
 -
   id: blog
   friendlyName: Blog 
   path: /blog
--
-  id: contact
-  friendlyName: Contato
-  path: /contact

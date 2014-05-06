@@ -10,6 +10,7 @@ module.exports = (grunt) ->
       build:
         options:
           trace: true
+          base_url: "localhost:9000"
 
     sass:
       dist:
