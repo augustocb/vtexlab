@@ -84,7 +84,7 @@
 
 @media (min-width: 768px) {
   .navbar-collapse {
-    text-align: center;
+    text-align: right;
     .nav {
       float: none;
       margin: 0;
@@ -98,6 +98,11 @@
         }
       }
     }
+  }
+}
+@media (max-width: 767px) {
+  .navbar-collapse {
+    text-align: left;
   }
 }
 

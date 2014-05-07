@@ -1,15 +1,15 @@
--
-  id: home
-  friendlyName: Home 
-  path: /
+# -
+#   id: home
+#   friendlyName: Home 
+#   path: /
 -
   id: docs
   friendlyName: Docs  
   path: /docs
--
-  id: status
-  friendlyName: Status 
-  path: /status
+# -
+#   id: carrers
+#   friendlyName: Carreiras
+#   path: /carrers
 -
   id: community
   friendlyName: Comunidade
@@ -18,3 +18,11 @@
   id: blog
   friendlyName: Blog 
   path: /blog
+# -
+#   id: contact
+#   friendlyName: Contato
+#   path: /contact
+-
+  id: status
+  friendlyName: Status 
+  path: /status
