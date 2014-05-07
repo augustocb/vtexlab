@@ -4,6 +4,15 @@ alext:
     github: alext
     gravatar: 0a924b019abc814105713298e8cd507c
     description: "Graduado em Engenharia de Controle e Automação, é apaixonado por Software.  Entusiasta de boas práticas de programação, gosta de compartilhar seu amor."
+augustocbarbosa:
+    displayname: Augusto Barbosa
+    email: augusto.barbosa@vtex.com.br
+    social:
+        github: augustocb
+        facebook: augustocbarbosa
+        twitter: augustob
+    gravatar: f8847652dff85109b3331cfb52c4de58
+    description: "Especialista em Ergodesign de Interfaces pela PUC-Rio, trabalha com Web desde 2005. Lidera o time de UX do VTEXLab, guiando, explorando e construindo soluções para um e-commerce melhor."
 leandrooriente:
     displayname: Leandro Oriente
     email: leandro.oriente@vtex.com.br
