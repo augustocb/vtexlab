@@ -90,6 +90,18 @@
   border-left: 1px solid $grey;
 }
 
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.post-body h2 {margin-bottom: 15px;}
+.post-body img {max-width: 100%;}
+
 .post-author {
   margin-bottom: 70px;
   h3 {
