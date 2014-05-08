@@ -40,7 +40,7 @@ scripts:
             <div class="post-tags">
               tags: 
               {% for tag in page.tags %}
-                <a href="{{ site.base_url }}/tag/{{ tag }}.html">{{ tag }}{% if forloop.last != true %}, {% endif %}</a>
+                <a href="/blog/tag/{{ tag }}.html">{{ tag }}{% if forloop.last != true %}, {% endif %}</a>
               {% endfor %}
             </div>
 
