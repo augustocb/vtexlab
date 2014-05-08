@@ -25,4 +25,4 @@
 -
   id: status
   friendlyName: Status 
-  path: /status
+  path: http://status.vtex.com.br
