@@ -4,6 +4,7 @@ type: release-note
 title: 'Novidades no OMS - Fluxos de Pedido e mais'
 author: 'augustocbarbosa'
 date: 2014-05-07 16:00:00
+main-image: http://lab.vtex.com/media/fluxo-oms01.png
 description: Release Notes da versão que lança o Fluxo de Pedidos
 tags: 
 - new-features

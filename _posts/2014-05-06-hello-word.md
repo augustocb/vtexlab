@@ -3,6 +3,7 @@ layout: post
 title: 'Unstoppable Blog'
 author: 'rdmuniz'
 date: 2014-05-06 22:00:00
+main-image: http://lab.vtex.com/media/fomula-reverse-parkour-marco.gif
 tags: 
 - new-features
 

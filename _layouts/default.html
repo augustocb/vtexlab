@@ -7,6 +7,15 @@
   <script type="text/javascript" src="/assets/javascripts/modernizr.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {% if page.type == "post" %}
+  <meta property="og:title" content="{{ page.title }}"/>
+  <meta property="og:site_name" content="VTEX Lab"/>  
+  <meta property="og:image" content="{{ page.main-image }}"/>
+  
+  <meta property="og:type" content="blog"/>
+  <meta property="og:description" content="{{ page.description }}"/>
+  {% endif %}
+
   <link rel="stylesheet" href="//io.vtex.com.br/front-libs/font-awesome/4.0.1/css/font-awesome.min.css" />
   <link rel="stylesheet" href="/assets/stylesheets/main.css" />
   {% for style in page.styles %}
