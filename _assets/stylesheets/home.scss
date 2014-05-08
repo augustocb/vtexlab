@@ -9,7 +9,7 @@
 
 .banner {
   display: block;
-  margin: 200px auto 245px;
+  margin: 0 auto 45px;
 }
 
 .know-portal {
@@ -77,6 +77,7 @@
 
 .box-info {
   margin: 85px auto 195px;
+  position: relative;
 
   h2 {
     font-size: 50px;
@@ -90,7 +91,20 @@
 }
 
 .terminal-code {
+  position: absolute;
+  z-index: 2;
+}
+.terminal-blur {
+  right: -20px;
+  top: -37px;
+  width: 408px;
+  z-index: 1;
+  @include blur(2px);
 
+  .terminal-body {
+    background: #9D9D9D;
+    height: 326px;
+  }
 }
 .terminal-header {
   border-top-left-radius: 10px;

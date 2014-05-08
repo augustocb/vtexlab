@@ -24,3 +24,12 @@ $prefixes: "-webkit-", "-moz-", "-o-", "-ms-", "";
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
+
+// Applying blur in px
+@mixin blur($blur) {
+  -webkit-filter: blur($blur);
+     -moz-filter: blur($blur);
+       -o-filter: blur($blur);
+      -ms-filter: blur($blur);
+          filter: blur($blur);
+}
