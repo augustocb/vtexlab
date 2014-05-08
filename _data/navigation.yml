@@ -2,10 +2,10 @@
 #   id: home
 #   friendlyName: Home 
 #   path: /
--
-  id: docs
-  friendlyName: Docs  
-  path: /docs
+# -
+#   id: docs
+#   friendlyName: Docs  
+#   path: /docs
 # -
 #   id: carrers
 #   friendlyName: Carreiras
@@ -25,4 +25,4 @@
 -
   id: status
   friendlyName: Status 
-  path: http://status.vtex.com.br
+  path: http://status.vtex.com.br/
