@@ -28,6 +28,34 @@
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 
+  // FB
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '734398799953187',
+      xfbml      : true,
+      version    : 'v2.0'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+  // TWITTER
+
+  !function(d,s,id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }}(document,"script","twitter-wjs");
+
   // PRIVATE FUNCTIONS
 
   // Redimensiona o tamanho da navegação entre posts para mante-las com a mesma altura
@@ -156,15 +184,29 @@
     $outpage.find('#disqus_thread').remove();
     $inpage.find('#post-comments').append('<div id="disqus_thread">');
     
-    DISQUS.reset({
-      reload: true,
-      config: function () {
-        this.page.shortname = "vtexlab";
-        this.page.url = $inpage.data('data-abs-url');
-        this.page.identifier = $inpage.data('data-abs-url');
-        this.page.title = $inpage.data('title');
-      }
-    });
+
+    // RESET FB LIKE BTN
+    if (FB && FB.XFBML) {
+      FB.XFBML.parse();
+    }
+
+    // RESET TWITTER
+    if (twttr && twttr.widgets) {
+      twttr.widgets.load();
+    }
+
+    // RESET DISQUS
+    if (DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: function () {
+          this.page.shortname = "vtexlab";
+          this.page.url = $inpage.data('data-abs-url');
+          this.page.identifier = $inpage.data('data-abs-url');
+          this.page.title = $inpage.data('title');
+        }
+      });
+    }
 
   }
 

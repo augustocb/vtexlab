@@ -33,17 +33,7 @@ scripts:
               {{ content }}
             </section>
 
-            <section class="post-share">
-              <iframe src="//www.facebook.com/plugins/like.php?href=http://lab.vtex.com{{ page.url }}/&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=183003458415333" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
-            </section>
-
-            <div class="post-tags">
-              tags: 
-              {% for tag in page.tags %}
-                  <a href="/blog/tag/{{ tag }}.html">{{ tag }}</a>
-                  {% if forloop.last != true %},&nbsp;{% endif %}
-              {% endfor %}
-            </div>
+            {% include social-share.html %}
 
             <section class="post-author">
               <div class="row">
@@ -56,24 +46,34 @@ scripts:
                       <h3>Escrito por:</h3>
                       <p class="post-author-name"><strong>{{ author.displayname }}</strong></p>
                       <p>{{ author.description }}</p>
+                      
+                      <p>
+                        {% if author.social.facebook %}
+                          <a href="https://facebook.com/{{ author.social.facebook }}">Facebook</a>
+                        {% endif %}
+                        {% if author.social.googleplus %}
+                        <a href="https://plus.google.com/+{{ author.social.googleplus }}">Google +</a>
+                        {% endif %}
+                        {% if author.social.twitter %}
+                          <a href="https://twitter.com/{{ author.social.twitter }}">Twitter</a>
+                        {% endif %}
+                        {% if author.email %}
+                          <a href="mailto:{{ author.email }}">Email</a>
+                      {% endif %}
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-5">
-                  <ul class="post-share-options">
-                    {% if author.social.facebook %}
-                    <li><a class="post-share-option facebook-share" href="https://facebook.com/{{ author.social.facebook }}"></a></li>
-                    {% endif %}
-                    {% if author.social.googleplus %}
-                    <li><a class="post-share-option google-share" href="https://plus.google.com/+{{ author.social.googleplus }}"></a></li>
-                    {% endif %}
-                    {% if author.social.twitter %}
-                    <li><a class="post-share-option twitter-share" href="https://twitter.com/{{ author.social.twitter }}"></a></li>
-                    {% endif %}
-                    {% if author.email %}
-                    <li><a class="post-share-option email-share" href="mailto:{{ author.email }}"></a></li>
-                    {% endif %}
-                  </ul>
+                  <div class="post-tags">
+                    <h3>Tags: </h3>
+                    <p>
+                      {% for tag in page.tags %} 
+                        <a href="/blog/tag/{{ tag }}.html">{{ tag }}</a>
+                        {% if forloop.last != true %},&nbsp;{% endif %}
+                      {% endfor %}
+                    </p>
+                  </div>
                 </div>
                 
               </div>

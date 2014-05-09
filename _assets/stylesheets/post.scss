@@ -161,6 +161,16 @@
   }
 }
 
+.social-container {
+  margin: 10px 0 30px;
+  min-height: 32px;
+}
+.twitter-share-button {
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
 .post-share-option {
   display: block;
   background: url(/images/main-sprite.png);
@@ -220,17 +230,6 @@
     font: normal normal 14px / 1.4 $family-primary;
     color: $dark-grey;
     margin: 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .post-wrapper .container { padding: 0; }
-  .post-pagination,
-  .post-nav a {
-    height: auto !important;
-  }
-  .post-nav a {
-    padding: 15px;
   }
 }
 
@@ -323,5 +322,21 @@
 @keyframes moveFromBottom {
   from {
     transform: translateY(100%);
+  }
+}
+
+
+@media (max-width: 767px) {
+  .post-wrapper .container { padding: 0; }
+  .post-nav-container {
+    max-width: 100%;
+  }
+  .post-pagination,
+  .post-nav a {
+    height: auto !important;
+    text-align: center;
+  }
+  .post-nav a {
+    border-top: 4px solid $grey;
   }
 }
