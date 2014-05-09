@@ -1,14 +1,5 @@
 (function(window, document){
 
-  // DISQUS
-  (function() {
-    var disqus_shortname = 'vtexlab';
-    var disqus_url = POST_URL;
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-
   // CACHE SELECTORS
   var $body = $('body'),
       $header = $('#header'),
@@ -26,6 +17,16 @@
         'animation' : 'animationend'
       },
       animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ];
+
+  // DISQUS
+  (function() {
+    var disqus_shortname = 'vtexlab';
+    var disqus_url = activePost.data('data-abs-url');
+    var disqus_identifier = activePost.data('data-abs-url');
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 
   // PRIVATE FUNCTIONS
 
@@ -154,19 +155,20 @@
     // Reseta o disqus para carregar novos comentários
     $outpage.find('#disqus_thread').remove();
     $inpage.find('#post-comments').append('<div id="disqus_thread">');
-
+    
     DISQUS.reset({
       reload: true,
       config: function () {
-        this.page.url = window.location.href;
-        this.page.identifier = $postToRenderTitle;  
+        this.page.shortname = "vtexlab";
+        this.page.url = $inpage.data('data-abs-url');
+        this.page.identifier = $inpage.data('data-abs-url');
+        this.page.title = $inpage.data('title');
       }
     });
 
   }
 
   // Evento de click da navegação. Preveni comportamento padrão e faz transição entre posts
-  // TODO - Carregar normalmente caso página não esteja no BODY ainda
   $body.on('click', '.post-next a, .post-prev a', function(e) {
     var urlPostId = $(this).data('post-id');
     var post = document.getElementById('post' + getIdbyJekyllId(urlPostId));

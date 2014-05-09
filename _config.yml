@@ -1,6 +1,7 @@
 highlighter: rouge
 
 base_url: http://lab.vtex.com
+production_url: http://lab.vtex.com
 
 markdown: kramdown
 kramdown:

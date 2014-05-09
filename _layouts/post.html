@@ -11,7 +11,7 @@ scripts:
 {% assign author = site.data.authors[page.author] %}
 
 <div id="post-wrapper" class="post-perspective article">
-  <div data-jekyll-id="{{ page.id }}" data-url="{{ page.url }}" data-title="{{ page.title }}" class="post">
+  <div data-jekyll-id="{{ page.id }}" data-url="{{ page.url }}" data-title="{{ page.title }}" data-abs-url="{{site.production_url}}{{page.url}}/" class="post">
     <div class="container">
       <div class="row">        
         <div class="col-md-2"></div>
@@ -78,7 +78,7 @@ scripts:
               </div>
             </section>
             <section class="post-comments" id="post-comments">
-              
+                
             </section>
           </article>
         </div>
@@ -118,7 +118,3 @@ scripts:
     </footer>
   </div>  
 </div>
-
-<script>
-  var POST_URL = "{{site.base_url}}{{page.url}}/";
-</script>
