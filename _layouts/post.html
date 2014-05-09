@@ -34,13 +34,14 @@ scripts:
             </section>
 
             <section class="post-share">
-              <iframe src="//www.facebook.com/plugins/like.php?href=http://lab.vtex.com{{ page.url }}&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=183003458415333" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+              <iframe src="//www.facebook.com/plugins/like.php?href=http://lab.vtex.com{{ page.url }}/&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=183003458415333" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
             </section>
 
             <div class="post-tags">
               tags: 
               {% for tag in page.tags %}
-                <a href="{{ site.base_url }}/tag/{{ tag }}.html">{{ tag }}{% if forloop.last != true %}, {% endif %}</a>
+                  <a href="/blog/tag/{{ tag }}.html">{{ tag }}</a>
+                  {% if forloop.last != true %},&nbsp;{% endif %}
               {% endfor %}
             </div>
 
