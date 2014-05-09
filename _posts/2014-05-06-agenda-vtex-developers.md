@@ -4,6 +4,7 @@ title: 'Developers no VTEX Day 2014'
 author: 'rdmuniz'
 date: 2014-05-06 22:31:00
 description: Este ano são esperados mais de 2.500 profissionais no evento
+main-image: http://lab.vtex.com/media/IMG_9392.JPG
 tags: 
 - events
 
