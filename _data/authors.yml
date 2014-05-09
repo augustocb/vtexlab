@@ -23,12 +23,13 @@ leandrooriente:
         googleplus: leandrooriente
     gravatar: 6af7a326c14b57b9c486bc4e4dec63d1
     description: "Graduado em Engenharia de Controle e Automação, é apaixonado por Software.  Entusiasta de boas práticas de programação, gosta de compartilhar seu amor."
-gadr:
-    displayname: Guilherme Rodrigues
-    email: guilherme.rodrigues@vtex.com.br
-    github: 74cefebbca01465c41d22dd1468451d1
-    gravatar: 123123
-    description: "Graduado em Engenharia de Controle e Automação, é apaixonado por Software.  Entusiasta de boas práticas de programação, gosta de compartilhar seu amor."
+uchoa:
+    displayname: André Uchoa
+    email: uchoa@vtex.com.br
+    social:
+        github: uchoa
+    gravatar: 5e92b24bf3229e6e93091d8a3b75e8a2
+    description: André Uchoa
 brenoc:
     displayname: Breno Calazans
     email: breno.calazans@vtex.com.br
