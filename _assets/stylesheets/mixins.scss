@@ -33,3 +33,11 @@ $prefixes: "-webkit-", "-moz-", "-o-", "-ms-", "";
       -ms-filter: blur($blur);
           filter: blur($blur);
 }
+
+// Transitions
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}

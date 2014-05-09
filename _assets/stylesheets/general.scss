@@ -98,4 +98,24 @@ a {
     padding: 18px;
     margin: 55px 0 50px;
   }
-} 
+}
+.btn-go-to {
+  background-color: $blue;
+  color: #fff;
+  padding: 6px 24px;
+  font-size: 20px;
+  box-sizing: border-box;
+  border: 3px solid $blue;
+  @include transition(all .3s ease-in-out);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    text-decoration: none;
+    background-color: #fff;
+    color: darken($blue, 10%);
+    border: 3px solid darken($blue, 10%);
+  }
+}

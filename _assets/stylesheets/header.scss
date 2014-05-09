@@ -66,6 +66,7 @@
         color: $blue;
         font: bold 16px $family-title;
         text-transform: uppercase;
+        @include transition(all .3s ease-in-out);
       }
       > a:hover,
       &.active > a {
