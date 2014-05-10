@@ -1,10 +1,13 @@
+var disqus_shortname = 'vtexlab',
+    disqus_url, disqus_identifier;
+
 (function(window, document){
 
   // CACHE SELECTORS
   var $body = $('body'),
       $header = $('#header'),
       $headerBtn = $('#header-button'),
-      activePost = $('.active-post');
+      activePost = $('.post');
 
   // GLOBAL VARS
   var isAnimating = false,
@@ -20,9 +23,10 @@
 
   // DISQUS
   (function() {
-    var disqus_shortname = 'vtexlab';
-    var disqus_url = activePost.data('data-abs-url');
-    var disqus_identifier = activePost.data('data-abs-url');
+    console.log(activePost.data());
+    disqus_url = activePost.data('absUrl');
+    disqus_identifier = activePost.data('absUrl');
+
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -201,8 +205,8 @@
         reload: true,
         config: function () {
           this.page.shortname = "vtexlab";
-          this.page.url = $inpage.data('data-abs-url');
-          this.page.identifier = $inpage.data('data-abs-url');
+          this.page.url = $inpage.data('absUrl');
+          this.page.identifier = $inpage.data('absUrl');
           this.page.title = $inpage.data('title');
         }
       });
