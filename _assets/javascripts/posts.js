@@ -1,5 +1,10 @@
 var disqus_shortname = 'vtexlab',
-    disqus_url, disqus_identifier;
+    disqus_url, disqus_identifier,
+    disqus_config = function () { 
+      this.language = "pt_BR";
+      this.experiment = {};
+      this.experiment.enable_scroll_container = true;
+    }; 
 
 (function(window, document){
 
@@ -23,7 +28,6 @@ var disqus_shortname = 'vtexlab',
 
   // DISQUS
   (function() {
-    console.log(activePost.data());
     disqus_url = activePost.data('absUrl');
     disqus_identifier = activePost.data('absUrl');
 
@@ -208,6 +212,9 @@ var disqus_shortname = 'vtexlab',
           this.page.url = $inpage.data('absUrl');
           this.page.identifier = $inpage.data('absUrl');
           this.page.title = $inpage.data('title');
+          if (this.experiment) {
+            this.experiment.enable_scroll_container = true;
+          }
         }
       });
     }
