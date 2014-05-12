@@ -41,3 +41,11 @@ $prefixes: "-webkit-", "-moz-", "-o-", "-ms-", "";
        -o-transition: $transition;
           transition: $transition;
 }
+
+// Transformations
+@mixin scale($ratio...) {
+  -webkit-transform: scale($ratio);
+      -ms-transform: scale($ratio); // IE9 only
+       -o-transform: scale($ratio);
+          transform: scale($ratio);
+}
