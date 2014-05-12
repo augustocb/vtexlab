@@ -30,12 +30,11 @@ uchoa:
         github: uchoa
     gravatar: 5e92b24bf3229e6e93091d8a3b75e8a2
     description: "Trabalha com sistemas computacionais há mais de 20 anos, como Arquiteto de Sistemas nos últimos 12. Esteve envolvido com soluções de e-commerce desde 2001, tendo chegado à VTEX em 2008. Sua experiência inclui o trabalho em um laboratório de pesquisa da UFRJ durante seis anos, desde quando ainda era aluno do Bacharelado em Informática naquela universidade. Criar é seu ofício; o VTEX Lab é seu sonho."
-brenoc:
-    displayname: Breno Calazans
-    email: breno.calazans@vtex.com.br
-    github: brenoc
-    gravatar: 40c48ec022d25c0d6b75767c7bcd81ea
-    description: "Graduado em Engenharia de Controle e Automação, é apaixonado por Software.  Entusiasta de boas práticas de programação, gosta de compartilhar seu amor."
+lemgruber:
+    displayname: Bernardo Lemgruber
+    email: bernardo.lemgruber@vtex.com.br
+    gravatar: 4f3e833e4119a50167ee8f45c67bf74a
+    description: ""
 rdmuniz:
     displayname: Rodrigo Muniz
     email: rodrigo.muniz@vtex.com.br
