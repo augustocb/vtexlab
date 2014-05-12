@@ -6,7 +6,10 @@ date: 2014-05-12 10:31:00
 description: Algumas dicas práticas e informações úteis
 main-image: /media/rascunho-apresentacao-vtexday.jpg
 tags: 
-- events
+- apresentação
+- VTEX Day
+- Keynote
+- Powerpoint
 
 ---
 
