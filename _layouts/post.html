@@ -48,17 +48,20 @@ scripts:
                       <p>{{ author.description }}</p>
                       
                       <p>
+                        {% if author.social.github %}
+                          &#65515; <a href="https://github.com/{{ author.social.github }}">Github</a>&nbsp; 
+                        {% endif %}
                         {% if author.social.facebook %}
-                          <a href="https://facebook.com/{{ author.social.facebook }}">Facebook</a>
+                          &#65515; <a href="https://facebook.com/{{ author.social.facebook }}">Facebook</a>&nbsp; 
                         {% endif %}
                         {% if author.social.googleplus %}
-                        <a href="https://plus.google.com/+{{ author.social.googleplus }}">Google +</a>
+                          &#65515; <a href="https://plus.google.com/+{{ author.social.googleplus }}">Google +</a>&nbsp; 
                         {% endif %}
                         {% if author.social.twitter %}
-                          <a href="https://twitter.com/{{ author.social.twitter }}">Twitter</a>
+                          &#65515; <a href="https://twitter.com/{{ author.social.twitter }}">Twitter</a>&nbsp; 
                         {% endif %}
                         {% if author.email %}
-                          <a href="mailto:{{ author.email }}">Email</a>
+                          &#65515; <a href="mailto:{{ author.email }}">Email</a>&nbsp; 
                       {% endif %}
                       </p>
                     </div>
@@ -68,9 +71,8 @@ scripts:
                   <div class="post-tags">
                     <h3>Tags: </h3>
                     <p>
-                      {% for tag in page.tags %} 
-                        <a href="/blog/tag/{{ tag }}.html">{{ tag }}</a>
-                        {% if forloop.last != true %},&nbsp;{% endif %}
+                      {% for tag in page.tags %}
+                      <a href="/blog/tag/{{ tag }}.html">{{ tag }}</a>{% if forloop.last != true %},&nbsp;{% endif %}
                       {% endfor %}
                     </p>
                   </div>
