@@ -2,7 +2,6 @@
 layout: post
 title: Guia de apresentação para iniciantes
 author: lemgruber
-date: {}
 description: Algumas dicas práticas e informações úteis
 "main-image": "/media/rascunho-apresentacao-vtexday.jpg"
 tags: 
