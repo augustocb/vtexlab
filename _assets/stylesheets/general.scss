@@ -119,3 +119,12 @@ a {
     border: 3px solid darken($blue, 10%);
   }
 }
+
+.not-found {
+  max-width: 700px;
+  margin: 75px auto;
+
+  img {
+    max-width: 100%;
+  }
+}
