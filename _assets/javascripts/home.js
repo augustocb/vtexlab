@@ -41,6 +41,15 @@
 
 $(document).ready(function(){
 
+  var $terminal = $('#terminal');
+
+  $(document).on('scroll', function(e){
+    if ( (($terminal.position().top) - 300) < $(window).scrollTop() ) {
+      $('#terminal-empty').addClass('terminal-empty terminal-blur'); 
+      $('#terminal-focus').addClass('terminal-focus'); 
+    };
+  });
+
   // var _users = users.shuffle();
 
   // var startUserType = window.setTimeout(typeUsers, 2000, [_users]);

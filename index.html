@@ -13,12 +13,25 @@ title: HOME
 ---
 
 <section class="top-banner">
-  <div class="container">
+  <div class="nico-ilustra ilustration">
+    <img src="/images/ilustra-nico2.jpg" alt="">
+    <p>por: <a href="http://nicoabreu.tumblr.com">Nico Abreu</a></p>
+  </div>
+  <div class="dani-ilustra ilustration">
+    <img src="/images/ilustra-dani.jpg" alt="">
     <p>por: <a href="http://cargocollective.com/daniadolfo/danielle-adolfo">Danielle Adolfo</a></p>
   </div>
 </section>
+<script>
+  (function(){
+    var $ilustration = document.getElementsByClassName('ilustration'),
+        random = Math.floor(Math.random() * ($ilustration.length - 1 + 1));
+    
+    $ilustration[random].style.display = "block";
+  }());
+</script>
 
-<section class="box-info" id="start-content">
+<section class="box-info" id="terminal">
   <div class="container">
     <div class="row-fluid">
       <div class="col-md-7">
@@ -29,7 +42,7 @@ title: HOME
 
       </div>
       <div class="col-md-5 terminals">
-        <div class="terminal-code terminal-focus">
+        <div class="terminal-code" id="terminal-focus">
           <div class="terminal-header">
             <div class="terminal-buttons">
               <span class="terminal-close-btn"></span>
@@ -54,7 +67,7 @@ title: HOME
           </div>
         </div>
 
-        <div class="terminal-code terminal-empty terminal-blur">
+        <div class="terminal-code" id="terminal-empty">
           <div class="terminal-header">
             <div class="terminal-buttons">
               <span class="terminal-close-btn"></span>
