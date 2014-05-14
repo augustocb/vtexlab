@@ -12,7 +12,7 @@
   }
   p {      
     position: absolute;
-    bottom: -4px;
+    bottom: -14px;
     right: 10px;
     color: #ddd;
     font-size: 10px;
@@ -538,4 +538,16 @@
   .answer-box {
     @include animation( (fadeOutDown 0.4s forwards) );
   }
+}
+
+// RESPONSIVE
+@media (min-width: 992px) and (max-width: 1199px) {
+  .top-banner .container {height: 600px;}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .top-banner .container {height: 500px;}
+}
+@media (max-width: 767px) {
+ .top-banner { margin-top: -50px; }
+  .top-banner .container {height: 290px;}
 }
