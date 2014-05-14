@@ -34,6 +34,13 @@ $prefixes: "-webkit-", "-moz-", "-o-", "-ms-", "";
           filter: blur($blur);
 }
 
+// Animations
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+       -o-animation: $animation;
+          animation: $animation;
+}
+
 // Transitions
 
 @mixin transition($transition) {
