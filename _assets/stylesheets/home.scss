@@ -2,14 +2,29 @@
 @import "variables";
 
 .top-banner {
-  background: $blue;
   text-align: center;
   position: relative;
-}
-
-.banner {
-  display: block;
-  margin: 0 auto 45px;
+  margin-top: -170px;
+  .container {
+    background: url(../../images/ilustra-dani.jpg) center bottom no-repeat;
+    background-size: 100% auto;
+    height: 684px;
+  }
+  p {      
+    position: absolute;
+    bottom: -4px;
+    right: 10px;
+    color: #ddd;
+    font-size: 10px;
+  }
+  a {
+    font-weight: bold;
+    color: #ddd;
+  }
+  img {
+    max-width: 100%;
+    display: inline-block;
+  }
 }
 
 .box-info {
@@ -34,10 +49,17 @@
     margin-bottom: 36px;
   }
 }
+#start-content {
+  margin-top: 45px;
+}
 
+.terminals {
+  margin-top: 25px;
+}
 .terminal-code {
   position: absolute;
   z-index: 2;
+  cursor: default;
 }
 .terminal-focus {
   left: 20px;
