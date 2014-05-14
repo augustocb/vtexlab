@@ -47,6 +47,15 @@ scripts:
               {% if product.documentation.api.size %}
               <a href="{{ product.documentation.api[0] }}">Developer</a>
               {% endif %}
+              {% if product.documentation.lib.size %}
+              <a href="{{ product.documentation.lib[0] }}">Lib</a>
+              {% endif %}
+              {% if product.documentation.guide.size %}
+              <a href="{{ product.documentation.guide[0] }}">Guide</a>
+              {% endif %}
+              {% if product.documentation.design.size %}
+              <a href="{{ product.documentation.design[0] }}">Design</a>
+              {% endif %}
               <!-- <a href="">Design</a> -->
             </div>
           </li>

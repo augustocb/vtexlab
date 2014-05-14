@@ -17,11 +17,10 @@ scripts:
       <div class="docs-banner"></div>
       <div class="container-fluid">
           <div class="row">
-            {% if page.docType == 'guide' %}
-                <div class="article article-{{ page.docType }} col-md-10 col-md-offset-1">{{ content }}</div>
-            {% endif %}
             {% if page.docType == 'api' %}
                 <div class="article article-{{ page.docType }} col-md-11 col-md-offset-1">{{ content }}</div>
+            {% else %}
+                <div class="article article-{{ page.docType }} col-md-10 col-md-offset-1">{{ content }}</div>
             {% endif %}
           </div>
       </div>

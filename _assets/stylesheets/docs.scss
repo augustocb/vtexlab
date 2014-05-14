@@ -174,11 +174,12 @@
   float: left;
   height: 36px;
   position: relative;
+  width: 50%;
   @media (min-width: 993px) {
     // width: 50%;
   }
   &:hover {
-    background: $dark-grey;
+    background: darken( $blue, 25% );
     ul {
       display: block;
     }
@@ -191,8 +192,6 @@
   }
   ul {
     position: absolute;
-    outline: 1px solid $light-grey;
-    border-bottom: 3px solid $grey;
     z-index: 11;
     left: 0;
     width: 100%;
@@ -201,14 +200,14 @@
     padding: 0;
     display: none;
     a {
-      background: $dark-grey;
+      background: $blue;
       color: #fff;
       display: block;
       padding: 10px 15px;
       font-size: 12px;
       text-transform: uppercase;
       &:hover {
-        background: $black;
+        background: darken( $blue, 25% );
         text-decoration: none;
       }
     }
