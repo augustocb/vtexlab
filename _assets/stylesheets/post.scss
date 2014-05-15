@@ -3,8 +3,8 @@
 
 .post-page {
   .header {
-    z-index: 9;
-    position: fixed;
+    z-index: 9999;
+    position: fixed; 
     top: 0;
   }
   .hide-header {

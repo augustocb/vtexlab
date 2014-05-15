@@ -6,7 +6,6 @@
   background: rgba(255,255,255,.8);
   width: 100%;
   position: relative;
-  z-index: 9;
   @include prefix(transition, top 0.1s ease-out);
   h1 {
     margin: 0;
@@ -24,7 +23,7 @@
   position: fixed;
   top: 10px;
   left: 10px;
-  z-index: 9;
+  z-index: 9999;
   opacity: 0;
   background: white url(/images/main-sprite.png) -165px 11px;
   @include prefix(transition, opacity 0.1s ease-out);
