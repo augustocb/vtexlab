@@ -1,7 +1,7 @@
-# -
-#   id: home
-#   friendlyName: Home 
-#   path: /
+-
+  id: home
+  friendlyName: Home 
+  path: /
 -
   id: docs
   friendlyName: Docs  
