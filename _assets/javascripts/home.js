@@ -18,9 +18,9 @@ $(document).ready(function(){
       'question' : 'Qual a melhor plataforma de e-commerce do mundo?',
       'status' : false,
       'answer' : {
-        'name' : 'Geraldo Tomaz',
-        'role' : 'Co-CEO',
-        'picture' :  'http://gravatar.com/avatar/dd558b4375c20312255ac7424d79b252?d=identicon',
+        'name' : 'Leandro Oriente',
+        'role' : 'Desenvolvedor',
+        'picture' :  'http://gravatar.com/avatar/6af7a326c14b57b9c486bc4e4dec63d1?d=identicon',
         'response' : 'Existem outras?'
       }
     },
