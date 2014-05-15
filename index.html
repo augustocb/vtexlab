@@ -17,7 +17,7 @@ title: HOME
     <img src="/images/ilustra-nico2.jpg" alt="">
     <p>por: <a href="http://nicoabreu.tumblr.com">Nico Abreu</a></p>
   </div>
-  <div class="dani-ilustra ilustration">
+  <div class="dani-ilustra ilustration"> 
     <img src="/images/ilustra-dani.jpg" alt="">
     <p>por: <a href="http://cargocollective.com/daniadolfo/danielle-adolfo">Danielle Adolfo</a></p>
   </div>
@@ -41,7 +41,7 @@ title: HOME
         <a href="/docs" class="btn btn-go-to">Explore a documentação</a>
 
       </div>
-      <div class="col-md-5 terminals">
+      <div class="col-md-5 terminals visible-lg visible-md">
         <div class="terminal-code" id="terminal-focus">
           <div class="terminal-header">
             <div class="terminal-buttons">
@@ -82,12 +82,15 @@ title: HOME
   </div>
 </section>
 
-<section class="box-info">
+<section class="box-info" id="community">
   <div class="container">
     <div class="row-fluid">
-      <div class="col-md-5 q-and-a">
+      <div class="col-md-5 q-and-a visible-lg visible-md">
         <div class="ask-box">
-          <div class="bubble-talk">What does the fox say?</div>
+          <div class="bubble-talk">
+            <div class="vertical-align" id="question-text">
+            </div>
+          </div>
           <div class="people">
             <div class="person"></div>
             <div class="person"></div>
@@ -98,12 +101,13 @@ title: HOME
         </div>
 
         <div class="answer-box">
-          <div class="bubble-talk">wa-pa-pa-pa-pa-pa-pa-pa-pa-pow</div>
+          <div class="bubble-talk" id="answer-text">
+          </div>
 
-          <img src="//gravatar.com/avatar/74cefebbca01465c41d22dd1468451d1?d=identicon" class="profile-picture" alt="">
+          <img src="" class="profile-picture" alt="" id="answer-img">
           <div class="who">
-            <h4>The Fox</h4>
-            <p><small>youtube superstar</small></p>
+            <h4 id="answer-name"></h4>
+            <p><small id="answer-role"></small></p>
           </div>
         </div>
 

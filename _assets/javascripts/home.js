@@ -1,67 +1,114 @@
-// Array.prototype.shuffle = function() {
-//   var i = this.length, j, temp;
-//   if ( i == 0 ) return this;
-//   while ( --i ) {
-//      j = Math.floor( Math.random() * ( i + 1 ) );
-//      temp = this[i];
-//      this[i] = this[j];
-//      this[j] = temp;
-//   }
-//   return this;
-// }
-
-// var users = [
-//   {
-//     "name" : "Leandro Oriente",
-//     "gravatar" : "6af7a326c14b57b9c486bc4e4dec63d1",
-//     "job" : "Desenvolvedor"
-//   },
-//   {
-//     "name" : "Rodrigo Muniz",
-//     "gravatar" : "be9f1ffae553d1773a688904265e8551",
-//     "job" : "Designer"
-//   },
-//   {
-//     "name" : "Alex Tercete",
-//     "gravatar" : "0a924b019abc814105713298e8cd507c",
-//     "job" : "Desenvolvedor"
-//   }
-// ];
-
-// var typeUsers = function(user) {
-//   $(".title-card").typed({
-//     strings: ["First sentence.", "Second sentence."],
-//     typeSpeed: 30,
-//     backDelay: 500, 
-//     callback: function(){
-//       console.log('DONE');
-//     }
-//   });
-// };
-
 $(document).ready(function(){
 
-  var $terminal = $('#terminal');
+  var $terminal = $('#terminal'),
+      $community = $('#community');
+
+  var qeaAnimateStarted = false;
+
+  var animEndEventNames = {
+        'WebkitAnimation' : 'webkitAnimationEnd',
+        'OAnimation' : 'oAnimationEnd',
+        'msAnimation' : 'MSAnimationEnd',
+        'animation' : 'animationend'
+      },
+      animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ];
+
+  var qea = [
+    {
+      'question' : 'Qual a melhor plataforma de e-commerce do mundo?',
+      'status' : false,
+      'answer' : {
+        'name' : 'Geraldo Tomaz',
+        'role' : 'Co-CEO',
+        'picture' :  'http://gravatar.com/avatar/dd558b4375c20312255ac7424d79b252?d=identicon',
+        'response' : 'Existem outras?'
+      }
+    },
+    {
+      'question' : 'Qual o sentido da vida?',
+      'status' : false,
+      'answer' : {
+        'name' : 'Guilherme Rodrigues',
+        'role' : 'Desenvolvedor e blogueiro',
+        'picture' :  'http://gravatar.com/avatar/74cefebbca01465c41d22dd1468451d1?d=identicon',
+        'response' : '42'
+      }
+    },
+    {
+      'question' : 'What does the fox say?',
+      'status' : false,
+      'answer' : {
+        'name' : 'The Fox',
+        'role' : 'youtube superstar',
+        'picture' :  '/images/the-fox.jpg',
+        'response' : 'wa-pa-pa-pa-pa-pa-pa-pa-pa-pow'
+      }
+    }
+  ];
+
+  function getLastActiveQuestion() {
+    var active = null;
+
+    for (var i = 0, len = qea.length; i < len; i++) {
+      if (qea[i].status) {
+        if (qea[i + 1]) {
+          qea[i + 1].status = true;
+          active = qea[i + 1];          
+        } else {
+          qea[0].status = true;
+          active = qea[0];
+        }
+
+        qea[i].status = false;
+        break;
+      }
+    };
+
+    if (active) {
+      return active;
+    } else {
+      qea[0].status = true;
+      return qea[0]
+    }
+  };
+
+  function updateQuestion (item) {
+    $('#question-text').text(item.question);
+    $('#answer-text').text(item.answer.response);
+    $('#answer-name').text(item.answer.name);
+    $('#answer-role').text(item.answer.role);
+    $('#answer-img').attr('src', item.answer.picture);
+  };
+
+  function animateQuestion () {
+    qeaAnimateStarted = true;
+    $community.addClass('come');
+    setTimeout(function(){
+      $community.addClass('go-away');
+      setTimeout(function(){
+        updateQuestion(getLastActiveQuestion());
+        $community.removeClass('go-away come');
+        setTimeout(function(){
+          animateQuestion();
+        }, 20);
+      }, 800);
+    }, 7500);
+  };
+
+  updateQuestion(getLastActiveQuestion());
 
   $(document).on('scroll', function(e){
-    if ( (($terminal.position().top) - 300) < $(window).scrollTop() ) {
-      $('#terminal-empty').addClass('terminal-empty terminal-blur'); 
-      $('#terminal-focus').addClass('terminal-focus'); 
-    };
-  });
+    if ($(window).width() > 992) {
+      if ( (($terminal.position().top) - 300) < $(window).scrollTop() ) {
+        $('#terminal-empty').addClass('terminal-empty terminal-blur'); 
+        $('#terminal-focus').addClass('terminal-focus'); 
+      };
 
-  // var _users = users.shuffle();
-
-  // var startUserType = window.setTimeout(typeUsers, 2000, [_users]);
-  
-  $('#know-portal').on('click', function(e) {
-    console.log('ERROS');
-    var pos = $('#start-content').position().top;
-    
-    $("html, body").animate({ 
-      scrollTop: pos
-    }, 700, 'easeOutCirc');
-
-    e.preventDefault();
+      if ( (($community.position().top) - 300) < $(window).scrollTop() ) {
+        if (!qeaAnimateStarted) {
+          animateQuestion();
+        }
+      };
+    }
   });
 });
