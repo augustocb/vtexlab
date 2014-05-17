@@ -12,6 +12,8 @@ tags:
 
 ---
 
+![Portas Abertas](/media/portas-abertas04.png)
+
 > "We wish to welcome you to Munchkinland, we welcome you to Munchkinland."
 >     - The Munchkins welcome song; _The Wonderful Wizard of Oz_
 
