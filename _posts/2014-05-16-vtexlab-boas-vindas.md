@@ -3,7 +3,7 @@
 layout: post  
 title: 'Seja bem vindo. Sinta-se em casa.'  
 author: 'uchoa'  
-main-image: //lab.vtex.com/media/portas-abertas04.png  
+main-image: /media/portas-abertas04.png  
 description: |  
     O VTEX Lab abre definitivamente suas portas à Comunidade VTEX. Venha
     viver conosco a aventura de construir o futuro.
