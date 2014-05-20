@@ -1,0 +1,20 @@
+{% assign class_footer = "" %}
+{% if page.type == "post" %}
+  {% assign class_footer = "default-footer" %}
+{% endif %}
+
+<footer class="footer {{ class_footer }}">
+  <div class="subscribe-to">
+    <div class="container">
+      <ul>
+        <li><a href="http://fb.com/vtexlab"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+        <li><a href="http://twitter.com/vtexlab"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+        <li><a href="http://lab.vtex.com/feed.xml"><i class="fa fa-rss-square"></i> Feed do Blog</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="/blog" class="footer-logo">Blog Vtex</a>
+  </div>
+</footer>

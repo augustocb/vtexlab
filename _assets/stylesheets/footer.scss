@@ -4,6 +4,7 @@
 .footer {
   background: $black;
   padding: 10px 0;
+  padding-top: 0;
   .copyright {
     font: normal 15px $family-primary;
     font-weight: 300;
@@ -24,6 +25,37 @@
   }
   .footer-logo:hover {
     opacity: 1;
+  }
+}
+.subscribe-to {
+  font-size: 20px;
+  text-align: center;
+  color: darken(#858585, 10%);
+  padding: 10px 0;
+  margin-bottom: 10px;
+  background: lighten(#858585, 38%);
+  .container {
+    width: 435px;
+    padding: 0;
+  }
+  ul {padding: 0;}
+  li {
+    float: left;
+    list-style: none;
+    margin-left: 20px;
+  }
+  a {
+    color: #858585;
+    &:hover {
+      color: darken(#858585, 35%);
+      text-decoration: none;
+      @include transition(color .3s ease-in-out);
+      i {@include transition(color .3s ease-in-out);}
+
+      .fa-facebook-square {color: #3B5998;}
+      .fa-twitter-square {color: #00B0ED;}
+      .fa-rss-square {color: #F99638;}
+    }
   }
 }
 

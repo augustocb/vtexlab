@@ -33,13 +33,10 @@
     {{ content }}
   </section>
 
-  {% if page.type != "post" %}
-  <footer class="footer default-footer">
-    <div class="container">
-      <a href="#" id="footer-logo" class="footer-logo">Blog VTEX</a>
-    </div>
-  </footer>
-  {% endif %}
+{% if page.type != "post" %}
+{% include footer.html %}
+{% endif %}
+
   <script type="text/javascript" src="/assets/javascripts/jquery.min.js"></script>
   <script type="text/javascript" src="/assets/javascripts/bootstrap/collapse.js"></script>
   <script type="text/javascript" src="/assets/javascripts/bootstrap/transition.js"></script>
