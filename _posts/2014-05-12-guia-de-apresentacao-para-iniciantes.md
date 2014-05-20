@@ -40,7 +40,7 @@ No que diz respeito ao Steve Jobs, existe até [um livro](http://www.livrariacul
 
 **Faça um rascunho dos slides antes de abrir o Keynote.** Com os tópicos da sua apresentação escritos e ajustados, divida-os em slides e já liste os elementos de cada slide. Eu costumo fazer como um Story Board, de filme mesmo. Dessa forma, consigo criar a narrativa toda e pensá-la visualmente antes mesmo de abrir o Google para procurar imagens. Facilita para quem fica horas procurando imagens e se distrai com facilidade.
 
-![Rascunhos](/media/rascunho-apresentacao-vtexday.jpg)
+![Rascunhos](http://lab.vtex.com/media/rascunho-apresentacao-vtexday.jpg)
 
 **Junte todos os assets da sua apresentação (fotos, ícones, gifs, etc) de uma vez só.** Adivinhou? Antes de abrir o Keynote.
 

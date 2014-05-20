@@ -8,11 +8,11 @@ description: |
     O VTEX Lab abre definitivamente suas portas à Comunidade VTEX. Venha
     viver conosco a aventura de construir o futuro.
 tags:  
-  - events  
+  - new-features  
 
 ---
 
-![Portas Abertas](/media/portas-abertas04.png)
+![Portas Abertas](http://lab.vtex.com/media/portas-abertas04.png)
 
 > "We wish to welcome you to Munchkinland, we welcome you to Munchkinland."
 >     - The Munchkins welcome song; _The Wonderful Wizard of Oz_

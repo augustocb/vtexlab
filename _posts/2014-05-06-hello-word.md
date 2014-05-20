@@ -15,4 +15,4 @@ Nosso blog finalmente está aqui. Será o berço de discussões, release notes, 
 
 A nossa equipe não vê a hora de compartilhar o que aprendemos diariamente com as experiências de estarmos criando o futuro do comércio eletrônico.
 
-![Reverse Parkour](/media/fomula-reverse-parkour-marco.gif)
+![Reverse Parkour](http://lab.vtex.com/media/fomula-reverse-parkour-marco.gif)

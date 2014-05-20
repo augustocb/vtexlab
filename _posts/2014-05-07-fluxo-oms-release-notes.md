@@ -15,19 +15,19 @@ tags:
 ### O pedido flui…
 Percebemos que muitos clientes estavam com dificuldades para entender a situação em que o pedido se encontrava. E é para solucionar este problema que lançamos o **Fluxo do pedido**, com os status por onde ele passou, seu status atual e por onde ele pode seguir. Ele fica nos detalhes da venda.
 
-![Tela do Fluxo](/media/fluxo-oms01.png)
+![Tela do Fluxo](http://lab.vtex.com/media/fluxo-oms01.png)
 
 ### Você interfere no fluxo
 No próprio diagrama é possível submeter o andamento em situações específicas e também fazer retentativas em caso de erros:
 
-![Tela do Fluxo: detalhes](/media/fluxo-oms02.png)
+![Tela do Fluxo: detalhes](http://lab.vtex.com/media/fluxo-oms02.png)
 
 
 ### Mas e se eu precisar de detalhes técnicos?
 
 É só alternar entre os dois modos de exibição:
 
-![Tela do Fluxo: GIF animado](/media/fluxo-oms04.gif)
+![Tela do Fluxo: GIF animado](http://lab.vtex.com/media/fluxo-oms04.gif)
 
 ## Os detalhes que fazem toda diferença
 
