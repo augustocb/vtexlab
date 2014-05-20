@@ -16,6 +16,10 @@
   <meta property="og:description" content="{{ page.description }}"/>
   {% endif %}
 
+  {% if page.type == "post" or page.type == "post-list" %}
+  <link rel="alternate" type="application/rss+xml" title="VTEX Lab - Blog" href="/feed.xml" />
+  {% endif %}
+
   <link rel="stylesheet" href="//io.vtex.com.br/front-libs/font-awesome/4.0.1/css/font-awesome.min.css" />
   <link rel="stylesheet" href="/assets/stylesheets/main.css" />
   {% for style in page.styles %}
