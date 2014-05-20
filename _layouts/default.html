@@ -6,6 +6,9 @@
   <title>{{page.title}}{% if page.title %} - {%endif%}VTEX Lab</title>
   <script type="text/javascript" src="/assets/javascripts/modernizr.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}" />
+  {% endif %}  
 
   {% if page.type == "post" %}
   <meta property="og:title" content="{{ page.title }}"/>
@@ -16,8 +19,11 @@
   <meta property="og:description" content="{{ page.description }}"/>
   {% endif %}
 
-  {% if page.type == "post" or page.type == "post-list" %}
+  {% if page.type == "post" or page.type == "post-list" or page.type == "home" %}
   <link rel="alternate" type="application/rss+xml" title="VTEX Lab - Blog" href="/feed.xml" />
+  {% endif %}
+  {% if page.type == "home" %}
+  <link rel="alternate" type="application/rss+xml" href="http://status.vtex.com.br/history.rss" title="VTEX Status History - RSS Feed">
   {% endif %}
 
   <link rel="stylesheet" href="//io.vtex.com.br/front-libs/font-awesome/4.0.1/css/font-awesome.min.css" />
