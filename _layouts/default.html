@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{page.title}}{% if page.title %} - {%endif%}VTEX Lab</title>
   <script type="text/javascript" src="/assets/javascripts/modernizr.js"></script>
   <script>
@@ -11,31 +11,32 @@
       window.location.host = window.location.host.replace('.br', '');
     }
   </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% if page.description %}
-  <meta name="description" content="{{ page.description }}" />
-  {% endif %}  
-
+    <meta property="og:site_name" content="{{ site.name }}"/>
+  {% if page.title %}
+    <meta property="og:title" content="{{page.title}}{% if page.title %} - {%endif%}VTEX Lab" />
+    <meta property="og:type" content="article" />
+  {% else %}
+    <meta property="og:type" content="website" /> 
+  {% endif %}
   {% if page.type == "post" %}
-  <meta property="og:title" content="{{ page.title }}"/>
-  <meta property="og:site_name" content="VTEX Lab"/>  
-  <meta property="og:image" content="{{ page.main-image }}"/>
-  
-  <meta property="og:type" content="blog"/>
-  <meta property="og:description" content="{{ page.description }}"/>
+    <meta property="og:image" content="{{ page.main-image }}"/>
+  {% endif %}
+  {% if page.type != "post" or page.main-image == "" %}
+    <meta property="og:image" content="{{ site.url }}/images/og-default.jpg"/>
+  {% endif %} 
+  {% if page.description %}
+    <meta name="description" content="{{ page.description }}" />
   {% endif %}
 
-  {% if page.type == "post" or page.type == "post-list" or page.type == "home" %}
-  <link rel="alternate" type="application/rss+xml" title="VTEX Lab - Blog" href="{{ site.url }}/feed.xml" />
-  {% endif %}
+    <link rel="alternate" type="application/rss+xml" title="VTEX Lab - Blog" href="{{ site.url }}/feed.xml" />
   {% if page.type == "home" %}
-  <link rel="alternate" type="application/rss+xml" href="http://status.vtex.com.br/history.rss" title="VTEX Status History - RSS Feed">
+    <link rel="alternate" type="application/rss+xml" href="http://status.vtex.com.br/history.rss" title="VTEX Status - Hist&oacute;rico">
   {% endif %}
 
-  <link rel="stylesheet" href="//io.vtex.com.br/front-libs/font-awesome/4.0.1/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="/assets/stylesheets/main.css" />
+    <link rel="stylesheet" href="//io.vtex.com.br/front-libs/font-awesome/4.0.1/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/stylesheets/main.css" />
   {% for style in page.styles %}
-  <link rel="stylesheet" href="/assets/stylesheets/{{ style }}.css" />    
+    <link rel="stylesheet" href="/assets/stylesheets/{{ style }}.css" />    
   {% endfor %}
 </head>
 <body{% if page.type == "post" %} class="post-page"{% endif %}>
