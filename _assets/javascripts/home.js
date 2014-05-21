@@ -92,7 +92,7 @@ $(document).ready(function(){
           animateQuestion();
         }, 20);
       }, 800);
-    }, 7500);
+    }, 4200);
   };
 
   updateQuestion(getLastActiveQuestion());
