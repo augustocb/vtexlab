@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{page.title}}{% if page.title %} - {%endif%}VTEX Lab</title>
   <script type="text/javascript" src="/assets/javascripts/modernizr.js"></script>
+  <script>
+    // Workaround provisório de redirecionamento
+    if (window.location.host.indexOf('.br') != -1) {
+      window.location.host = window.location.host.replace('.br', '');
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% if page.description %}
   <meta name="description" content="{{ page.description }}" />
