@@ -6,7 +6,7 @@
   <title>{{page.title}}{% if page.title %} - {%endif%}VTEX Lab</title>
   <script type="text/javascript" src="/assets/javascripts/modernizr.js"></script>
   <script>
-    // Workaround provisório de redirecionamento
+    // Workaround provis贸rio de redirecionamento
     if (window.location.host.indexOf('.br') != -1) {
       window.location.host = window.location.host.replace('.br', '');
     }
@@ -26,6 +26,8 @@
   {% endif %} 
   {% if page.description %}
     <meta name="description" content="{{ page.description }}" />
+  {% else %}
+    <meta name="description" content="Laboratório de inovação da VTEX. Unstoppable Innovation - Escrevendo o futuro do E-commerce" />
   {% endif %}
 
     <link rel="alternate" type="application/rss+xml" title="VTEX Lab - Blog" href="{{ site.url }}/feed.xml" />
