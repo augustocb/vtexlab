@@ -339,4 +339,9 @@
   .post-nav a {
     border-top: 4px solid $grey;
   }
+  .post-page {
+    .post {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
 }
