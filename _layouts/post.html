@@ -72,7 +72,7 @@ scripts:
                     <h3>Tags: </h3>
                     <p>
                       {% for tag in page.tags %}
-                      <a href="/blog/tag/{{ tag }}.html">{{ tag }}</a>{% if forloop.last != true %},&nbsp;{% endif %}
+                      <a href="/tag/{{ tag }}.html">{{ tag }}</a>{% if forloop.last != true %},&nbsp;{% endif %}
                       {% endfor %}
                     </p>
                   </div>
