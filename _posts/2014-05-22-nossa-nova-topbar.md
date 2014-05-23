@@ -1,57 +1,45 @@
 ---
 layout: post
 type: release-note
-title: 'Nossa nova Top bar'
+title: 'Nossa nova Topbar'
 author: 'augustocbarbosa'
 date: 2014-05-22 9:00:00
 <!-- main-image: http://lab.vtex.com/media/fluxo-oms01.png -->
-description: Release Notes da versão que lança o Fluxo de Pedidos
+description: Release Notes da maior mudança da história da nossa barra de navegação principal
 tags: 
 - new-features
 - release-notes
 
 ---
 
-Essa é uma novidade sutil, mas bem importante para nossos clientes e parceiros. A Top bar é um detalhe que aparece no topo dos nossos produtos e oferece recursos básicos e essenciais para a navegação na plataforma administrativa.
+A Topbar parece apenas um detalhe, mas não é por acaso que está no topo de todos os produtos na nossa plataforma administrativa. Então depois de algum tempo inconformados com o funcionamento da versão antiga, conseguimos mudar completamente a sua forma de desenvolvimento, para assim conseguirmos evoluir e melhorá-la rapidamente daqui para frente. Aqui está o primeiro grande passo dessa mudança.
 
-Há algum tempo estávamos inconformados com o funcionamento da antiga Top bar e também cheios de ideias para melhorá-la. Aqui está o resultado.
-
-
-### Novo conceito de navegação
+### Navegação que vale por duas
 
 [imagem breadcrumb]
 
-Produto, Conta, Loja. Essa é a sequência dos itens de navegação que a nova Top bar exibe, em um esquema de breadcrumb, que traduz momento atual da navegação. Além disso, as informações apresentadas de forma resumida dão uma melhor respiração para a barrinha.
+*Produto > Conta > Loja*
+
+A navegação agora não só leva você de um lugar para outro mas também informa em que Conta e/ou Loja você está. Além disso, as informações apresentadas de forma resumida dão uma melhor respiração para a barrinha.
 
 [imagem menu produtos]
 
-Sair de um lugar para outro está mais simples. Os três principais menus de navegação possuem um comportamento similar, sem muito segredo. Demos uma atenção especial ao menu de produtos, com novos ícones que representam cada um deles.
-
-Para nossas agências parceiras, com acesso a muitas contas, uma busca facilita a localização.
+Demos uma atenção especial ao menu de produtos, com novos ícones e uma rápida descrição conceitual. E para nossas agências parceiras, com acesso a muitas contas, uma busca facilita a localização.
 
 
-### Idiomas
+### Ajudando a VTEX a falar a sua língua
 
-Nossos produtos possuem versão em três idiomas: português, inglês e espanhol. Antes, os clientes de cada país recebiam o produto com seu idioma nativo. Esse comportamento mudou: o idioma pré-selecionado é o mesmo do sistema operacional ou do navegador.
+Antes os clientes de cada país recebiam as telas com seu idioma nativo sem uma forma simples de mudar. Agora o idioma pré-selecionado é o mesmo do sistema operacional ou do navegador, com a grande diferença que pode ser trocado com a ajuda da nova Topbar. 
 
 [imagem seletor idioma]
 
-A grande novidade é que agora o idioma pode ser trocado através da nova Top bar. A transição é leve como uma pluma :)
+*Sem recarregar a página, sem sufoco, leve como uma pluma :)*
+
 
 ### Responsividade
 
 [imagem dispositivos]
 
-Esse é um cuidado sempre presente por aqui e não poderia deixar de fazer parte da Top bar. Seu estilo e seu comportamento mudam um pouco dependendo do dispositivo, mas ela se mantém bem adaptada e com uma experiência bem parecida.
+O estilo e comportamento da barra mudam dependendo do dispositivo para entregar a melhor experiência para cada caso.
 
-### Bastidores
-
-Outra mudança bastante significativa não está evidente para quem usa nossos produtos, mas fez toda diferença para nós, que trabalhamos para desenvolvê-la. Antes a Top bar era programada e entregue totalmente pelo time de back-end, o que dificultava um pouco sua evolução, principalmente no que diz respeito a UX e front-end. O time back-end estava sobrecarregado, enquanto o time de front-end ficava de mãos atadas.
-
-[imagem API]
-
-Mudamos. Assim como nossos produtos, agora a UI da Topbar está independente, trabalhando com dados recebidos de uma API. É o melhor dos mundos: back e front-end trabalhando independentes, porém lado a lado. Nosso time de UX passou uma semana pulando de tanta alegria!
-
-Esperamos evoluir mais rápido e entregar mais funcionalidades legais na nova Top bar daqui pra frente.
-
-E você, o que achou da nova Top bar?
+E você, o que achou da nova Topbar?
