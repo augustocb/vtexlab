@@ -12,7 +12,7 @@ tags:
 
 ---
 
-Essa é uma novidade sutil, mas bem importante para nossos clientes e parceiros. A Top bar é um detalhe que aparece no topo dos nossos produtos e oferece recursos básicos e essenciais para a navegação na plataforma administrativa.
+Essa é uma novidade sutil, mas muito importante para nossos clientes e parceiros. A Top bar, que aparece no topo dos nossos produtos,  oferece recursos básicos e essenciais para a navegação na plataforma administrativa.
 
 Há algum tempo estávamos inconformados com o funcionamento da antiga Top bar e também cheios de ideias para melhorá-la. Aqui está o resultado.
 
@@ -21,7 +21,7 @@ Há algum tempo estávamos inconformados com o funcionamento da antiga Top bar e
 
 [imagem breadcrumb]
 
-Produto, Conta, Loja. Essa é a sequência dos itens de navegação que a nova Top bar exibe, em um esquema de breadcrumb, que traduz momento atual da navegação. Além disso, as informações apresentadas de forma resumida dão uma melhor respiração para a barrinha.
+Produto, conta e loja. Essa sequência, em formato de breadcrumb,  exibe os itens de navegação da nova Top bar. Ela  traduz o momento atual da navegação. Além disso, as informações apresentadas de forma resumida dão uma melhor respiração para a barrinha.
 
 [imagem menu produtos]
 
@@ -46,7 +46,7 @@ Esse é um cuidado sempre presente por aqui e não poderia deixar de fazer parte
 
 ### Bastidores
 
-Outra mudança bastante significativa não está evidente para quem usa nossos produtos, mas fez toda diferença para nós, que trabalhamos para desenvolvê-la. Antes a Top bar era programada e entregue totalmente pelo time de back-end, o que dificultava um pouco sua evolução, principalmente no que diz respeito a UX e front-end. O time back-end estava sobrecarregado, enquanto o time de front-end ficava de mãos atadas.
+Outra mudança bastante significativa não está evidente para quem usa nossos produtos, mas fez toda diferença para nós que trabalhamos para desenvolvê-la. Antes a Top bar era programada e entregue totalmente pelo time de back-end, o que dificultava um pouco sua evolução, principalmente no que diz respeito a UX e front-end. O time back-end estava sobrecarregado, enquanto o time de front-end ficava de mãos atadas.
 
 [imagem API]
 
