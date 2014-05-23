@@ -20,14 +20,15 @@
   .nico-ilustra {
     img {
       margin-top: 35px;
-      width: 100%;
     }
   }
   p {      
-    max-width: 1170px;
+    max-width: 50%;
+    float: right;
     text-align: right;
     color: #ddd;
-    font-size: 10px;
+    font-size: 11px;
+    padding-right: 10px;
   }
   a {
     font-weight: bold;
@@ -613,6 +614,41 @@
 
     .col-md-6:first-child {
       margin-bottom: 195px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .btn-go-to {
+    width: 100%;
+  }
+  .bottom-box {
+    text-align: center;
+  }
+  .icon-home {
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .subscribe-to {
+    .container {
+      width: auto;
+    }
+    li {
+      float: none;
+      margin-bottom: 10px;
+      font-size: 20px;
+      margin-left: 0;
+    }
+    a {
+      display: block;
+      text-align: center;
+      padding: 5px;
+    }
+    i {
+      display: block;
+      margin: 0 auto;
+      font-size: 42px;
     }
   }
 }
