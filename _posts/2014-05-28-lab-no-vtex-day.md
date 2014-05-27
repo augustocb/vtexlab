@@ -12,10 +12,9 @@ tags:
 
 ---
 
-Aconteceu no dia 16 de maio o VTEX Day e sim, foi um baita sucesso. :) Este ano nós do Lab participamos diretamente de um dos núcleos e foi uma experiência incrível para todo mundo. Desde quem teve a oportunidade de palestrar até quem assistiu diretamente clientes e parceiros tirando dúvidas e trocando idéias e experiências com eles.
+Aconteceu no dia 16 de maio o VTEX Day e sim, foi um baita sucesso. :) Este ano nós do Lab participamos diretamente de um dos núcleos de organização do evento e foi uma experiência incrível para todo mundo. Alguns tiveram a oportunidade de palestrar para uma sala sempre lotada, equanto outros puderam dar assistência aos clientes e parceiros, tirando dúvidas e trocando idéias e experiências com eles.
 
-
-Confira as fotos da sala Developers e do stand do VTEX Lab onde os clientes e parceiros viam as palestras e degustavam novos recursos experimentais da plataforma, respectivamente:
+Confira as fotos da sala Developers e do stand do VTEX Lab, respectivamente, onde os clientes e parceiros assistiram às palestras e degustaram novos recursos experimentais da plataforma.
 
 <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
 <div class="fb-post" data-href="https://www.facebook.com/media/set/?set=a.329994780483910.1073741829.325377477612307&amp;type=1" data-width="466"></div>
@@ -175,4 +174,4 @@ Confira as fotos da sala Developers e do stand do VTEX Lab onde os clientes e pa
 
 <hr>
 
-Estamos muito empolgados com os frutos que o evento dará durante todo o ano e igualmente gratos pela participação de todos envolvidos no nosso ecossistema, garantindo o sucesso que foi. Em breve publicaremos os vídeos das palestras na íntegra e também novos posts resultantes das pesquisas das palestras e dicussões do evento.
+Estamos muito empolgados com os frutos que o evento está dando e dará durante todo o ano e igualmente gratos pela participação de todos envolvidos no nosso ecossistema, garantindo seu sucesso. Em breve publicaremos os vídeos das palestras na íntegra, além de novos posts resultantes de dicussões sobre o evento e de pesquisas das palestras.
