@@ -106,6 +106,12 @@
 .post-body h2 {margin-bottom: 15px;}
 .post-body img {max-width: 100%;}
 
+//embedded
+.post-body iframe,
+.post-body .fb-post {
+  margin-left: 10px;
+}
+
 .post-author {
   margin-bottom: 70px;
   h3 {
