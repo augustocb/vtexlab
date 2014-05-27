@@ -2,9 +2,9 @@
 layout: post
 title: 'Lab no VTEX Day 2014'
 author: 'rdmuniz'
-date: 2014-05-23 22:30:00
+date: 2014-05-28 08:30:00
 description: Um pouco de como foi, fotos e slides do nosso stand e palestras da sala Developers
-main-image: http://lab.vtex.com/media/vtex-senha1.jpg
+main-image: http://lab.vtex.com/media/stand-vtexday2014.jpg
 tags:
 - events
 - vtex-day
